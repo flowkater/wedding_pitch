@@ -1,42 +1,91 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:wedding_pitch/screen/main_screen.dart';
-import 'package:wedding_pitch/screen/photo_album_screen.dart';
-import 'package:wedding_pitch/screen/test_screen.dart';
+import 'package:wedding_pitch/layout/page_layout.dart';
+import 'package:wedding_pitch/screen/album_screen.dart';
+import 'package:wedding_pitch/screen/main_navigation_page.dart';
+import 'package:wedding_pitch/screen/root_screen.dart';
+import 'package:wedding_pitch/old/test_screen.dart';
 
 void main() {
-  runApp(const MyApp());
-}
-
-final GoRouter _router = GoRouter(routes: [
-  GoRoute(
-    path: '/',
-    builder: (context, state) => const MainScreen(),
+  final GoRouter router = GoRouter(
     routes: [
       GoRoute(
-        path: 'photos',
-        builder: (context, state) => const PhotoAlbumScreen(),
-      ),
-      GoRoute(
-        path: 'test',
-        builder: (context, state) => const TestScreen(),
-      ),
+        path: '/',
+        builder: (context, state) => const RootScreen(),
+        routes: [
+          GoRoute(
+            path: 'main-navigation',
+            pageBuilder: (context, state) => CustomTransitionPage<void>(
+              key: state.pageKey,
+              child: const MainNavigationPage(),
+              transitionDuration: const Duration(milliseconds: 500),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) =>
+                      FadeTransition(opacity: animation, child: child),
+            ),
+          ),
+          GoRoute(
+            path: 'album',
+            pageBuilder: (context, state) => MaterialPage(
+              key: state.pageKey,
+              child: const AlbumScreen(),
+              // builder: (context, state) => const AlbumScreen(),
+              fullscreenDialog: true,
+            ),
+          ),
+          GoRoute(
+            path: 'test',
+            builder: (context, state) => const TestScreen(),
+          ),
+        ],
+      )
     ],
-  )
-]);
+  );
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  runApp(
+    WeddingPitchApp(
+      goRouter: router,
+    ),
+  );
+}
+
+class WeddingPitchApp extends StatelessWidget {
+  final GoRouter goRouter;
+
+  const WeddingPitchApp({
+    required this.goRouter,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      routerDelegate: goRouter.routerDelegate,
+      routeInformationParser: goRouter.routeInformationParser,
+      routeInformationProvider: goRouter.routeInformationProvider,
+      scrollBehavior: AppScrollBehavior(),
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: '이경 & 재우 결혼합니다',
       theme: ThemeData(
         useMaterial3: true,
+        // fontFamily: 'HappinessSansRegular',
       ),
-      routerConfig: _router,
+      builder: (context, child) {
+        return PageLayout(
+          body: child!,
+        );
+      },
     );
   }
+}
+
+class AppScrollBehavior extends MaterialScrollBehavior {
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+        PointerDeviceKind.trackpad,
+      };
 }

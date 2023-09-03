@@ -31,6 +31,10 @@ dependencies:
   local_hero: ^0.2.0
   equatable: ^2.0.0
   go_router: ^10.0.0
+  flutter_svg: ^2.0.7
+  remixicon: ^1.0.0
+  video_player: ^2.7.1
+  widget_mask: ^1.0.0+0
 
   flutter:
     sdk: flutter
@@ -39,6 +43,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  flutter_staggered_grid_view: ^0.7.0
 
 dev_dependencies:
   flutter_test:
@@ -62,9 +67,25 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+
+  fonts:
+    - family: HappinessSansBold
+      fonts:
+        - asset: fonts/Happiness-Sans-Bold.ttf
+    - family: HappinessSansRegular
+      fonts:
+        - asset: fonts/Happiness-Sans-Regular.ttf
+    - family: HappinessSansTitle
+      fonts:
+        - asset: fonts/Happiness-Sans-Title.ttf
+
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/images/cover.png
+    - assets/images/cover-test.png
+    - assets/images/wedding-icon.png
+    - assets/images/subtract.png
+    - assets/images/vllo.mp4
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -92,3 +113,4 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
