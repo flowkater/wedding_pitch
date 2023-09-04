@@ -69,7 +69,14 @@ class WeddingPitchApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: '이경 & 재우 결혼합니다',
       theme: ThemeData(
-        useMaterial3: true,
+        scaffoldBackgroundColor: Colors.white,
+        primaryColor: Colors.white,
+        appBarTheme: const AppBarTheme(
+          foregroundColor: Colors.black,
+          backgroundColor: Colors.white,
+          elevation: 0,
+        ),
+
         // fontFamily: 'HappinessSansRegular',
       ),
       builder: (context, child) {

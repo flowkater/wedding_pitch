@@ -18,25 +18,31 @@ class NavTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // double tabWidth = MediaQuery.of(context).size.width / 3;
+    // if (getDeviceType() != DeviceType.Mobile) tabWidth = 430 / 3;
+
     return Expanded(
-      child: GestureDetector(
-        onTap: () => onTap(),
-        child: AnimatedOpacity(
-          duration: const Duration(milliseconds: 300),
-          opacity: isSelected ? 1 : 0.3,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(
-                isSelected ? selectedIcon : icon,
-                color: Colors.black,
-                size: 28.0,
-              ),
-              const SizedBox(
-                height: 8.0,
-              ),
-              Text(text),
-            ],
+      child: AnimatedOpacity(
+        duration: const Duration(milliseconds: 300),
+        opacity: isSelected ? 1 : 0.3,
+        child: InkWell(
+          onTap: () => onTap(),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 2.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  isSelected ? selectedIcon : icon,
+                  color: Colors.black,
+                  size: 24.0,
+                ),
+                const SizedBox(
+                  height: 2.0,
+                ),
+                Text(text),
+              ],
+            ),
           ),
         ),
       ),

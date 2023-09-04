@@ -35,6 +35,8 @@ dependencies:
   remixicon: ^1.0.0
   video_player: ^2.7.1
   widget_mask: ^1.0.0+0
+  url_launcher: ^6.1.14
+  # animations: ^2.0.8
 
   flutter:
     sdk: flutter
@@ -86,6 +88,15 @@ flutter:
     - assets/images/wedding-icon.png
     - assets/images/subtract.png
     - assets/images/vllo.mp4
+    - assets/images/album-studio-title.png
+    - assets/images/calendar.png
+    - assets/images/dancing.png
+    - assets/images/map.png
+    - assets/images/kakaomap.png
+    - assets/images/navermap.png
+    - assets/images/tmap.png
+    - assets/images/101-DSC00294.jpg
+    - assets/images/102-DSC00548.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
