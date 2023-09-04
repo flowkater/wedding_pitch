@@ -133,8 +133,8 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
         body: TabBarView(
           controller: _tabController,
           children: const [
-            LocationTabView(),
             ScheduleTabView(),
+            LocationTabView(),
             CeremonyTabView(),
             OthersTabView(),
           ],

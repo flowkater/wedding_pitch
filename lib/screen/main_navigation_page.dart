@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:remixicon/remixicon.dart';
 import 'package:wedding_pitch/screen/gallery_screen.dart';
+import 'package:wedding_pitch/screen/home_screen.dart';
 import 'package:wedding_pitch/screen/info_screen.dart';
 import 'package:wedding_pitch/widget/nav_tab.dart';
 
@@ -61,10 +62,9 @@ class _MainNavigationPageState extends State<MainNavigationPage>
       body: IndexedStack(
         index: _selectedIndex,
         children: [
-          // const HomeScreen(
-          //   isInNavigation: true,
-          // ),
-          const InfoScreen(),
+          const HomeScreen(
+            isInNavigation: true,
+          ),
           GalleryScreen(
             isActive: _isGalleryActive,
           ),
