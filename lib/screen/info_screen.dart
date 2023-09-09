@@ -1,7 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:wedding_pitch/widget/ceremony_tab_view.dart';
 import 'package:wedding_pitch/widget/location_tab_view.dart';
+import 'package:wedding_pitch/widget/others_tab_view.dart';
 import 'package:wedding_pitch/widget/schedule_tab_view.dart';
 
 class InfoScreen extends StatefulWidget {
@@ -141,23 +143,5 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
         ),
       ),
     );
-  }
-}
-
-class CeremonyTabView extends StatelessWidget {
-  const CeremonyTabView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
-}
-
-class OthersTabView extends StatelessWidget {
-  const OthersTabView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }

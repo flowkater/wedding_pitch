@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:wedding_pitch/utils/get_device_type.dart';
 
 class HomeScreen extends StatefulWidget {
   final bool isInNavigation;
