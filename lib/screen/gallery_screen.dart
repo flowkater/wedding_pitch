@@ -18,7 +18,7 @@ class GalleryScreen extends StatefulWidget {
 
 class _GalleryScreenState extends State<GalleryScreen> {
   late VideoPlayerController _controller;
-  bool _soundOn = false;
+  bool _soundOn = true;
 
   void _toggleSound() {
     setState(() {
