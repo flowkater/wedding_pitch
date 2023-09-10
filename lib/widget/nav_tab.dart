@@ -3,14 +3,12 @@ import 'package:flutter/material.dart';
 class NavTab extends StatelessWidget {
   const NavTab({
     super.key,
-    required this.text,
     required this.isSelected,
     required this.icon,
     required this.onTap,
     required this.selectedIcon,
   });
 
-  final String text;
   final bool isSelected;
   final IconData icon;
   final IconData selectedIcon;
@@ -18,9 +16,6 @@ class NavTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // double tabWidth = MediaQuery.of(context).size.width / 3;
-    // if (getDeviceType() != DeviceType.Mobile) tabWidth = 430 / 3;
-
     return Expanded(
       child: AnimatedOpacity(
         duration: const Duration(milliseconds: 300),
@@ -40,7 +35,6 @@ class NavTab extends StatelessWidget {
                 const SizedBox(
                   height: 2.0,
                 ),
-                Text(text),
               ],
             ),
           ),

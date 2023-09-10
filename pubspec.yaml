@@ -34,9 +34,10 @@ dependencies:
   flutter_svg: ^2.0.7
   remixicon: ^1.0.0
   video_player: ^2.7.1
-  widget_mask: ^1.0.0+0
   url_launcher: ^6.1.14
   expandable: ^5.0.1
+  boxicons: ^2.1.3
+  scroll_to_index: ^3.0.1
   # animations: ^2.0.8
 
   flutter:
@@ -88,7 +89,7 @@ flutter:
     - assets/images/cover-test.png
     - assets/images/wedding-icon.png
     - assets/images/subtract.png
-    - assets/images/vllo.mp4
+    - assets/images/hd.mp4
     - assets/images/album-studio-title.png
     - assets/images/calendar.png
     - assets/images/dancing.png
@@ -98,6 +99,49 @@ flutter:
     - assets/images/tmap.png
     - assets/images/101-DSC00294.jpg
     - assets/images/102-DSC00548.jpg
+
+    - assets/images/albums/studio_title.png
+    - assets/images/albums/studio01.jpg
+    - assets/images/albums/studio02.jpg
+    - assets/images/albums/studio03.jpg
+    - assets/images/albums/studio04.jpg
+    - assets/images/albums/studio05.jpg
+    - assets/images/albums/studio06.jpg
+    - assets/images/albums/studio07.jpg
+    - assets/images/albums/studio08.jpg
+    - assets/images/albums/studio09.jpg
+    - assets/images/albums/studio10.jpg
+    - assets/images/albums/studio11.jpg
+    
+    - assets/images/albums/forest_title.png
+    - assets/images/albums/forest01.jpg
+    - assets/images/albums/forest02.jpg
+    - assets/images/albums/forest03.jpg
+    - assets/images/albums/forest04.jpg
+    - assets/images/albums/forest05.jpg
+    - assets/images/albums/forest06.jpg
+
+    - assets/images/albums/sea_title.png
+    - assets/images/albums/sea01.jpg
+    - assets/images/albums/sea02.jpg
+    - assets/images/albums/sea03.jpg
+    - assets/images/albums/sea04.jpg
+    - assets/images/albums/sea05.jpg
+    - assets/images/albums/sea06.jpg
+    - assets/images/albums/sea07.jpg
+    - assets/images/albums/sea08.jpg
+    - assets/images/albums/sea09.jpg
+    - assets/images/albums/sea10.jpg
+    - assets/images/albums/sea11.jpg
+    - assets/images/albums/sea12.jpg
+    - assets/images/albums/sea13.jpg
+    - assets/images/albums/sea14.jpg
+    - assets/images/albums/sea15.jpg
+    - assets/images/albums/sea16.jpg
+    - assets/images/albums/sea17.jpg
+
+    
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

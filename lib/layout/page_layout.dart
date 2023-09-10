@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wedding_pitch/style/size.dart';
 import 'package:wedding_pitch/utils/get_device_type.dart';
 
 class PageLayout extends StatelessWidget {
@@ -15,8 +16,8 @@ class PageLayout extends StatelessWidget {
       child: ConstrainedBox(
         constraints: getDeviceType() != DeviceType.Mobile
             ? const BoxConstraints(
-                maxWidth: 430,
-                maxHeight: 932,
+                maxWidth: AppSize.maxWidth,
+                maxHeight: AppSize.maxHeight,
               )
             : const BoxConstraints(),
         child: Center(

@@ -83,21 +83,18 @@ class _MainNavigationPageState extends State<MainNavigationPage>
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   NavTab(
-                    text: "메인",
                     isSelected: _selectedIndex == 0,
                     icon: Remix.cake_2_line,
                     selectedIcon: Remix.cake_2_fill,
                     onTap: () => _onTap(0),
                   ),
                   NavTab(
-                    text: "앨범",
                     isSelected: _selectedIndex == 1,
                     icon: Remix.star_s_line,
                     selectedIcon: Remix.star_s_fill,
                     onTap: () => _onTap(1),
                   ),
                   NavTab(
-                    text: "정보",
                     isSelected: _selectedIndex == 2,
                     icon: Remix.map_pin_2_line,
                     selectedIcon: Remix.map_pin_2_fill,

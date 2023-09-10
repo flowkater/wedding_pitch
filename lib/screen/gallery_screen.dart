@@ -1,9 +1,9 @@
+import 'package:boxicons/boxicons.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:remixicon/remixicon.dart';
 import 'package:video_player/video_player.dart';
-import 'package:wedding_pitch/widget/bottom_button.dart';
-import 'package:widget_mask/widget_mask.dart';
+import 'package:wedding_pitch/style/size.dart';
 
 class GalleryScreen extends StatefulWidget {
   final bool isActive;
@@ -18,7 +18,7 @@ class GalleryScreen extends StatefulWidget {
 
 class _GalleryScreenState extends State<GalleryScreen> {
   late VideoPlayerController _controller;
-  bool _soundOn = true;
+  bool _soundOn = false;
 
   void _toggleSound() {
     setState(() {
@@ -38,9 +38,10 @@ class _GalleryScreenState extends State<GalleryScreen> {
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.asset("assets/images/vllo.mp4")
+    _controller = VideoPlayerController.asset("assets/images/hd.mp4")
       ..initialize().then((_) {
         _controller.setLooping(true);
+        _controller.setVolume(_soundOn ? 1 : 0);
       });
 
     if (widget.isActive) {
@@ -66,121 +67,179 @@ class _GalleryScreenState extends State<GalleryScreen> {
   @override
   void dispose() {
     _controller.dispose();
+
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return SelectionArea(
-      child: SafeArea(
-        child: Container(
-          color: Colors.white,
-          child: Center(
+    final appSize = AppSize.getMaxSize(
+      MediaQuery.of(context).size.width,
+      MediaQuery.of(context).size.height,
+    );
+
+    final screenWidth = appSize.width;
+    final screenHeight = appSize.height;
+
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Container(
+            padding: const EdgeInsets.only(
+              top: 40.0,
+              left: 24.0,
+              right: 24.0,
+            ),
+            color: Colors.white,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Expanded(
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      WidgetMask(
-                        mask: Image.asset(
-                          'assets/images/subtract.png',
-                          fit: BoxFit.fill,
-                        ),
-                        child: _controller.value.isInitialized
-                            ? SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.7,
-                                child: AspectRatio(
-                                  aspectRatio: _controller.value.aspectRatio,
-                                  child: VideoPlayer(_controller),
-                                ),
-                              )
-                            : Image.asset(
-                                'assets/images/cover-test.png',
-                                fit: BoxFit.cover,
-                              ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          _controller.value.isPlaying
-                              ? _controller.pause()
-                              : _controller.play();
-                        },
-                        child: Container(
-                          width: MediaQuery.of(context).size.height *
-                                  0.7 *
-                                  _controller.value.aspectRatio +
-                              2,
-                          height: MediaQuery.of(context).size.height * 0.7 + 2,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                                color: Colors.white, width: 1), // 테두리 설정
-                            image: const DecorationImage(
-                              image: AssetImage('assets/images/subtract.png'),
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        // top: 0.0,
-                        top: MediaQuery.of(context).size.height * 0.1,
-                        left: 20.0,
-                        child: GestureDetector(
-                          onTap: _toggleSound,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.black,
-                              borderRadius: BorderRadius.circular(16.0),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 4.0,
-                                horizontal: 12.0,
-                              ),
-                              child: Row(
-                                children: [
-                                  AnimatedOpacity(
-                                    duration: const Duration(milliseconds: 300),
-                                    opacity: _soundOn ? 1.0 : 0.2,
-                                    child: const Icon(
-                                      Remix.music_2_fill,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  _soundOn
-                                      ? const Icon(
-                                          Remix.check_line,
-                                          color: Colors.white,
-                                        )
-                                      : const Icon(
-                                          Remix.close_line,
-                                          color: Colors.white,
-                                        ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                _headerSection(screenWidth),
+                const SizedBox(
+                  height: 24.0,
+                ),
+                _vidoSection(screenWidth, screenHeight),
+              ],
+            ),
+          ),
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        elevation: 0,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 24.0),
+          child: _bottomButton(screenWidth),
+        ),
+      ),
+    );
+  }
+
+  Widget _headerSection(double screenWidth) {
+    return SizedBox(
+      width: screenWidth,
+      child: const Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Text(
+            "동백과 같은 마음과 태도로",
+            style: TextStyle(
+              fontSize: 24.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(
+            "함께하는 이 길을 사랑하겠습니다.",
+            style: TextStyle(
+              fontSize: 24.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _vidoSection(double screenWidth, double screenHeight) {
+    return Stack(
+      children: [
+        Container(
+          width: screenWidth,
+          height: screenHeight * 0.65,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(24.0),
+            color: const Color(0xFFF9F9F9),
+          ),
+          child: _controller.value.isInitialized
+              ? ClipRRect(
+                  borderRadius: BorderRadius.circular(24.0),
+                  child: FittedBox(
+                    fit: BoxFit.cover,
+                    child: SizedBox(
+                      width: _controller.value.size.width,
+                      height: _controller.value.size.height,
+                      child: VideoPlayer(_controller),
+                    ),
+                  ),
+                )
+              : ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Image.asset(
+                    'assets/images/cover-test.png',
+                    fit: BoxFit.cover,
                   ),
                 ),
-                Column(
-                  children: [
-                    BottomButton(
-                      onTap: () {
-                        context.go('/album');
-                      },
-                      buttonText: "앨범 펼쳐보기 +",
-                    ),
-                    const SizedBox(
-                      height: 48.0,
-                    ),
-                  ],
+        ),
+        _soundButton(),
+      ],
+    );
+  }
+
+  Widget _bottomButton(double screenWidth) {
+    return InkWell(
+      onTap: () {
+        context.go('/album');
+      },
+      child: Container(
+        width: screenWidth,
+        height: 60.0,
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 18.0),
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(24.0),
+            topRight: Radius.circular(24.0),
+          ),
+          color: Colors.black,
+        ),
+        child: const Center(
+          child: Text(
+            "재우와 이경의 사진 보기 →",
+            style: TextStyle(
+              fontSize: 16.0,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _soundButton() {
+    return Positioned(
+      top: 20.0,
+      left: 20.0,
+      child: InkWell(
+        onTap: _toggleSound,
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.black.withOpacity(0.2),
+            borderRadius: BorderRadius.circular(50.0),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 8.0,
+              horizontal: 12.0,
+            ),
+            child: Row(
+              children: [
+                AnimatedOpacity(
+                  duration: const Duration(milliseconds: 300),
+                  opacity: _soundOn ? 1.0 : 0.2,
+                  child: const Icon(
+                    Boxicons.bxs_music,
+                    color: Colors.white,
+                  ),
                 ),
+                _soundOn
+                    ? const Icon(
+                        Boxicons.bx_check,
+                        color: Colors.white,
+                      )
+                    : const Icon(
+                        Remix.close_line,
+                        color: Colors.white,
+                      ),
               ],
             ),
           ),
