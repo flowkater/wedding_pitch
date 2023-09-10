@@ -42,26 +42,13 @@ class _GalleryScreenState extends State<GalleryScreen> {
       ..initialize().then((_) {
         _controller.setLooping(true);
         _controller.setVolume(_soundOn ? 1 : 0);
+
+        if (widget.isActive) {
+          setState(() {
+            _controller.play();
+          });
+        }
       });
-
-    if (widget.isActive) {
-      setState(() {
-        _controller.play();
-      });
-    }
-  }
-
-  @override
-  void didUpdateWidget(covariant GalleryScreen oldWidget) {
-    super.didUpdateWidget(oldWidget);
-
-    if (oldWidget.isActive != widget.isActive) {
-      if (widget.isActive) {
-        _controller.play();
-      } else {
-        _controller.pause();
-      }
-    }
   }
 
   @override
@@ -82,11 +69,12 @@ class _GalleryScreenState extends State<GalleryScreen> {
     final screenHeight = appSize.height;
 
     return Scaffold(
+      appBar: AppBar(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
             padding: const EdgeInsets.only(
-              top: 40.0,
+              // top: 40.0,
               left: 24.0,
               right: 24.0,
             ),
@@ -107,7 +95,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
       bottomNavigationBar: BottomAppBar(
         elevation: 0,
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 24.0),
+          padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
           child: _bottomButton(screenWidth),
         ),
       ),
@@ -194,7 +182,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
 
         final result = await Navigator.of(context).push(
           MaterialPageRoute(
-            fullscreenDialog: true,
+            // fullscreenDialog: true,
             builder: (context) => const AlbumScreen(),
           ),
         );

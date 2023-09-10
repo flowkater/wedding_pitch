@@ -27,7 +27,19 @@ class _MainNavigationPageState extends State<MainNavigationPage>
   void _onTap(int index) {
     setState(() {
       _selectedIndex = index;
-      _isGalleryActive = index == 1;
+    });
+  }
+
+  void _onVideoTap() {
+    setState(() {
+      _isGalleryActive = true;
+
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => GalleryScreen(
+          isActive: _isGalleryActive,
+        ),
+        fullscreenDialog: true,
+      ));
     });
   }
 
@@ -61,14 +73,11 @@ class _MainNavigationPageState extends State<MainNavigationPage>
       extendBody: true,
       body: IndexedStack(
         index: _selectedIndex,
-        children: [
-          const HomeScreen(
+        children: const [
+          HomeScreen(
             isInNavigation: true,
           ),
-          GalleryScreen(
-            isActive: _isGalleryActive,
-          ),
-          const InfoScreen(),
+          InfoScreen(),
         ],
       ),
       bottomNavigationBar: SlideTransition(
@@ -89,16 +98,16 @@ class _MainNavigationPageState extends State<MainNavigationPage>
                     onTap: () => _onTap(0),
                   ),
                   NavTab(
-                    isSelected: _selectedIndex == 1,
+                    isSelected: false,
                     icon: Remix.star_s_line,
                     selectedIcon: Remix.star_s_fill,
-                    onTap: () => _onTap(1),
+                    onTap: () => _onVideoTap(),
                   ),
                   NavTab(
-                    isSelected: _selectedIndex == 2,
+                    isSelected: _selectedIndex == 1,
                     icon: Remix.map_pin_2_line,
                     selectedIcon: Remix.map_pin_2_fill,
-                    onTap: () => _onTap(2),
+                    onTap: () => _onTap(1),
                   ),
                 ],
               ),
