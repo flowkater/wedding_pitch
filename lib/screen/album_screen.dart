@@ -158,7 +158,7 @@ class _AlbumScreenState extends State<AlbumScreen> {
               ),
               InkWell(
                 onTap: () {
-                  Navigator.of(context).pop();
+                  Navigator.of(context).pop(true);
                 },
                 child: const Icon(
                   Remix.close_circle_fill,

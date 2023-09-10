@@ -1,8 +1,8 @@
 import 'package:boxicons/boxicons.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:remixicon/remixicon.dart';
 import 'package:video_player/video_player.dart';
+import 'package:wedding_pitch/screen/album_screen.dart';
 import 'package:wedding_pitch/style/size.dart';
 
 class GalleryScreen extends StatefulWidget {
@@ -170,6 +170,18 @@ class _GalleryScreenState extends State<GalleryScreen> {
                   ),
                 ),
         ),
+        GestureDetector(
+          onTap: () {
+            _controller.value.isPlaying
+                ? _controller.pause()
+                : _controller.play();
+          },
+          child: Container(
+            color: Colors.transparent,
+            width: screenWidth,
+            height: screenHeight * 0.65,
+          ),
+        ),
         _soundButton(),
       ],
     );
@@ -177,8 +189,17 @@ class _GalleryScreenState extends State<GalleryScreen> {
 
   Widget _bottomButton(double screenWidth) {
     return InkWell(
-      onTap: () {
-        context.go('/album');
+      onTap: () async {
+        _controller.pause();
+
+        final result = await Navigator.of(context).push(
+          MaterialPageRoute(
+            fullscreenDialog: true,
+            builder: (context) => const AlbumScreen(),
+          ),
+        );
+
+        if (result) _controller.play();
       },
       child: Container(
         width: screenWidth,

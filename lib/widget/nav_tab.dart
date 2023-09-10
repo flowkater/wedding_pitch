@@ -22,20 +22,24 @@ class NavTab extends StatelessWidget {
         opacity: isSelected ? 1 : 0.3,
         child: InkWell(
           onTap: () => onTap(),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 2.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(
-                  isSelected ? selectedIcon : icon,
-                  color: Colors.black,
-                  size: 24.0,
-                ),
-                const SizedBox(
-                  height: 2.0,
-                ),
-              ],
+          child: SizedBox(
+            height: 56.0,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 2.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    isSelected ? selectedIcon : icon,
+                    color: Colors.black,
+                    size: 24.0,
+                  ),
+                  const SizedBox(
+                    height: 2.0,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
