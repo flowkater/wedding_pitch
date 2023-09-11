@@ -72,7 +72,6 @@ class EntrySecondPage extends StatelessWidget {
                     children: [
                       Positioned.fill(
                         child: ClipRect(
-                          // Actual blur effect
                           child: BackdropFilter(
                             filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
                             child: Container(

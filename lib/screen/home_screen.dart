@@ -1,5 +1,10 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:remixicon/remixicon.dart';
+import 'package:wedding_pitch/style/size.dart';
+import 'package:wedding_pitch/widget/hero_text.dart';
 
 class HomeScreen extends StatefulWidget {
   final bool isInNavigation;
@@ -45,19 +50,51 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SelectionArea(
-      child: SafeArea(
-        child: !widget.isInNavigation
-            ? WeddingMainTitle(widget: widget)
-            : PageView(
-                controller: _pageController,
-                scrollDirection: Axis.vertical,
-                children: const [
-                  // WeddingMainTitle(widget: widget, onTap: () => _onTap(1)),
-                  WeddingSubTitle(),
-                ],
+    final appSize = AppSize.getMaxSize(
+      MediaQuery.of(context).size.width,
+      MediaQuery.of(context).size.height,
+    );
+
+    final screenWidth = appSize.width;
+    final screenHeight = appSize.height;
+
+    return Stack(
+      children: [
+        Image.asset(
+          "/images/cover/main-cover-01.png",
+          height: screenHeight,
+          width: screenWidth,
+          fit: BoxFit.cover,
+        ),
+        !widget.isInNavigation
+            ? BackdropFilter(
+                filter: ImageFilter.blur(
+                  sigmaX: 30.0,
+                  sigmaY: 30.0,
+                ),
+                child: Scaffold(
+                  backgroundColor: Colors.transparent,
+                  body: SafeArea(
+                    child: WeddingMainTitle(
+                      widget: widget,
+                    ),
+                  ),
+                ),
+              )
+            : Scaffold(
+                backgroundColor: Colors.transparent,
+                body: SafeArea(
+                  child: PageView(
+                    controller: _pageController,
+                    scrollDirection: Axis.vertical,
+                    children: const [
+                      // WeddingMainTitle(widget: widget, onTap: () => _onTap(1)),
+                      WeddingSubTitle(),
+                    ],
+                  ),
+                ),
               ),
-      ),
+      ],
     );
   }
 }
@@ -74,6 +111,14 @@ class WeddingMainTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appSize = AppSize.getMaxSize(
+      MediaQuery.of(context).size.width,
+      MediaQuery.of(context).size.height,
+    );
+
+    final screenWidth = appSize.width;
+    // final screenHeight = appSize.height;
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -83,63 +128,57 @@ class WeddingMainTitle extends StatelessWidget {
           ),
           Column(
             children: [
-              Hero(
-                tag: "wedding-title-icon",
-                child: Material(
-                  type: MaterialType.transparency,
-                  child: Image.asset(
-                    "assets/images/wedding-icon.png",
-                  ),
-                ),
+              Image.asset(
+                "assets/images/wedding-icon.png",
+                fit: BoxFit.cover,
+                width: screenWidth * 0.3,
               ),
               const SizedBox(
                 height: 24.0,
               ),
-              const Hero(
+              const HeroText(
                 tag: "wedding-title-name",
-                child: Material(
-                  type: MaterialType.transparency,
-                  child: Text(
-                    "이경 x 재우",
-                    style: TextStyle(
-                      fontSize: 56.0,
-                      fontWeight: FontWeight.bold,
-                    ),
+                child: Text(
+                  "이경 x 재우",
+                  style: TextStyle(
+                    fontSize: 56.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
                 ),
               ),
-              const Hero(
+              const HeroText(
                 tag: "wedding-title-sub",
-                child: Material(
-                  type: MaterialType.transparency,
-                  child: Text(
-                    "결혼합니다",
-                    style: TextStyle(
-                      fontSize: 56.0,
-                      fontWeight: FontWeight.bold,
-                    ),
+                child: Text(
+                  "결혼합니다",
+                  style: TextStyle(
+                    fontSize: 56.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
                 ),
               ),
               const SizedBox(
                 height: 24.0,
               ),
-              const Text(
-                "2023년 11월 4일, 오후 4시 10분",
-                style: TextStyle(
-                  fontSize: 18.0,
+              const HeroText(
+                tag: "wedding-title-date",
+                child: Text(
+                  "2023년 11월 4일, 오후 4시 10분",
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    color: Colors.white,
+                  ),
                 ),
               ),
-              const Hero(
+              const HeroText(
                 tag: "wedding-title-location",
-                child: Material(
-                  type: MaterialType.transparency,
-                  child: Text(
-                    "여의도 더파티움 파티움홀 2층",
-                    style: TextStyle(
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
-                    ),
+                child: Text(
+                  "여의도 더파티움 파티움홀 2층",
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
                 ),
               ),
@@ -153,15 +192,13 @@ class WeddingMainTitle extends StatelessWidget {
                       if (widget.isInNavigation) {
                         return;
                       }
-
-                      context.push("/main-navigation");
+                      context.go("/main-navigation");
                     },
-                child: DecoratedBox(
+                child: Container(
+                  width: screenWidth * 0.35,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20.0),
-                    border: Border.all(
-                      color: Colors.black,
-                    ),
+                    borderRadius: BorderRadius.circular(50.0),
+                    color: Colors.black.withOpacity(0.1),
                   ),
                   child: const Padding(
                     padding: EdgeInsets.symmetric(
@@ -172,12 +209,26 @@ class WeddingMainTitle extends StatelessWidget {
                       tag: "wedding-title-button",
                       child: Material(
                         type: MaterialType.transparency,
-                        child: Text(
-                          "시작하기 → --->",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 16.0,
-                          ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              "시작하기",
+                              style: TextStyle(
+                                fontSize: 16.0,
+                                color: Colors.white,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 8.0,
+                            ),
+                            Icon(
+                              Remix.arrow_right_line,
+                              color: Colors.white,
+                              size: 16.0,
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -200,78 +251,61 @@ class WeddingSubTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 24.0,
+      ),
+      child: const Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const SizedBox(
+              SizedBox(
                 height: 48.0,
               ),
-              Hero(
-                tag: "wedding-title-icon",
-                child: Material(
-                  type: MaterialType.transparency,
-                  child: Image.asset(
-                    "assets/images/wedding-icon.png",
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 24.0,
-              ),
-              const Hero(
+              HeroText(
                 tag: "wedding-title-sub",
-                child: Material(
-                  type: MaterialType.transparency,
-                  child: Text(
-                    "11월 4일 오후 4시,",
-                    style: TextStyle(
-                      fontSize: 36.0,
-                      fontWeight: FontWeight.bold,
-                    ),
+                child: Text(
+                  "11월 4일,",
+                  style: TextStyle(
+                    fontSize: 32.0,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-              const Hero(
+              HeroText(
                 tag: "wedding-title-name",
-                child: Material(
-                  type: MaterialType.transparency,
-                  child: Text(
-                    "재우와 이경 결혼합니다",
-                    style: TextStyle(
-                      fontSize: 36.0,
-                      fontWeight: FontWeight.bold,
-                    ),
+                child: Text(
+                  "재우와 이경 결혼합니다",
+                  style: TextStyle(
+                    fontSize: 32.0,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-              const SizedBox(
+              SizedBox(
                 height: 12.0,
               ),
-              Hero(
+              HeroText(
+                tag: "wedding-title-date",
+                child: Text(
+                  '↘ 2023년 11월 4일, 오후 4시 10분',
+                  style: TextStyle(
+                    fontSize: 15.0,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              HeroText(
                 tag: "wedding-title-location",
-                child: Material(
-                  type: MaterialType.transparency,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade700,
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12.0,
-                      vertical: 8.0,
-                    ),
-                    child: const Text(
-                      "여의도 더파티움 파티움홀 2층",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                child: Text(
+                  '↘ 여의도 더파티움 파티움홀 2층',
+                  style: TextStyle(
+                    fontSize: 15.0,
+                    color: Colors.black,
                   ),
                 ),
               ),
@@ -279,40 +313,40 @@ class WeddingSubTitle extends StatelessWidget {
           ),
           Column(
             children: [
-              GestureDetector(
-                onTap: () {
-                  print("tapped");
-                },
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(28.0),
-                    border: Border.all(
-                      color: Colors.black,
-                    ),
-                  ),
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 24.0,
-                      vertical: 18.0,
-                    ),
-                    child: Hero(
-                      tag: "wedding-title-button",
-                      child: Material(
-                        type: MaterialType.transparency,
-                        child: Text(
-                          "아래로 내려볼 수 있어요 ↓",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(
+              // GestureDetector(
+              //   onTap: () {
+              //     print("tapped");
+              //   },
+              //   child: DecoratedBox(
+              //     decoration: BoxDecoration(
+              //       borderRadius: BorderRadius.circular(28.0),
+              //       border: Border.all(
+              //         color: Colors.black,
+              //       ),
+              //     ),
+              //     child: const Padding(
+              //       padding: EdgeInsets.symmetric(
+              //         horizontal: 24.0,
+              //         vertical: 18.0,
+              //       ),
+              //       child: Hero(
+              //         tag: "wedding-title-button",
+              //         child: Material(
+              //           type: MaterialType.transparency,
+              //           child: Text(
+              //             "아래로 내려볼 수 있어요 ↓",
+              //             style: TextStyle(
+              //               color: Colors.black,
+              //               fontSize: 14.0,
+              //               fontWeight: FontWeight.bold,
+              //             ),
+              //           ),
+              //         ),
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              SizedBox(
                 height: 48.0,
               ),
             ],

@@ -3,14 +3,16 @@ import 'package:go_router/go_router.dart';
 import 'package:wedding_pitch/old/test_screen.dart';
 import 'package:wedding_pitch/screen/album_screen.dart';
 import 'package:wedding_pitch/screen/gallery_screen.dart';
+import 'package:wedding_pitch/screen/home_screen.dart';
 import 'package:wedding_pitch/screen/main_navigation_page.dart';
-import 'package:wedding_pitch/screen/root_screen.dart';
 
 final GoRouter router = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      builder: (context, state) => const RootScreen(),
+      builder: (context, state) => const HomeScreen(
+        isInNavigation: false,
+      ),
       routes: [
         GoRoute(
           path: 'main-navigation',

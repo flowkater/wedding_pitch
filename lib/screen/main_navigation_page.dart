@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:remixicon/remixicon.dart';
-import 'package:wedding_pitch/screen/gallery_screen.dart';
 import 'package:wedding_pitch/screen/home_screen.dart';
 import 'package:wedding_pitch/screen/info_screen.dart';
 import 'package:wedding_pitch/widget/nav_tab.dart';
@@ -30,18 +29,7 @@ class _MainNavigationPageState extends State<MainNavigationPage>
   }
 
   void _onVideoTap() {
-    setState(() {
-      // _isGalleryActive = true;
-
-      context.push("/gallery");
-
-      // Navigator.of(context).push(MaterialPageRoute(
-      //   builder: (context) => GalleryScreen(
-      //     isActive: _isGalleryActive,
-      //   ),
-      //   fullscreenDialog: true,
-      // ));
-    });
+    context.push("/gallery");
   }
 
   @override

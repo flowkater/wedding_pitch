@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:remixicon/remixicon.dart';
 import 'package:video_player/video_player.dart';
-import 'package:wedding_pitch/screen/album_screen.dart';
 import 'package:wedding_pitch/style/size.dart';
 
 class GalleryScreen extends StatefulWidget {

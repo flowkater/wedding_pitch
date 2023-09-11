@@ -88,17 +88,15 @@ flutter:
     - assets/images/cover.png
     - assets/images/cover-test.png
     - assets/images/wedding-icon.png
-    - assets/images/subtract.png
     - assets/images/hd.mp4
-    - assets/images/album-studio-title.png
     - assets/images/calendar.png
     - assets/images/dancing.png
     - assets/images/map.png
     - assets/images/kakaomap.png
     - assets/images/navermap.png
     - assets/images/tmap.png
-    - assets/images/101-DSC00294.jpg
-    - assets/images/102-DSC00548.jpg
+
+    - assets/images/cover/main-cover-01.png
 
     - assets/images/albums/studio_title.png
     - assets/images/albums/studio01.jpg
