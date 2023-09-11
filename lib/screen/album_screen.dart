@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:remixicon/remixicon.dart';
 import 'package:wedding_pitch/model/photo_model.dart';
 import 'package:wedding_pitch/style/size.dart';
@@ -158,7 +159,7 @@ class _AlbumScreenState extends State<AlbumScreen> {
               ),
               InkWell(
                 onTap: () {
-                  Navigator.of(context).pop(true);
+                  context.pop(true);
                 },
                 child: const Icon(
                   Remix.close_circle_fill,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:wedding_pitch/screen/main_navigation_page.dart';
 
 class HomeScreen extends StatefulWidget {
   final bool isInNavigation;
@@ -155,22 +154,7 @@ class WeddingMainTitle extends StatelessWidget {
                         return;
                       }
 
-                      Navigator.of(context).push(
-                        PageRouteBuilder(
-                          pageBuilder:
-                              (context, animation, secondaryAnimation) {
-                            return const MainNavigationPage();
-                          },
-                          transitionDuration: const Duration(milliseconds: 500),
-                          transitionsBuilder:
-                              (context, animation, secondaryAnimation, child) {
-                            return FadeTransition(
-                              opacity: animation,
-                              child: child,
-                            );
-                          },
-                        ),
-                      );
+                      context.push("/main-navigation");
                     },
                 child: DecoratedBox(
                   decoration: BoxDecoration(

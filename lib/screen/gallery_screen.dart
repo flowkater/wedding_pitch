@@ -1,5 +1,6 @@
 import 'package:boxicons/boxicons.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:remixicon/remixicon.dart';
 import 'package:video_player/video_player.dart';
 import 'package:wedding_pitch/screen/album_screen.dart';
@@ -74,7 +75,6 @@ class _GalleryScreenState extends State<GalleryScreen> {
         child: SingleChildScrollView(
           child: Container(
             padding: const EdgeInsets.only(
-              // top: 40.0,
               left: 24.0,
               right: 24.0,
             ),
@@ -180,12 +180,13 @@ class _GalleryScreenState extends State<GalleryScreen> {
       onTap: () async {
         _controller.pause();
 
-        final result = await Navigator.of(context).push(
-          MaterialPageRoute(
-            // fullscreenDialog: true,
-            builder: (context) => const AlbumScreen(),
-          ),
-        );
+        final result = await context.push("/album") as bool;
+        // final result = await Navigator.of(context).push(
+        //   MaterialPageRoute(
+        //     // fullscreenDialog: true,
+        //     builder: (context) => const AlbumScreen(),
+        //   ),
+        // );
 
         if (result) _controller.play();
       },
