@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:remixicon/remixicon.dart';
+import 'package:wedding_pitch/router.dart';
 import 'package:wedding_pitch/screen/home_screen.dart';
 import 'package:wedding_pitch/screen/info_screen.dart';
 import 'package:wedding_pitch/widget/nav_tab.dart';
@@ -62,11 +63,12 @@ class _MainNavigationPageState extends State<MainNavigationPage>
       extendBody: true,
       body: IndexedStack(
         index: _selectedIndex,
-        children: const [
+        children: [
           HomeScreen(
-            isInNavigation: true,
+            coverImage: coverImage,
+            isInNavigation: ValueNotifier(true),
           ),
-          InfoScreen(),
+          const InfoScreen(),
         ],
       ),
       bottomNavigationBar: SlideTransition(

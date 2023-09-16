@@ -1,16 +1,16 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:remixicon/remixicon.dart';
 import 'package:wedding_pitch/style/size.dart';
-import 'package:wedding_pitch/widget/hero_text.dart';
+import 'package:wedding_pitch/widget/wedding_title.dart';
 
 class HomeScreen extends StatefulWidget {
-  final bool isInNavigation;
+  final String coverImage;
+  final ValueNotifier<bool> isInNavigation;
 
   const HomeScreen({
-    this.isInNavigation = false,
+    required this.coverImage,
+    required this.isInNavigation,
     super.key,
   });
 
@@ -18,8 +18,11 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
   final PageController _pageController = PageController();
+  late AnimationController _animationController;
+  late Animation<double> _scaleAnimation;
 
   void _onTap(int index) {
     _pageController.animateToPage(
@@ -33,6 +36,18 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
 
+    _animationController = AnimationController(
+      duration: const Duration(milliseconds: 500),
+      vsync: this,
+    );
+
+    _scaleAnimation =
+        Tween<double>(begin: 2.0, end: 1).animate(_animationController);
+
+    widget.isInNavigation.addListener(_handleNavigationChange);
+
+    _handleNavigationChange();
+
     // if (widget.isInNavigation) {
     //   // 500ms 후에 두 번째 페이지로 자동 스크롤
     //   Future.delayed(
@@ -42,8 +57,20 @@ class _HomeScreenState extends State<HomeScreen> {
     // }
   }
 
+  void _handleNavigationChange() {
+    print("handleNavigationChange");
+    if (widget.isInNavigation.value) {
+      _animationController.forward();
+    } else {
+      _animationController.reverse();
+    }
+  }
+
   @override
   void dispose() {
+    widget.isInNavigation.removeListener(_handleNavigationChange);
+
+    _animationController.dispose();
     _pageController.dispose();
     super.dispose();
   }
@@ -58,301 +85,56 @@ class _HomeScreenState extends State<HomeScreen> {
     final screenWidth = appSize.width;
     final screenHeight = appSize.height;
 
-    return Stack(
-      children: [
-        Image.asset(
-          "/images/cover/main-cover-01.png",
-          height: screenHeight,
-          width: screenWidth,
-          fit: BoxFit.cover,
-        ),
-        !widget.isInNavigation
-            ? BackdropFilter(
-                filter: ImageFilter.blur(
-                  sigmaX: 30.0,
-                  sigmaY: 30.0,
-                ),
-                child: Scaffold(
-                  backgroundColor: Colors.transparent,
-                  body: SafeArea(
-                    child: WeddingMainTitle(
-                      widget: widget,
-                    ),
-                  ),
-                ),
-              )
-            : Scaffold(
-                backgroundColor: Colors.transparent,
-                body: SafeArea(
-                  child: PageView(
-                    controller: _pageController,
-                    scrollDirection: Axis.vertical,
-                    children: const [
-                      // WeddingMainTitle(widget: widget, onTap: () => _onTap(1)),
-                      WeddingSubTitle(),
-                    ],
-                  ),
-                ),
-              ),
-      ],
-    );
-  }
-}
-
-class WeddingMainTitle extends StatelessWidget {
-  final HomeScreen widget;
-  final VoidCallback? onTap;
-
-  const WeddingMainTitle({
-    required this.widget,
-    this.onTap,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final appSize = AppSize.getMaxSize(
-      MediaQuery.of(context).size.width,
-      MediaQuery.of(context).size.height,
-    );
-
-    final screenWidth = appSize.width;
-    // final screenHeight = appSize.height;
-
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const SizedBox(
-            height: 10,
-          ),
-          Column(
+    return ValueListenableBuilder(
+        valueListenable: widget.isInNavigation,
+        builder: (context, isInNavigation, child) {
+          return Stack(
+            fit: StackFit.expand,
             children: [
-              Image.asset(
-                "assets/images/wedding-icon.png",
-                fit: BoxFit.cover,
-                width: screenWidth * 0.3,
-              ),
-              const SizedBox(
-                height: 24.0,
-              ),
-              const HeroText(
-                tag: "wedding-title-name",
-                child: Text(
-                  "이경 x 재우",
-                  style: TextStyle(
-                    fontSize: 56.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              const HeroText(
-                tag: "wedding-title-sub",
-                child: Text(
-                  "결혼합니다",
-                  style: TextStyle(
-                    fontSize: 56.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 24.0,
-              ),
-              const HeroText(
-                tag: "wedding-title-date",
-                child: Text(
-                  "2023년 11월 4일, 오후 4시 10분",
-                  style: TextStyle(
-                    fontSize: 18.0,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              const HeroText(
-                tag: "wedding-title-location",
-                child: Text(
-                  "여의도 더파티움 파티움홀 2층",
-                  style: TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Column(
-            children: [
-              GestureDetector(
-                onTap: onTap ??
-                    () {
-                      if (widget.isInNavigation) {
-                        return;
-                      }
-                      context.go("/main-navigation");
-                    },
-                child: Container(
-                  width: screenWidth * 0.35,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50.0),
-                    color: Colors.black.withOpacity(0.1),
-                  ),
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 24.0,
-                      vertical: 18.0,
+              AnimatedBuilder(
+                animation: _animationController,
+                builder: (context, child) {
+                  return Transform.scale(
+                    scale: _scaleAnimation.value,
+                    child: ImageFiltered(
+                      imageFilter: ImageFilter.blur(
+                        sigmaX: !isInNavigation ? 30.0 : 0.0,
+                        sigmaY: !isInNavigation ? 30.0 : 0.0,
+                      ),
+                      child: Image.asset(
+                        widget.coverImage,
+                        height: screenHeight + 30,
+                        width: screenWidth + 30,
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                    child: Hero(
-                      tag: "wedding-title-button",
-                      child: Material(
-                        type: MaterialType.transparency,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              "시작하기",
-                              style: TextStyle(
-                                fontSize: 16.0,
-                                color: Colors.white,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 8.0,
-                            ),
-                            Icon(
-                              Remix.arrow_right_line,
-                              color: Colors.white,
-                              size: 16.0,
-                            ),
+                  );
+                },
+              ),
+              !isInNavigation
+                  ? Scaffold(
+                      backgroundColor: Colors.transparent,
+                      body: SafeArea(
+                        child: WeddingMainTitle(
+                          widget: widget,
+                        ),
+                      ),
+                    )
+                  : Scaffold(
+                      backgroundColor: Colors.transparent,
+                      body: SafeArea(
+                        child: PageView(
+                          controller: _pageController,
+                          scrollDirection: Axis.vertical,
+                          children: const [
+                            // WeddingMainTitle(widget: widget, onTap: () => _onTap(1)),
+                            WeddingSubTitle(),
                           ],
                         ),
                       ),
                     ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 48.0,
-              ),
             ],
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class WeddingSubTitle extends StatelessWidget {
-  const WeddingSubTitle({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 24.0,
-      ),
-      child: const Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 48.0,
-              ),
-              HeroText(
-                tag: "wedding-title-sub",
-                child: Text(
-                  "11월 4일,",
-                  style: TextStyle(
-                    fontSize: 32.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              HeroText(
-                tag: "wedding-title-name",
-                child: Text(
-                  "재우와 이경 결혼합니다",
-                  style: TextStyle(
-                    fontSize: 32.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 12.0,
-              ),
-              HeroText(
-                tag: "wedding-title-date",
-                child: Text(
-                  '↘ 2023년 11월 4일, 오후 4시 10분',
-                  style: TextStyle(
-                    fontSize: 15.0,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-              HeroText(
-                tag: "wedding-title-location",
-                child: Text(
-                  '↘ 여의도 더파티움 파티움홀 2층',
-                  style: TextStyle(
-                    fontSize: 15.0,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Column(
-            children: [
-              // GestureDetector(
-              //   onTap: () {
-              //     print("tapped");
-              //   },
-              //   child: DecoratedBox(
-              //     decoration: BoxDecoration(
-              //       borderRadius: BorderRadius.circular(28.0),
-              //       border: Border.all(
-              //         color: Colors.black,
-              //       ),
-              //     ),
-              //     child: const Padding(
-              //       padding: EdgeInsets.symmetric(
-              //         horizontal: 24.0,
-              //         vertical: 18.0,
-              //       ),
-              //       child: Hero(
-              //         tag: "wedding-title-button",
-              //         child: Material(
-              //           type: MaterialType.transparency,
-              //           child: Text(
-              //             "아래로 내려볼 수 있어요 ↓",
-              //             style: TextStyle(
-              //               color: Colors.black,
-              //               fontSize: 14.0,
-              //               fontWeight: FontWeight.bold,
-              //             ),
-              //           ),
-              //         ),
-              //       ),
-              //     ),
-              //   ),
-              // ),
-              SizedBox(
-                height: 48.0,
-              ),
-            ],
-          )
-        ],
-      ),
-    );
+          );
+        });
   }
 }
