@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:wedding_pitch/style/color.dart';
 
@@ -121,7 +122,7 @@ class _DancingAnimatedImageState extends State<DancingAnimatedImage> {
   }
 
   _startImageSwitching() async {
-    while (false) {
+    while (kReleaseMode) {
       await Future.delayed(const Duration(milliseconds: 300));
       setState(() {
         _index = (_index + 1) % images.length;
