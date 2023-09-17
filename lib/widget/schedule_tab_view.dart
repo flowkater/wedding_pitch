@@ -121,7 +121,7 @@ class _DancingAnimatedImageState extends State<DancingAnimatedImage> {
   }
 
   _startImageSwitching() async {
-    while (false) {
+    while (true) {
       await Future.delayed(const Duration(milliseconds: 300));
       setState(() {
         _index = (_index + 1) % images.length;
