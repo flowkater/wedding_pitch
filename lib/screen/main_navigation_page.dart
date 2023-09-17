@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:remixicon/remixicon.dart';
 import 'package:video_player/video_player.dart';
+import 'package:wedding_pitch/screen/gallery_screen.dart';
 import 'package:wedding_pitch/screen/home_screen.dart';
 import 'package:wedding_pitch/screen/info_screen.dart';
 import 'package:wedding_pitch/utils/get_random_image.dart';
@@ -25,8 +26,8 @@ class _MainNavigationPageState extends State<MainNavigationPage>
   int _selectedIndex = 0;
   late AnimationController _animationController;
   late Animation<Offset> _offsetAnimation;
-  late VideoPlayerController _videoController;
   bool isInNavigation = false;
+  bool isActive = false;
 
   void onTapStart() {
     setState(() {
@@ -38,13 +39,17 @@ class _MainNavigationPageState extends State<MainNavigationPage>
   void _onTap(int index) {
     setState(() {
       _selectedIndex = index;
-    });
-  }
 
-  void _onVideoTap() {
-    context.push(
-      "/gallery",
-    );
+      if (index == 1) {
+        setState(() {
+          isActive = true;
+        });
+      } else {
+        setState(() {
+          isActive = false;
+        });
+      }
+    });
   }
 
   @override
@@ -68,7 +73,6 @@ class _MainNavigationPageState extends State<MainNavigationPage>
   @override
   void dispose() {
     _animationController.dispose();
-    _videoController.dispose();
     super.dispose();
   }
 
@@ -85,6 +89,9 @@ class _MainNavigationPageState extends State<MainNavigationPage>
             isInNavigation: ValueNotifier(isInNavigation),
             onTapStart: onTapStart,
             animationController: _animationController,
+          ),
+          GalleryScreen(
+            isActive: isActive,
           ),
           const InfoScreen(),
         ],
@@ -107,16 +114,16 @@ class _MainNavigationPageState extends State<MainNavigationPage>
                     onTap: () => _onTap(0),
                   ),
                   NavTab(
-                    isSelected: false,
+                    isSelected: _selectedIndex == 1,
                     icon: Remix.star_s_line,
                     selectedIcon: Remix.star_s_fill,
-                    onTap: () => _onVideoTap(),
+                    onTap: () => _onTap(1),
                   ),
                   NavTab(
-                    isSelected: _selectedIndex == 1,
+                    isSelected: _selectedIndex == 2,
                     icon: Remix.map_pin_2_line,
                     selectedIcon: Remix.map_pin_2_fill,
-                    onTap: () => _onTap(1),
+                    onTap: () => _onTap(2),
                   ),
                 ],
               ),

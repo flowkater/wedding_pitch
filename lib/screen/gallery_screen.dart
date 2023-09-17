@@ -6,7 +6,9 @@ import 'package:video_player/video_player.dart';
 import 'package:wedding_pitch/style/size.dart';
 
 class GalleryScreen extends StatefulWidget {
+  final bool isActive;
   const GalleryScreen({
+    required this.isActive,
     super.key,
   });
 
@@ -34,17 +36,32 @@ class _GalleryScreenState extends State<GalleryScreen> {
   }
 
   @override
-  void initState() {
-    super.initState();
-    _videoController = VideoPlayerController.asset("assets/images/hd.mp4")
-      ..initialize().then((_) {
-        _videoController.setLooping(true);
-        _videoController.setVolume(0);
+  void didUpdateWidget(GalleryScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
 
+    if (oldWidget.isActive != widget.isActive) {
+      if (widget.isActive) {
         setState(() {
           _videoController.play();
         });
-      });
+      } else {
+        setState(() {
+          _videoController.pause();
+        });
+      }
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _videoController = VideoPlayerController.asset("assets/images/hd.mp4")
+      ..initialize().then(
+        (_) {
+          _videoController.setLooping(true);
+          _videoController.setVolume(0);
+        },
+      );
   }
 
   @override

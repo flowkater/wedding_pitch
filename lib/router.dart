@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wedding_pitch/old/test_screen.dart';
 import 'package:wedding_pitch/screen/album_screen.dart';
-import 'package:wedding_pitch/screen/gallery_screen.dart';
 import 'package:wedding_pitch/screen/main_navigation_page.dart';
 
 final GoRouter router = GoRouter(
@@ -11,14 +10,6 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/main',
       builder: (context, state) => const MainNavigationPage(),
-    ),
-    GoRoute(
-      path: '/gallery',
-      pageBuilder: (context, state) => MaterialPage(
-        key: state.pageKey,
-        child: const GalleryScreen(),
-        fullscreenDialog: true,
-      ),
     ),
     GoRoute(
       path: '/album',
