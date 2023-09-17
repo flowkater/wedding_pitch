@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:remixicon/remixicon.dart';
 import 'package:wedding_pitch/screen/home_screen.dart';
 import 'package:wedding_pitch/style/size.dart';
@@ -98,7 +97,8 @@ class WeddingMainTitle extends StatelessWidget {
                       if (widget.isInNavigation.value) {
                         return;
                       }
-                      context.go("/main-navigation");
+                      widget.onTapStart();
+                      // context.go("/main-navigation");
                     },
                 child: Container(
                   width: screenWidth * 0.35,

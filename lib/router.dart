@@ -3,32 +3,29 @@ import 'package:go_router/go_router.dart';
 import 'package:wedding_pitch/old/test_screen.dart';
 import 'package:wedding_pitch/screen/album_screen.dart';
 import 'package:wedding_pitch/screen/gallery_screen.dart';
-import 'package:wedding_pitch/screen/home_screen.dart';
 import 'package:wedding_pitch/screen/main_navigation_page.dart';
-import 'package:wedding_pitch/utils/get_random_image.dart';
-
-final coverImage = getRandomCoverImage();
 
 final GoRouter router = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      builder: (context, state) => HomeScreen(
-        coverImage: coverImage,
-        isInNavigation: ValueNotifier(false),
-      ),
+      // builder: (context, state) => HomeScreen(
+      //   coverImage: coverImage,
+      //   isInNavigation: ValueNotifier(false),
+      // ),
+      builder: (context, state) => const MainNavigationPage(),
       routes: [
-        GoRoute(
-          path: 'main-navigation',
-          pageBuilder: (context, state) => CustomTransitionPage<void>(
-            key: state.pageKey,
-            child: const MainNavigationPage(),
-            transitionDuration: const Duration(milliseconds: 500),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) =>
-                    FadeTransition(opacity: animation, child: child),
-          ),
-        ),
+        // GoRoute(
+        //   path: 'main-navigation',
+        //   pageBuilder: (context, state) => CustomTransitionPage<void>(
+        //     key: state.pageKey,
+        //     child: const MainNavigationPage(),
+        //     transitionDuration: const Duration(milliseconds: 500),
+        //     transitionsBuilder:
+        //         (context, animation, secondaryAnimation, child) =>
+        //             FadeTransition(opacity: animation, child: child),
+        //   ),
+        // ),
         GoRoute(
           path: 'gallery',
           pageBuilder: (context, state) => MaterialPage(

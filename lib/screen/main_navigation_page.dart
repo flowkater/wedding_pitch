@@ -3,10 +3,12 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:remixicon/remixicon.dart';
-import 'package:wedding_pitch/router.dart';
 import 'package:wedding_pitch/screen/home_screen.dart';
 import 'package:wedding_pitch/screen/info_screen.dart';
+import 'package:wedding_pitch/utils/get_random_image.dart';
 import 'package:wedding_pitch/widget/nav_tab.dart';
+
+final coverImage = getRandomCoverImage();
 
 class MainNavigationPage extends StatefulWidget {
   const MainNavigationPage({
@@ -22,6 +24,14 @@ class _MainNavigationPageState extends State<MainNavigationPage>
   int _selectedIndex = 0;
   late AnimationController _animationController;
   late Animation<Offset> _offsetAnimation;
+  bool isInNavigation = false;
+
+  void onTapStart() {
+    setState(() {
+      isInNavigation = true;
+      _animationController.forward();
+    });
+  }
 
   void _onTap(int index) {
     setState(() {
@@ -40,7 +50,9 @@ class _MainNavigationPageState extends State<MainNavigationPage>
     _animationController = AnimationController(
       duration: const Duration(milliseconds: 500),
       vsync: this,
-    )..forward();
+    );
+
+    // ..forward();
 
     _offsetAnimation = Tween<Offset>(
       begin: const Offset(0, 1),
@@ -66,7 +78,9 @@ class _MainNavigationPageState extends State<MainNavigationPage>
         children: [
           HomeScreen(
             coverImage: coverImage,
-            isInNavigation: ValueNotifier(true),
+            isInNavigation: ValueNotifier(isInNavigation),
+            onTapStart: onTapStart,
+            animationController: _animationController,
           ),
           const InfoScreen(),
         ],
