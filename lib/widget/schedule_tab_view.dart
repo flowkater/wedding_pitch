@@ -81,7 +81,7 @@ class ScheduleTabView extends StatelessWidget {
             const SizedBox(
               height: 36.0,
             ),
-            // const DancingAnimatedImage(),
+            const DancingAnimatedImage(),
           ],
         ),
       ),
