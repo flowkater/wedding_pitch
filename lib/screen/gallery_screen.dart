@@ -94,6 +94,9 @@ class _GalleryScreenState extends State<GalleryScreen> {
                   height: 24.0,
                 ),
                 _vidoSection(screenWidth, screenHeight),
+                const SizedBox(
+                  height: 48.0,
+                ),
               ],
             ),
           ),
@@ -197,12 +200,6 @@ class _GalleryScreenState extends State<GalleryScreen> {
         _videoController.pause();
 
         final result = await context.push("/album") as bool;
-        // final result = await Navigator.of(context).push(
-        //   MaterialPageRoute(
-        //     // fullscreenDialog: true,
-        //     builder: (context) => const AlbumScreen(),
-        //   ),
-        // );
 
         if (result) _videoController.play();
       },

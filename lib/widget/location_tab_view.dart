@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:remixicon/remixicon.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:wedding_pitch/style/size.dart';
@@ -602,12 +604,12 @@ class OpenMapDialog extends StatelessWidget {
           borderRadius: BorderRadius.circular(8.0),
           color: Colors.white,
         ),
-        child: const Column(
+        child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 MapButton(
@@ -635,43 +637,79 @@ class OpenMapDialog extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 32.0,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Icon(Remix.file_copy_2_line),
-                SizedBox(
-                  width: 4.0,
-                ),
-                Text(
-                  "서울 영등포구 은행로 30 중소기업중앙회",
-                  style: TextStyle(
-                    decoration: TextDecoration.underline,
+            InkWell(
+              onTap: () async {
+                await Clipboard.setData(
+                  const ClipboardData(text: "서울 영등포구 은행로 30 중소기업중앙회"),
+                );
+
+                Fluttertoast.showToast(
+                  msg: "✅ 은행과 계좌번호 복사 완료! 붙여넣을 수 있어요",
+                  toastLength: Toast.LENGTH_LONG,
+                  gravity: ToastGravity.BOTTOM,
+                  timeInSecForIosWeb: 2,
+                  backgroundColor: Colors.black.withOpacity(0.7),
+                  textColor: Colors.white,
+                  webPosition: "center",
+                  webBgColor: "#000000",
+                );
+              },
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Icon(Remix.file_copy_2_line),
+                  SizedBox(
+                    width: 4.0,
                   ),
-                ),
-              ],
+                  Text(
+                    "✅ 복사 완료! 조심히 오셔요 🫶",
+                    style: TextStyle(
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ],
+              ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 12.0,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Icon(Remix.file_copy_2_line),
-                SizedBox(
-                  width: 4.0,
-                ),
-                Text(
-                  "서울 영등포구 여의도동 16-2",
-                  style: TextStyle(
-                    decoration: TextDecoration.underline,
+            InkWell(
+              onTap: () async {
+                await Clipboard.setData(
+                  const ClipboardData(text: "서울 영등포구 여의도동 16-2"),
+                );
+
+                Fluttertoast.showToast(
+                  msg: "✅ 복사 완료! 안전 운전하세요 🚙",
+                  toastLength: Toast.LENGTH_LONG,
+                  gravity: ToastGravity.BOTTOM,
+                  timeInSecForIosWeb: 2,
+                  backgroundColor: Colors.black.withOpacity(0.7),
+                  textColor: Colors.white,
+                  webPosition: "center",
+                  webBgColor: "#000000",
+                );
+              },
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Icon(Remix.file_copy_2_line),
+                  SizedBox(
+                    width: 4.0,
                   ),
-                ),
-              ],
+                  Text(
+                    "서울 영등포구 여의도동 16-2",
+                    style: TextStyle(
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

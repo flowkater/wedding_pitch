@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:wedding_pitch/style/size.dart';
 import 'package:wedding_pitch/widget/ceremony_tab_view.dart';
 import 'package:wedding_pitch/widget/location_tab_view.dart';
 import 'package:wedding_pitch/widget/others_tab_view.dart';
@@ -99,7 +100,7 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
               ),
               labelStyle: const TextStyle(
                 fontSize: 15.0,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w500,
               ),
               indicator: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
@@ -118,7 +119,7 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
                       animation: tabWidthAnimationControllers[i],
                       builder: (context, child) {
                         double widthFactor =
-                            80 + tabWidthAnimationControllers[i].value;
+                            90 + tabWidthAnimationControllers[i].value;
 
                         return Tab(
                           child: SizedBox(
@@ -129,7 +130,7 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
                                 tabs[i],
                                 style: const TextStyle(
                                   fontSize: 15,
-                                  fontWeight: FontWeight.bold,
+                                  fontWeight: FontWeight.w500,
                                 ),
                               ),
                             ),
