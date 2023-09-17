@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:wedding_pitch/layout/page_layout.dart';
 import 'package:wedding_pitch/router.dart';
 
@@ -28,6 +29,11 @@ class WeddingPitchApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         primaryColor: Colors.white,
         appBarTheme: const AppBarTheme(
+          systemOverlayStyle: SystemUiOverlayStyle(
+            statusBarColor: Colors.white,
+            statusBarIconBrightness: Brightness.light,
+            statusBarBrightness: Brightness.light,
+          ),
           foregroundColor: Colors.black,
           backgroundColor: Colors.white,
           elevation: 0,

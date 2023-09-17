@@ -30,22 +30,17 @@ class NavTab extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 30.0,
                       vertical: 6.0,
                     ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(24.0),
-                      color: isSelected
-                          ? Colors.white
-                          : Colors.white.withOpacity(0.9),
-                    ),
                     child: Icon(
                       isSelected ? selectedIcon : icon,
                       color: Colors.black,
-                      size: 18.0,
+                      size: 20.0,
                     ),
                   ),
                   const SizedBox(

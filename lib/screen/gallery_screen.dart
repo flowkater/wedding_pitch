@@ -112,17 +112,31 @@ class _GalleryScreenState extends State<GalleryScreen> {
   Widget _headerSection(double screenWidth) {
     return SizedBox(
       width: screenWidth,
-      child: const Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.end,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          const SizedBox(height: 12.0),
+          Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 10,
+              vertical: 8,
+            ),
+            width: 60.0,
+            child: Image.asset(
+              "assets/images/flower.png",
+              fit: BoxFit.cover,
+            ),
+          ),
+          const SizedBox(height: 12.0),
           Text(
-            "동백과 같은 마음과 태도로\n함께하는 이 길을 사랑하겠습니다.",
-            textAlign: TextAlign.right,
+            "동백과 같은 마음과 태도로\n함께하는 이 길을 사랑하겠습니다",
+            textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 24.0,
-              fontWeight: FontWeight.bold,
-              height: 1.6,
+              fontSize: 16.0,
+              fontWeight: FontWeight.w500,
+              height: 1.4,
+              color: const Color(0xFF3E3E3E).withOpacity(0.8),
             ),
           ),
         ],

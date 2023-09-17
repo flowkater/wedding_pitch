@@ -117,6 +117,7 @@ flutter:
     - assets/images/kakaomap.png
     - assets/images/navermap.png
     - assets/images/tmap.png
+    - assets/images/flower.png
 
     - assets/images/cover/main-cover-01.jpg
     - assets/images/cover/main-cover-02.jpg

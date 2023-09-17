@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:wedding_pitch/widget/ceremony_tab_view.dart';
 import 'package:wedding_pitch/widget/location_tab_view.dart';
 import 'package:wedding_pitch/widget/others_tab_view.dart';
@@ -69,14 +70,19 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
         extendBody: true,
         extendBodyBehindAppBar: true,
         appBar: AppBar(
+          systemOverlayStyle: const SystemUiOverlayStyle(
+            statusBarColor: Colors.white,
+            statusBarIconBrightness: Brightness.light,
+            statusBarBrightness: Brightness.light,
+          ),
           flexibleSpace: ClipRect(
-              // 추가
-              child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
-            child: Container(
-              decoration: BoxDecoration(color: Colors.white.withOpacity(0.2)),
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
+              child: Container(
+                decoration: BoxDecoration(color: Colors.white.withOpacity(0.2)),
+              ),
             ),
-          )),
+          ),
           toolbarHeight: 10.0,
           backgroundColor: Colors.white.withOpacity(0.8),
           automaticallyImplyLeading: false,
@@ -90,7 +96,7 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
                 horizontal: 16.0,
               ),
               labelStyle: const TextStyle(
-                fontSize: 12.0,
+                fontSize: 16.0,
                 fontWeight: FontWeight.bold,
               ),
               indicator: BoxDecoration(
@@ -120,7 +126,7 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
                               child: Text(
                                 tabs[i],
                                 style: const TextStyle(
-                                  fontSize: 12,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
