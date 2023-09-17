@@ -29,7 +29,7 @@ class _OthersTabViewState extends State<OthersTabView> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(
-              height: 24.0,
+              height: 48.0,
             ),
             _makeSection(
               context,

@@ -79,7 +79,9 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
               child: Container(
-                decoration: BoxDecoration(color: Colors.white.withOpacity(0.2)),
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.2),
+                ),
               ),
             ),
           ),
@@ -96,7 +98,7 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
                 horizontal: 16.0,
               ),
               labelStyle: const TextStyle(
-                fontSize: 16.0,
+                fontSize: 15.0,
                 fontWeight: FontWeight.bold,
               ),
               indicator: BoxDecoration(
@@ -126,7 +128,7 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
                               child: Text(
                                 tabs[i],
                                 style: const TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 15,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),

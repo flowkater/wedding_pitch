@@ -149,14 +149,14 @@ class _GalleryScreenState extends State<GalleryScreen> {
       children: [
         Container(
           width: screenWidth,
-          height: screenHeight * 0.65,
+          height: screenHeight * 0.76,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(24.0),
+            borderRadius: BorderRadius.circular(16.0),
             color: const Color(0xFFF9F9F9),
           ),
           child: _videoController.value.isInitialized
               ? ClipRRect(
-                  borderRadius: BorderRadius.circular(24.0),
+                  borderRadius: BorderRadius.circular(16.0),
                   child: FittedBox(
                     fit: BoxFit.cover,
                     child: SizedBox(
@@ -183,7 +183,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
           child: Container(
             color: Colors.transparent,
             width: screenWidth,
-            height: screenHeight * 0.65,
+            height: screenHeight * 0.76,
           ),
         ),
         _soundButton(),

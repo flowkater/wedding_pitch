@@ -38,7 +38,7 @@ class _LocationTabViewState extends State<LocationTabView> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(
-                height: 24.0,
+                height: 48.0,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
