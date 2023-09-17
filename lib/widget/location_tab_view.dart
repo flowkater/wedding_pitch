@@ -52,9 +52,22 @@ class _LocationTabViewState extends State<LocationTabView> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      print("주소 복사");
+                  InkWell(
+                    onTap: () async {
+                      await Clipboard.setData(
+                        const ClipboardData(text: "서울 영등포구 은행로 30 중소기업중앙회"),
+                      );
+
+                      Fluttertoast.showToast(
+                        msg: "✅ 복사 완료! 조심히 오셔요 🫶",
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.BOTTOM,
+                        timeInSecForIosWeb: 2,
+                        backgroundColor: Colors.black.withOpacity(0.7),
+                        textColor: Colors.white,
+                        webPosition: "center",
+                        webBgColor: "#4d4d4d",
+                      );
                     },
                     child: Text(
                       "주소 복사",
@@ -75,7 +88,6 @@ class _LocationTabViewState extends State<LocationTabView> {
                   showDialog(
                       context: context,
                       builder: (context) {
-                        print("지도");
                         return const OpenMapDialog();
                       });
                 },
@@ -647,14 +659,14 @@ class OpenMapDialog extends StatelessWidget {
                 );
 
                 Fluttertoast.showToast(
-                  msg: "✅ 은행과 계좌번호 복사 완료! 붙여넣을 수 있어요",
+                  msg: "✅ 복사 완료! 조심히 오셔요 🫶",
                   toastLength: Toast.LENGTH_LONG,
                   gravity: ToastGravity.BOTTOM,
                   timeInSecForIosWeb: 2,
                   backgroundColor: Colors.black.withOpacity(0.7),
                   textColor: Colors.white,
                   webPosition: "center",
-                  webBgColor: "#000000",
+                  webBgColor: "#4d4d4d",
                 );
               },
               child: const Row(
@@ -666,7 +678,7 @@ class OpenMapDialog extends StatelessWidget {
                     width: 4.0,
                   ),
                   Text(
-                    "✅ 복사 완료! 조심히 오셔요 🫶",
+                    "서울 영등포구 은행로 30 중소기업중앙회",
                     style: TextStyle(
                       decoration: TextDecoration.underline,
                     ),
@@ -691,7 +703,7 @@ class OpenMapDialog extends StatelessWidget {
                   backgroundColor: Colors.black.withOpacity(0.7),
                   textColor: Colors.white,
                   webPosition: "center",
-                  webBgColor: "#000000",
+                  webBgColor: "#4d4d4d",
                 );
               },
               child: const Row(

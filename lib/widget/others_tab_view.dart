@@ -69,7 +69,7 @@ class _OthersTabViewState extends State<OthersTabView> {
                         backgroundColor: Colors.black.withOpacity(0.7),
                         textColor: Colors.white,
                         webPosition: "center",
-                        webBgColor: "#000000",
+                        webBgColor: "#4d4d4d",
                       );
                     },
                     child: Container(
@@ -130,7 +130,7 @@ class _OthersTabViewState extends State<OthersTabView> {
                         backgroundColor: Colors.black.withOpacity(0.7),
                         textColor: Colors.white,
                         webPosition: "center",
-                        webBgColor: "#000000",
+                        webBgColor: "#4d4d4d",
                       );
                     },
                     child: Container(

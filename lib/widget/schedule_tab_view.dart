@@ -46,16 +46,18 @@ class ScheduleTabView extends StatelessWidget {
             Text(
               '↘ 오후 4시 10분, 예식이 시작됩니다!',
               style: TextStyle(
-                  fontSize: 15.0,
-                  color: Colors.black.withAlpha(200),
-                  height: 1.8),
+                fontSize: 15.0,
+                color: Colors.black.withAlpha(200),
+                height: 1.8,
+              ),
             ),
             Text(
               '↘ 30분 전부턴 포토부스에서 사진도 찍을 수 있어용🫶',
               style: TextStyle(
-                  fontSize: 15.0,
-                  color: Colors.black.withAlpha(200),
-                  height: 1.8),
+                fontSize: 15.0,
+                color: Colors.black.withAlpha(200),
+                height: 1.8,
+              ),
             ),
             const SizedBox(
               height: 24.0,
@@ -74,6 +76,7 @@ class ScheduleTabView extends StatelessWidget {
                 ),
               ),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Text(

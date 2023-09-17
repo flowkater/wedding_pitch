@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:wedding_pitch/style/size.dart';
 import 'package:wedding_pitch/widget/ceremony_tab_view.dart';
 import 'package:wedding_pitch/widget/location_tab_view.dart';
 import 'package:wedding_pitch/widget/others_tab_view.dart';
