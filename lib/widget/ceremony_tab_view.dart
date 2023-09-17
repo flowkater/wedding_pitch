@@ -43,38 +43,68 @@ class _CeremonyTabViewState extends State<CeremonyTabView> {
               context,
               number: "1",
               title: "포토부스를 준비했어요!",
-              description: const Column(
+              description: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "평소에도 네컷사진을 좋아해서 준비했어요!",
                     style: TextStyle(
                       fontSize: 15.0,
                       color: Color(0xFF3E3E3E),
+                      height: 1.8,
                     ),
                   ),
-                  Text(
+                  const Text(
                     "함께 재밌고 즐거운 시간을 꼭꼭 즐겨주세요🫶",
                     style: TextStyle(
                       fontSize: 15.0,
                       color: Color(0xFF3E3E3E),
+                      height: 1.8,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12.0,
                   ),
-                  Text(
-                    "↘ 신부대기실 앞쪽에 위치해있어요",
-                    style: TextStyle(
-                      fontSize: 15.0,
-                      color: Color(0xFF3E3E3E),
+                  RichText(
+                    text: const TextSpan(
+                      children: [
+                        TextSpan(
+                          text: "↘ ",
+                          style: TextStyle(
+                            fontSize: 15.0,
+                            color: Color(0xFF3E3E3E),
+                            height: 1.8,
+                            fontFamily: "Pretendard",
+                          ),
+                        ),
+                        TextSpan(
+                          text: "신부대기실 앞쪽",
+                          style: TextStyle(
+                            fontSize: 15.0,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF3E3E3E),
+                            fontFamily: "Pretendard",
+                            height: 1.8,
+                          ),
+                        ),
+                        TextSpan(
+                          text: "에 위치해있어요",
+                          style: TextStyle(
+                            fontSize: 15.0,
+                            color: Color(0xFF3E3E3E),
+                            fontFamily: "Pretendard",
+                            height: 1.8,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  Text(
+                  const Text(
                     "↘ 3시 10분부터 4시 40분까지 찍을 수 있어요",
                     style: TextStyle(
                       fontSize: 15.0,
                       color: Color(0xFF3E3E3E),
+                      height: 1.8,
                     ),
                   ),
                 ],
@@ -87,38 +117,68 @@ class _CeremonyTabViewState extends State<CeremonyTabView> {
               context,
               number: "2",
               title: "예식 전 입사드려요!",
-              description: const Column(
+              description: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "심장은 쿵쾅여도, 한껏 차분하려 애쓰고 있어요🥹",
                     style: TextStyle(
                       fontSize: 15.0,
                       color: Color(0xFF3E3E3E),
+                      height: 1.8,
                     ),
                   ),
-                  Text(
-                    "따뜻한 축하와 유쾌한 셀카로 함께해주세요.",
+                  const Text(
+                    "따뜻한 축하와 유쾌한 셀카로 함께해주세요🫶",
                     style: TextStyle(
                       fontSize: 15.0,
                       color: Color(0xFF3E3E3E),
+                      height: 1.8,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12.0,
                   ),
-                  Text(
-                    "↘ 재우는 로비에, 이경은 신부대기실에 있어요",
-                    style: TextStyle(
-                      fontSize: 15.0,
-                      color: Color(0xFF3E3E3E),
+                  RichText(
+                    text: const TextSpan(
+                      children: [
+                        TextSpan(
+                          text: "↘ ",
+                          style: TextStyle(
+                            fontSize: 15.0,
+                            color: Color(0xFF3E3E3E),
+                            height: 1.8,
+                            fontFamily: "Pretendard",
+                          ),
+                        ),
+                        TextSpan(
+                          text: "재우는 로비에, 이경은 신부대기실에",
+                          style: TextStyle(
+                            fontSize: 15.0,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF3E3E3E),
+                            fontFamily: "Pretendard",
+                            height: 1.8,
+                          ),
+                        ),
+                        TextSpan(
+                          text: " 있어요",
+                          style: TextStyle(
+                            fontSize: 15.0,
+                            color: Color(0xFF3E3E3E),
+                            fontFamily: "Pretendard",
+                            height: 1.8,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  Text(
+                  const Text(
                     "↘ 예식 시작 전인 4시까지 인사드릴게요",
                     style: TextStyle(
                       fontSize: 15.0,
                       color: Color(0xFF3E3E3E),
+                      height: 1.8,
                     ),
                   ),
                 ],
@@ -167,6 +227,7 @@ class _CeremonyTabViewState extends State<CeremonyTabView> {
                     style: TextStyle(
                       fontSize: 15.0,
                       color: Color(0xFF3E3E3E),
+                      height: 1.8,
                     ),
                   ),
                   const Text(
@@ -174,6 +235,7 @@ class _CeremonyTabViewState extends State<CeremonyTabView> {
                     style: TextStyle(
                       fontSize: 15.0,
                       color: Color(0xFF3E3E3E),
+                      height: 1.8,
                     ),
                   ),
                   const SizedBox(
@@ -184,6 +246,7 @@ class _CeremonyTabViewState extends State<CeremonyTabView> {
                     style: TextStyle(
                       fontSize: 15.0,
                       color: Color(0xFF3E3E3E),
+                      height: 1.8,
                     ),
                   ),
                 ],
