@@ -79,7 +79,7 @@ class WeddingMainTitle extends StatelessWidget {
               const HeroText(
                 tag: "wedding-title-location",
                 child: Text(
-                  "여의도 더파티움 파티움홀 2층",
+                  "여의도 더 파티움 파티움 홀 2층",
                   style: TextStyle(
                     fontSize: 18.0,
                     fontWeight: FontWeight.bold,
@@ -91,21 +91,22 @@ class WeddingMainTitle extends StatelessWidget {
           ),
           Column(
             children: [
-              GestureDetector(
-                onTap: onTap ??
-                    () {
-                      if (widget.isInNavigation.value) {
-                        return;
-                      }
-                      widget.onTapStart();
-                      // context.go("/main-navigation");
-                    },
-                child: Container(
-                  width: screenWidth * 0.35,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50.0),
-                    color: Colors.black.withOpacity(0.1),
-                  ),
+              Container(
+                width: screenWidth * 0.35,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50.0),
+                  color: Colors.black.withOpacity(0.1),
+                ),
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(50.0),
+                  onTap: onTap ??
+                      () {
+                        if (widget.isInNavigation.value) {
+                          return;
+                        }
+                        widget.onTapStart();
+                        // context.go("/main-navigation");
+                      },
                   child: const Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: 24.0,
