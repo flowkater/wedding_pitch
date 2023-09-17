@@ -1,3 +1,4 @@
+import 'package:boxicons/boxicons.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -45,7 +46,7 @@ class _OthersTabViewState extends State<OthersTabView> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    "참석이 어려우신 분들을 위해 계좌번호를 기재하였습니다. 너그러운 마음으로 양해 부탁드립니다. 클릭하면 복사하여 붙여넣을 수 있습니다.",
+                    "참석이 어려우신 분들을 위해 계좌번호를 기재하였습니다. 너그러운 마음으로 양해 부탁드립니다.",
                     style: TextStyle(
                       fontSize: 15.0,
                       color: Color(0xFF3E3E3E),
@@ -184,7 +185,7 @@ class _OthersTabViewState extends State<OthersTabView> {
             _makeSection(
               context,
               icon: const Icon(
-                Remix.code_box_fill,
+                Boxicons.bx_dish,
                 color: Colors.white,
                 size: 20.0,
               ),
@@ -252,18 +253,35 @@ class _OthersTabViewState extends State<OthersTabView> {
               ),
               iconColor: const Color(0xFFFF823C),
               title: "주차 안내",
-              description: const Column(
+              description: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "무료 주차권을 제공해드리고 있습니다. (90분)",
-                    style: TextStyle(
-                      fontSize: 15.0,
-                      color: Color(0xFF3E3E3E),
-                      height: 1.8,
+                  RichText(
+                    text: const TextSpan(
+                      children: [
+                        TextSpan(
+                          text: "무료 주차권",
+                          style: TextStyle(
+                            fontSize: 15.0,
+                            color: Color(0xFF3E3E3E),
+                            fontWeight: FontWeight.bold,
+                            height: 1.8,
+                            fontFamily: "Pretendard",
+                          ),
+                        ),
+                        TextSpan(
+                          text: "을 제공해드리고 있습니다. (90분)",
+                          style: TextStyle(
+                            fontSize: 15.0,
+                            color: Color(0xFF3E3E3E),
+                            height: 1.8,
+                            fontFamily: "Pretendard",
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  Text(
+                  const Text(
                     "필요하신 분은 꼭 말씀 부탁드립니다 :)",
                     style: TextStyle(
                       fontSize: 15.0,
@@ -271,10 +289,10 @@ class _OthersTabViewState extends State<OthersTabView> {
                       height: 1.8,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12.0,
                   ),
-                  Text(
+                  const Text(
                     "↘ 더파티움 건물 내 주차 가능 (중소기업중앙회)",
                     style: TextStyle(
                       fontSize: 15.0,
@@ -282,7 +300,7 @@ class _OthersTabViewState extends State<OthersTabView> {
                       height: 1.8,
                     ),
                   ),
-                  Text(
+                  const Text(
                     "↘ 제2주차장 이용 가능 (한국기계회관)",
                     style: TextStyle(
                       fontSize: 15.0,
@@ -475,8 +493,15 @@ class _OthersTabViewState extends State<OthersTabView> {
         borderRadius: BorderRadius.circular(50),
         color: iconColor,
       ),
-      child: Center(
-        child: icon,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          icon,
+          const SizedBox(
+            height: 2.0,
+          )
+        ],
       ),
     );
   }

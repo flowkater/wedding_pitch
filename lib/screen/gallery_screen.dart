@@ -245,6 +245,9 @@ class _GalleryScreenState extends State<GalleryScreen> {
               horizontal: 12.0,
             ),
             child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 AnimatedOpacity(
                   duration: const Duration(milliseconds: 300),

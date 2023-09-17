@@ -203,7 +203,7 @@ class _CeremonyTabViewState extends State<CeremonyTabView> {
                           vertical: 6.0,
                         ),
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(4.0),
                           color: const Color(0xFFFFF7AB),
                         ),
                         child: Center(
