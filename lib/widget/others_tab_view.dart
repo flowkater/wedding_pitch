@@ -1,5 +1,7 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:remixicon/remixicon.dart';
 
 class OthersTabView extends StatefulWidget {
@@ -10,25 +12,8 @@ class OthersTabView extends StatefulWidget {
 }
 
 class _OthersTabViewState extends State<OthersTabView> {
-  bool _expanded1 = false;
-  bool _expanded2 = false;
-
-  final _controller1 = ExpandableController();
-  final _controller2 = ExpandableController();
-
   @override
   void initState() {
-    _controller1.addListener(() {
-      setState(() {
-        _expanded1 = _controller1.expanded;
-      });
-    });
-
-    _controller2.addListener(() {
-      setState(() {
-        _expanded2 = _controller2.expanded;
-      });
-    });
     super.initState();
   }
 
@@ -59,34 +44,136 @@ class _OthersTabViewState extends State<OthersTabView> {
               description: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "참석이 어려우신 분들을 위해 계좌번호를 기재하였습니다. 너그러운 마음으로 양해 부탁드립니다.",
+                  const Text(
+                    "참석이 어려우신 분들을 위해 계좌번호를 기재하였습니다. 너그러운 마음으로 양해 부탁드립니다. 클릭하면 복사하여 붙여넣을 수 있습니다.",
                     style: TextStyle(
                       fontSize: 15.0,
-                      color: Colors.black.withOpacity(0.8),
+                      color: Color(0xFF3E3E3E),
+                      height: 1.8,
                     ),
                   ),
                   const SizedBox(
-                    height: 12.0,
+                    height: 24.0,
                   ),
-                  _makeAccountPanel(
-                    controller: _controller1,
-                    isExpanded: _expanded1,
-                    name: "조재우",
-                    bankName: "국민은행",
-                    accountNumber: "123456-78-910111",
-                    isLast: false,
+                  InkWell(
+                    onTap: () async {
+                      await Clipboard.setData(
+                        const ClipboardData(text: "토스뱅크 1000-0004-7369"),
+                      );
+
+                      Fluttertoast.showToast(
+                        msg: "✅ 은행과 계좌번호 복사 완료! 붙여넣을 수 있어요",
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.BOTTOM,
+                        timeInSecForIosWeb: 2,
+                        backgroundColor: Colors.black.withOpacity(0.7),
+                        textColor: Colors.white,
+                        webPosition: "center",
+                        webBgColor: "#000000",
+                      );
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 24.0,
+                        vertical: 18.0,
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: const Color(0xFFF9F9F9),
+                      ),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text("💙"),
+                          Text(
+                            "조재우",
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                          Text(
+                            "토스뱅크",
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xFF3E3E3E),
+                            ),
+                          ),
+                          Text(
+                            "1000-0004-7369",
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xFF3E3E3E),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                   const SizedBox(
                     height: 8.0,
                   ),
-                  _makeAccountPanel(
-                    controller: _controller2,
-                    isExpanded: _expanded2,
-                    name: "고이경",
-                    bankName: "국민은행",
-                    accountNumber: "123456-78-910111",
-                    isLast: true,
+                  InkWell(
+                    onTap: () async {
+                      await Clipboard.setData(
+                        const ClipboardData(text: "신한은행 110-354-982959"),
+                      );
+                      Fluttertoast.showToast(
+                        msg: "✅ 은행과 계좌번호 복사 완료! 붙여넣을 수 있어요",
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.BOTTOM,
+                        timeInSecForIosWeb: 2,
+                        backgroundColor: Colors.black.withOpacity(0.7),
+                        textColor: Colors.white,
+                        webPosition: "center",
+                        webBgColor: "#000000",
+                      );
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 24.0,
+                        vertical: 18.0,
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: const Color(0xFFF9F9F9),
+                      ),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text("💛"),
+                          Text(
+                            "고이경",
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                          Text(
+                            "신한은행",
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xFF3E3E3E),
+                            ),
+                          ),
+                          Text(
+                            "110-354-982959",
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xFF3E3E3E),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -106,28 +193,48 @@ class _OthersTabViewState extends State<OthersTabView> {
               description: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "연회장은 지하 1층에 위치해 있습니다.",
-                    style: TextStyle(
-                      fontSize: 15.0,
-                      color: Colors.black.withOpacity(0.8),
+                  RichText(
+                    text: const TextSpan(
+                      children: [
+                        TextSpan(
+                          text: "연회장은 지하 1층",
+                          style: TextStyle(
+                            fontSize: 15.0,
+                            color: Color(0xFF3E3E3E),
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Pretendard",
+                            height: 1.8,
+                          ),
+                        ),
+                        TextSpan(
+                          text: "에 위치해 있습니다.",
+                          style: TextStyle(
+                            fontSize: 15.0,
+                            color: Color(0xFF3E3E3E),
+                            fontFamily: "Pretendard",
+                            height: 1.8,
+                          ),
+                        )
+                      ],
                     ),
                   ),
-                  Text(
+                  const Text(
                     "또한 예식 30분 전부터 식사하실 수 있습니다.",
                     style: TextStyle(
                       fontSize: 15.0,
-                      color: Colors.black.withOpacity(0.8),
+                      color: Color(0xFF3E3E3E),
+                      height: 1.8,
                     ),
                   ),
                   const SizedBox(
                     height: 12.0,
                   ),
-                  Text(
+                  const Text(
                     "↘ 연회장 이용시간 : 3:40 - 5:40 (총 2시간)",
                     style: TextStyle(
                       fontSize: 15.0,
-                      color: Colors.black.withOpacity(0.8),
+                      color: Color(0xFF3E3E3E),
+                      height: 1.8,
                     ),
                   ),
                 ],
@@ -145,38 +252,42 @@ class _OthersTabViewState extends State<OthersTabView> {
               ),
               iconColor: const Color(0xFFFF823C),
               title: "주차 안내",
-              description: Column(
+              description: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     "무료 주차권을 제공해드리고 있습니다. (90분)",
                     style: TextStyle(
                       fontSize: 15.0,
-                      color: Colors.black.withOpacity(0.8),
+                      color: Color(0xFF3E3E3E),
+                      height: 1.8,
                     ),
                   ),
                   Text(
                     "필요하신 분은 꼭 말씀 부탁드립니다 :)",
                     style: TextStyle(
                       fontSize: 15.0,
-                      color: Colors.black.withOpacity(0.8),
+                      color: Color(0xFF3E3E3E),
+                      height: 1.8,
                     ),
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: 12.0,
                   ),
                   Text(
                     "↘ 더파티움 건물 내 주차 가능 (중소기업중앙회)",
                     style: TextStyle(
                       fontSize: 15.0,
-                      color: Colors.black.withOpacity(0.8),
+                      color: Color(0xFF3E3E3E),
+                      height: 1.8,
                     ),
                   ),
                   Text(
                     "↘ 제2주차장 이용 가능 (한국기계회관)",
                     style: TextStyle(
                       fontSize: 15.0,
-                      color: Colors.black.withOpacity(0.8),
+                      color: Color(0xFF3E3E3E),
+                      height: 1.8,
                     ),
                   ),
                 ],
@@ -236,31 +347,71 @@ class _OthersTabViewState extends State<OthersTabView> {
       expanded: Container(
         padding: const EdgeInsets.symmetric(
           horizontal: 12.0,
-          vertical: 8.0,
+          vertical: 12.0,
         ),
         color: const Color(0xFFF9F9F9),
         child: Column(children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12.0,
-                  vertical: 6.0,
-                ),
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(10),
-                    bottomRight: Radius.circular(10),
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12.0),
+              color: Colors.white,
+            ),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 12.0,
+              vertical: 6.0,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12.0,
+                    vertical: 6.0,
                   ),
-                  color: Colors.white,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(10),
+                      bottomRight: Radius.circular(10),
+                    ),
+                  ),
+                  child: Text(
+                    name,
+                    style: const TextStyle(
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
                 ),
-                child: Text(name),
-              ),
-              Text(bankName),
-              Text(accountNumber),
-            ],
+                Container(
+                  width: 1,
+                  height: 10,
+                  color: Colors.black.withOpacity(0.2),
+                ),
+                Text(
+                  bankName,
+                  style: const TextStyle(
+                    fontSize: 14.0,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.black,
+                  ),
+                ),
+                Container(
+                  width: 1,
+                  height: 10,
+                  color: Colors.black.withOpacity(0.2),
+                ),
+                Text(
+                  accountNumber,
+                  style: const TextStyle(
+                    fontSize: 14.0,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
           ),
         ]),
       ),

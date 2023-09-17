@@ -372,7 +372,7 @@ class _LocationTabViewState extends State<LocationTabView> {
             height: 4.0,
           ),
           Text(
-            "여의도/여의나루에서 걸어오는 편은 단풍이 예뻐요🍁",
+            "여의도/여의나루에서 걸어온다면 단풍구경은 덤!🍁",
             style: TextStyle(
               fontSize: 14.0,
               color: Colors.black.withOpacity(0.6),

@@ -23,7 +23,8 @@ class NavTab extends StatelessWidget {
         child: InkWell(
           onTap: () => onTap(),
           child: SizedBox(
-            height: 56.0,
+            // color: Colors.black.withOpacity(0.1),
+            height: 42.0,
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 2.0),
               child: Column(
@@ -33,7 +34,7 @@ class NavTab extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 30.0,
-                      vertical: 10.0,
+                      vertical: 6.0,
                     ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(24.0),
@@ -44,7 +45,7 @@ class NavTab extends StatelessWidget {
                     child: Icon(
                       isSelected ? selectedIcon : icon,
                       color: Colors.black,
-                      size: 24.0,
+                      size: 18.0,
                     ),
                   ),
                   const SizedBox(

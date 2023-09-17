@@ -58,7 +58,11 @@ class _GalleryScreenState extends State<GalleryScreen> {
     final screenHeight = appSize.height;
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        foregroundColor: Colors.black,
+        backgroundColor: Colors.white,
+        elevation: 0,
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
@@ -98,17 +102,12 @@ class _GalleryScreenState extends State<GalleryScreen> {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
-            "동백과 같은 마음과 태도로",
+            "동백과 같은 마음과 태도로\n함께하는 이 길을 사랑하겠습니다.",
+            textAlign: TextAlign.right,
             style: TextStyle(
-              fontSize: 24.0,
+              fontSize: 28.0,
               fontWeight: FontWeight.bold,
-            ),
-          ),
-          Text(
-            "함께하는 이 길을 사랑하겠습니다.",
-            style: TextStyle(
-              fontSize: 24.0,
-              fontWeight: FontWeight.bold,
+              height: 1.6,
             ),
           ),
         ],

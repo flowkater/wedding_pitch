@@ -90,7 +90,7 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
                 horizontal: 16.0,
               ),
               labelStyle: const TextStyle(
-                fontSize: 16.0,
+                fontSize: 12.0,
                 fontWeight: FontWeight.bold,
               ),
               indicator: BoxDecoration(
@@ -110,7 +110,7 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
                       animation: tabWidthAnimationControllers[i],
                       builder: (context, child) {
                         double widthFactor =
-                            90 + (30 * tabWidthAnimationControllers[i].value);
+                            80 + tabWidthAnimationControllers[i].value;
 
                         return Tab(
                           child: SizedBox(
@@ -120,7 +120,7 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
                               child: Text(
                                 tabs[i],
                                 style: const TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),

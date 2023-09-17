@@ -38,6 +38,8 @@ dependencies:
   expandable: ^5.0.1
   boxicons: ^2.1.3
   scroll_to_index: ^3.0.1
+  fluttertoast: ^8.2.2
+
   # animations: ^2.0.8
 
   flutter:
