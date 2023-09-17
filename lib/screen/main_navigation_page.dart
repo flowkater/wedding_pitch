@@ -44,19 +44,12 @@ class _MainNavigationPageState extends State<MainNavigationPage>
   void _onVideoTap() {
     context.push(
       "/gallery",
-      extra: _videoController,
     );
   }
 
   @override
   void initState() {
     super.initState();
-
-    _videoController = VideoPlayerController.asset("assets/images/hd.mp4")
-      ..initialize().then((_) {
-        _videoController.setLooping(true);
-        _videoController.setVolume(0);
-      });
 
     _animationController = AnimationController(
       duration: const Duration(milliseconds: 500),

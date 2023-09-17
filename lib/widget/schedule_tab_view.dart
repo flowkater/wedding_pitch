@@ -81,7 +81,7 @@ class ScheduleTabView extends StatelessWidget {
             const SizedBox(
               height: 36.0,
             ),
-            const DancingAnimatedImage(),
+            // const DancingAnimatedImage(),
           ],
         ),
       ),
@@ -115,9 +115,14 @@ class _DancingAnimatedImageState extends State<DancingAnimatedImage> {
     _startImageSwitching();
   }
 
+  @override
+  dispose() {
+    super.dispose();
+  }
+
   _startImageSwitching() async {
     while (true) {
-      await Future.delayed(const Duration(milliseconds: 500));
+      await Future.delayed(const Duration(milliseconds: 300));
       setState(() {
         _index = (_index + 1) % images.length;
       });
@@ -128,7 +133,7 @@ class _DancingAnimatedImageState extends State<DancingAnimatedImage> {
   Widget build(BuildContext context) {
     return AnimatedSwitcher(
       transitionBuilder: ((child, animation) => child),
-      duration: const Duration(milliseconds: 100),
+      duration: const Duration(milliseconds: 10),
       child: Image.asset(
         key: ValueKey<int>(_index),
         images[_index],
