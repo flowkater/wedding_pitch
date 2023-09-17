@@ -6,9 +6,10 @@ import 'package:video_player/video_player.dart';
 import 'package:wedding_pitch/style/size.dart';
 
 class GalleryScreen extends StatefulWidget {
-  final bool isActive;
+  final VideoPlayerController videoController;
+
   const GalleryScreen({
-    required this.isActive,
+    required this.videoController,
     super.key,
   });
 
@@ -17,8 +18,7 @@ class GalleryScreen extends StatefulWidget {
 }
 
 class _GalleryScreenState extends State<GalleryScreen> {
-  late VideoPlayerController _controller;
-  bool _soundOn = true;
+  bool _soundOn = false;
 
   void _toggleSound() {
     setState(() {
@@ -29,33 +29,16 @@ class _GalleryScreenState extends State<GalleryScreen> {
 
   void _toggleVolume(bool soundOn) {
     if (soundOn) {
-      _controller.setVolume(1);
+      widget.videoController.setVolume(1);
     } else {
-      _controller.setVolume(0);
+      widget.videoController.setVolume(0);
     }
   }
 
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.asset("assets/images/hd.mp4")
-      ..initialize().then((_) {
-        _controller.setLooping(true);
-        _controller.setVolume(_soundOn ? 1 : 0);
-
-        if (widget.isActive) {
-          setState(() {
-            _controller.play();
-          });
-        }
-      });
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-
-    super.dispose();
+    widget.videoController.play();
   }
 
   @override
@@ -137,15 +120,15 @@ class _GalleryScreenState extends State<GalleryScreen> {
             borderRadius: BorderRadius.circular(24.0),
             color: const Color(0xFFF9F9F9),
           ),
-          child: _controller.value.isInitialized
+          child: widget.videoController.value.isInitialized
               ? ClipRRect(
                   borderRadius: BorderRadius.circular(24.0),
                   child: FittedBox(
                     fit: BoxFit.cover,
                     child: SizedBox(
-                      width: _controller.value.size.width,
-                      height: _controller.value.size.height,
-                      child: VideoPlayer(_controller),
+                      width: widget.videoController.value.size.width,
+                      height: widget.videoController.value.size.height,
+                      child: VideoPlayer(widget.videoController),
                     ),
                   ),
                 )
@@ -159,9 +142,9 @@ class _GalleryScreenState extends State<GalleryScreen> {
         ),
         GestureDetector(
           onTap: () {
-            _controller.value.isPlaying
-                ? _controller.pause()
-                : _controller.play();
+            widget.videoController.value.isPlaying
+                ? widget.videoController.pause()
+                : widget.videoController.play();
           },
           child: Container(
             color: Colors.transparent,
@@ -177,7 +160,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
   Widget _bottomButton(double screenWidth) {
     return InkWell(
       onTap: () async {
-        _controller.pause();
+        widget.videoController.pause();
 
         final result = await context.push("/album") as bool;
         // final result = await Navigator.of(context).push(
@@ -187,7 +170,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
         //   ),
         // );
 
-        if (result) _controller.play();
+        if (result) widget.videoController.play();
       },
       child: Container(
         width: screenWidth,

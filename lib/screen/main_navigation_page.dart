@@ -3,12 +3,13 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:remixicon/remixicon.dart';
+import 'package:video_player/video_player.dart';
 import 'package:wedding_pitch/screen/home_screen.dart';
 import 'package:wedding_pitch/screen/info_screen.dart';
 import 'package:wedding_pitch/utils/get_random_image.dart';
 import 'package:wedding_pitch/widget/nav_tab.dart';
 
-final coverImage = getRandomCoverImage();
+final coverIndex = getRandomNumber();
 
 class MainNavigationPage extends StatefulWidget {
   const MainNavigationPage({
@@ -24,6 +25,7 @@ class _MainNavigationPageState extends State<MainNavigationPage>
   int _selectedIndex = 0;
   late AnimationController _animationController;
   late Animation<Offset> _offsetAnimation;
+  late VideoPlayerController _videoController;
   bool isInNavigation = false;
 
   void onTapStart() {
@@ -40,19 +42,26 @@ class _MainNavigationPageState extends State<MainNavigationPage>
   }
 
   void _onVideoTap() {
-    context.push("/gallery");
+    context.push(
+      "/gallery",
+      extra: _videoController,
+    );
   }
 
   @override
   void initState() {
     super.initState();
 
+    _videoController = VideoPlayerController.asset("assets/images/hd.mp4")
+      ..initialize().then((_) {
+        _videoController.setLooping(true);
+        _videoController.setVolume(0);
+      });
+
     _animationController = AnimationController(
       duration: const Duration(milliseconds: 500),
       vsync: this,
     );
-
-    // ..forward();
 
     _offsetAnimation = Tween<Offset>(
       begin: const Offset(0, 1),
@@ -65,7 +74,8 @@ class _MainNavigationPageState extends State<MainNavigationPage>
 
   @override
   void dispose() {
-    _animationController.dispose(); // Controller 정리
+    _animationController.dispose();
+    _videoController.dispose();
     super.dispose();
   }
 
@@ -77,7 +87,8 @@ class _MainNavigationPageState extends State<MainNavigationPage>
         index: _selectedIndex,
         children: [
           HomeScreen(
-            coverImage: coverImage,
+            coverImage: getCoverImage(coverIndex),
+            coverIndex: coverIndex,
             isInNavigation: ValueNotifier(isInNavigation),
             onTapStart: onTapStart,
             animationController: _animationController,

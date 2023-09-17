@@ -60,6 +60,7 @@ class ScheduleTabView extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 15.0,
                     color: Colors.black,
+                    fontFamily: "Pretendard",
                   ),
                 ),
                 TextSpan(
@@ -68,6 +69,7 @@ class ScheduleTabView extends StatelessWidget {
                     fontSize: 15.0,
                     color: WeddingColor.redColor,
                     fontWeight: FontWeight.bold,
+                    fontFamily: "Pretendard",
                   ),
                 ),
               ]),
@@ -79,9 +81,57 @@ class ScheduleTabView extends StatelessWidget {
             const SizedBox(
               height: 36.0,
             ),
-            Image.asset("assets/images/dancing.png"),
+            const DancingAnimatedImage(),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class DancingAnimatedImage extends StatefulWidget {
+  const DancingAnimatedImage({super.key});
+
+  @override
+  State<DancingAnimatedImage> createState() => _DancingAnimatedImageState();
+}
+
+class _DancingAnimatedImageState extends State<DancingAnimatedImage> {
+  final images = [
+    "assets/images/dancing/dancing01.png",
+    "assets/images/dancing/dancing02.png",
+    "assets/images/dancing/dancing03.png",
+    "assets/images/dancing/dancing04.png",
+    "assets/images/dancing/dancing05.png",
+    "assets/images/dancing/dancing06.png",
+  ];
+
+  int _index = 0;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _startImageSwitching();
+  }
+
+  _startImageSwitching() async {
+    while (true) {
+      await Future.delayed(const Duration(milliseconds: 500));
+      setState(() {
+        _index = (_index + 1) % images.length;
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedSwitcher(
+      transitionBuilder: ((child, animation) => child),
+      duration: const Duration(milliseconds: 100),
+      child: Image.asset(
+        key: ValueKey<int>(_index),
+        images[_index],
       ),
     );
   }

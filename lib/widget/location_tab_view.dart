@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:remixicon/remixicon.dart';
 import 'package:url_launcher/url_launcher_string.dart';
+import 'package:wedding_pitch/style/size.dart';
 
 class LocationTabView extends StatefulWidget {
   const LocationTabView({super.key});
@@ -18,6 +19,13 @@ class _LocationTabViewState extends State<LocationTabView> {
 
   @override
   Widget build(BuildContext context) {
+    final appSize = AppSize.getMaxSize(
+      MediaQuery.of(context).size.width,
+      MediaQuery.of(context).size.height,
+    );
+
+    final screenHeight = appSize.height;
+
     return SingleChildScrollView(
       child: DefaultTabController(
         length: tabs.length,
@@ -121,7 +129,7 @@ class _LocationTabViewState extends State<LocationTabView> {
                 ),
               ),
               SizedBox(
-                height: 500.0,
+                height: screenHeight / 2.5,
                 child: TabBarView(
                   physics: const NeverScrollableScrollPhysics(),
                   children: [
@@ -409,12 +417,14 @@ class _LocationTabViewState extends State<LocationTabView> {
                     fontSize: 16.0,
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
+                    fontFamily: "Pretendard",
                   ),
                 ),
                 TextSpan(
                   text: ' | 서울 영등포구 은행로 37',
                   style: TextStyle(
                     fontSize: 16.0,
+                    fontFamily: "Pretendard",
                   ),
                 ),
               ]),
@@ -443,6 +453,7 @@ class _LocationTabViewState extends State<LocationTabView> {
                   fontSize: 14.0,
                   color: Colors.black.withOpacity(0.6),
                   fontWeight: FontWeight.bold,
+                  fontFamily: "Pretendard",
                 ),
               ),
               TextSpan(
@@ -450,6 +461,7 @@ class _LocationTabViewState extends State<LocationTabView> {
                 style: TextStyle(
                   fontSize: 14.0,
                   color: Colors.black.withOpacity(0.6),
+                  fontFamily: "Pretendard",
                 ),
               ),
             ]),

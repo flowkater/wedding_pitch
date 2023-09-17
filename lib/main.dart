@@ -32,8 +32,7 @@ class WeddingPitchApp extends StatelessWidget {
           backgroundColor: Colors.white,
           elevation: 0,
         ),
-
-        // fontFamily: 'HappinessSansRegular',
+        fontFamily: 'Pretendard',
       ),
       builder: (context, child) {
         return PageLayout(
