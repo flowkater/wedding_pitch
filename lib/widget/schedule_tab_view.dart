@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:wedding_pitch/style/color.dart';
 
 class ScheduleTabView extends StatelessWidget {
   const ScheduleTabView({super.key});
@@ -17,7 +16,7 @@ class ScheduleTabView extends StatelessWidget {
 
     final days = difference.inDays;
 
-    return '$days일 남았어요♥';
+    return '$days일 남았어요';
   }
 
   @override
@@ -74,10 +73,10 @@ class ScheduleTabView extends StatelessWidget {
                   width: 1.0,
                 ),
               ),
-              child: const Row(
+              child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     "이경과 재우의 결혼식까지",
                     style: TextStyle(
                       fontSize: 14.0,
@@ -86,12 +85,12 @@ class ScheduleTabView extends StatelessWidget {
                       height: 1.2,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10.0,
                   ),
                   Text(
-                    "♥ 50일 남았어요 ♥",
-                    style: TextStyle(
+                    "♥ ${_getTimeRemaining()} ♥",
+                    style: const TextStyle(
                       fontSize: 14.0,
                       color: Color(0xFFFF483C),
                       fontWeight: FontWeight.w600,
