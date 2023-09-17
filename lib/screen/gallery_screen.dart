@@ -86,6 +86,9 @@ class _GalleryScreenState extends State<GalleryScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                const SizedBox(
+                  height: 24.0,
+                ),
                 _headerSection(screenWidth),
                 const SizedBox(
                   height: 24.0,
