@@ -165,7 +165,7 @@ class _WeddingSubTitleState extends State<WeddingSubTitle>
     );
 
     _bounceController = AnimationController(
-      duration: const Duration(seconds: 1),
+      duration: const Duration(milliseconds: 500),
       vsync: this,
     )..repeat(reverse: true);
 
@@ -183,7 +183,7 @@ class _WeddingSubTitleState extends State<WeddingSubTitle>
       ),
     );
 
-    _bounceAnimation = Tween<double>(begin: 0, end: 10).animate(
+    _bounceAnimation = Tween<double>(begin: 0, end: 3).animate(
       CurvedAnimation(
         parent: _bounceController,
         curve: Curves.easeInOut,
