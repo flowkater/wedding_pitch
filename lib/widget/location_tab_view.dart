@@ -673,7 +673,8 @@ class OpenMapDialog extends StatelessWidget {
                 ),
                 MapButton(
                   mapName: "티맵",
-                  mapUrl: "https://www.tmap.co.kr",
+                  mapUrl:
+                      "https://apis.openapi.sk.com/tmap/app/routes?appKey=iol29hhWyX4CdjoqDICKw18XvuBRMSMR2IPfh4qa&name=%EB%8D%94%ED%8C%8C%ED%8B%B0%EC%9B%80&lon=126.92272&lat=37.52827",
                   mapImage: "assets/images/tmap.png",
                 ),
               ],
