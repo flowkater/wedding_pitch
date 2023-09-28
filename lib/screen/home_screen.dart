@@ -42,9 +42,9 @@ class _HomeScreenState extends State<HomeScreen>
     }
   }
 
-  void _onTap(int index) {
+  void _onTapNextPage() {
     _pageController.animateToPage(
-      index,
+      1,
       duration: const Duration(milliseconds: 500),
       curve: Curves.easeInOut,
     );
@@ -139,6 +139,7 @@ class _HomeScreenState extends State<HomeScreen>
                             children: [
                               WeddingSubTitle(
                                 coverIndex: widget.coverIndex,
+                                onTapNextPage: _onTapNextPage,
                               ),
                               const BabyScreen()
                             ],

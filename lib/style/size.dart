@@ -7,7 +7,9 @@ class AppSize {
   static MaxSize getMaxSize(double width, double height) {
     return getDeviceType() == DeviceType.Mobile
         ? MaxSize(width: width, height: height)
-        : const MaxSize(width: maxWidth, height: maxHeight);
+        : MaxSize(
+            width: maxWidth > width ? width : maxWidth,
+            height: maxHeight > height ? height : maxHeight);
   }
 }
 

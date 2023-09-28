@@ -92,39 +92,32 @@ class WeddingMainTitle extends StatelessWidget {
                           return;
                         }
                         widget.onTapStart();
-                        // context.go("/main-navigation");
                       },
                   child: const Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: 24.0,
                       vertical: 18.0,
                     ),
-                    child: Hero(
-                      tag: "wedding-title-button",
-                      child: Material(
-                        type: MaterialType.transparency,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              "시작하기",
-                              style: TextStyle(
-                                fontSize: 16.0,
-                                color: Colors.white,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 8.0,
-                            ),
-                            Icon(
-                              Remix.arrow_right_line,
-                              color: Colors.white,
-                              size: 16.0,
-                            ),
-                          ],
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          "시작하기",
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            color: Colors.white,
+                          ),
                         ),
-                      ),
+                        SizedBox(
+                          width: 8.0,
+                        ),
+                        Icon(
+                          Remix.arrow_right_line,
+                          color: Colors.white,
+                          size: 16.0,
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -142,9 +135,11 @@ class WeddingMainTitle extends StatelessWidget {
 
 class WeddingSubTitle extends StatefulWidget {
   final int coverIndex;
+  final VoidCallback onTapNextPage;
 
   const WeddingSubTitle({
     required this.coverIndex,
+    required this.onTapNextPage,
     super.key,
   });
 
@@ -153,10 +148,12 @@ class WeddingSubTitle extends StatefulWidget {
 }
 
 class _WeddingSubTitleState extends State<WeddingSubTitle>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late AnimationController _controller;
+  late AnimationController _bounceController;
   late Animation<double> _animation1;
   late Animation<double> _animation2;
+  late Animation<double> _bounceAnimation;
 
   @override
   void initState() {
@@ -166,6 +163,11 @@ class _WeddingSubTitleState extends State<WeddingSubTitle>
       duration: const Duration(seconds: 2),
       vsync: this,
     );
+
+    _bounceController = AnimationController(
+      duration: const Duration(seconds: 1),
+      vsync: this,
+    )..repeat(reverse: true);
 
     _animation1 = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(
@@ -181,12 +183,20 @@ class _WeddingSubTitleState extends State<WeddingSubTitle>
       ),
     );
 
+    _bounceAnimation = Tween<double>(begin: 0, end: 10).animate(
+      CurvedAnimation(
+        parent: _bounceController,
+        curve: Curves.easeInOut,
+      ),
+    );
+
     _controller.forward();
   }
 
   @override
   void dispose() {
     _controller.dispose();
+    _bounceController.dispose();
     super.dispose();
   }
 
@@ -195,74 +205,135 @@ class _WeddingSubTitleState extends State<WeddingSubTitle>
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-        animation: _controller,
-        builder: (context, child) {
-          return Container(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 24.0,
-            ),
-            child: Column(
-              mainAxisAlignment:
-                  isTop() ? MainAxisAlignment.start : MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    const SizedBox(
-                      height: 48.0,
+      animation: Listenable.merge([_controller, _bounceController]),
+      builder: (context, child) {
+        return Container(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 24.0,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (!isTop()) _downToScroll(Position.top),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  const SizedBox(
+                    height: 48.0,
+                  ),
+                  Text(
+                    "11월 4일,",
+                    style: TextStyle(
+                      fontSize: 32.0,
+                      fontWeight: FontWeight.bold,
+                      color: isTop() ? Colors.black : Colors.white,
                     ),
-                    Text(
-                      "11월 4일,",
+                  ),
+                  Text(
+                    "재우와 이경 결혼합니다",
+                    style: TextStyle(
+                      fontSize: 32.0,
+                      fontWeight: FontWeight.bold,
+                      color: isTop() ? Colors.black : Colors.white,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 12.0,
+                  ),
+                  Opacity(
+                    opacity: _animation1.value,
+                    child: Text(
+                      '↘ 2023년 11월 4일, 오후 4시 10분',
                       style: TextStyle(
-                        fontSize: 32.0,
-                        fontWeight: FontWeight.bold,
+                        fontSize: 15.0,
                         color: isTop() ? Colors.black : Colors.white,
                       ),
                     ),
-                    Text(
-                      "재우와 이경 결혼합니다",
+                  ),
+                  const SizedBox(
+                    height: 4.0,
+                  ),
+                  Opacity(
+                    opacity: _animation2.value,
+                    child: Text(
+                      '↘ 여의도 더파티움 파티움홀 2층',
                       style: TextStyle(
-                        fontSize: 32.0,
-                        fontWeight: FontWeight.bold,
+                        fontSize: 15.0,
                         color: isTop() ? Colors.black : Colors.white,
                       ),
                     ),
-                    const SizedBox(
-                      height: 12.0,
-                    ),
-                    Opacity(
-                      opacity: _animation1.value,
-                      child: Text(
-                        '↘ 2023년 11월 4일, 오후 4시 10분',
-                        style: TextStyle(
-                          fontSize: 15.0,
-                          color: isTop() ? Colors.black : Colors.white,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 4.0,
-                    ),
-                    Opacity(
-                      opacity: _animation2.value,
-                      child: Text(
-                        '↘ 여의도 더파티움 파티움홀 2층',
-                        style: TextStyle(
-                          fontSize: 15.0,
-                          color: isTop() ? Colors.black : Colors.white,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 48.0,
-                    ),
-                  ],
+                  ),
+                  const SizedBox(
+                    height: 48.0,
+                  ),
+                ],
+              ),
+              if (isTop()) _downToScroll(Position.bottom)
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _downToScroll(Position position) {
+    return Padding(
+      padding: position == Position.top
+          ? const EdgeInsets.only(top: 48.0)
+          : const EdgeInsets.only(bottom: 48.0),
+      child: Transform.translate(
+        offset: Offset(0, _bounceAnimation.value),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50.0),
+                border: Border.all(
+                  color: isTop() ? Colors.black : Colors.white,
+                  width: 0.5,
                 ),
-              ],
+              ),
+              child: InkWell(
+                borderRadius: BorderRadius.circular(50.0),
+                onTap: widget.onTapNextPage,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12.0,
+                    vertical: 9.0,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        "아래로 스크롤 하기",
+                        style: TextStyle(
+                          fontSize: 12.0,
+                          fontWeight: FontWeight.bold,
+                          color: isTop() ? Colors.black : Colors.white,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 8.0,
+                      ),
+                      Icon(
+                        Remix.arrow_down_line,
+                        color: isTop() ? Colors.black : Colors.white,
+                        size: 12.0,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ),
-          );
-        });
+          ],
+        ),
+      ),
+    );
   }
 }
+
+enum Position { top, bottom }
