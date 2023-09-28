@@ -125,47 +125,10 @@ class DancingAnimatedImage extends StatefulWidget {
 }
 
 class _DancingAnimatedImageState extends State<DancingAnimatedImage> {
-  final images = [
-    "assets/images/dancing/dancing01.png",
-    "assets/images/dancing/dancing02.png",
-    "assets/images/dancing/dancing03.png",
-    "assets/images/dancing/dancing04.png",
-    "assets/images/dancing/dancing05.png",
-    "assets/images/dancing/dancing06.png",
-  ];
-
-  int _index = 0;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _startImageSwitching();
-  }
-
-  @override
-  dispose() {
-    super.dispose();
-  }
-
-  _startImageSwitching() async {
-    while (kReleaseMode) {
-      await Future.delayed(const Duration(milliseconds: 300));
-      setState(() {
-        _index = (_index + 1) % images.length;
-      });
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    return AnimatedSwitcher(
-      transitionBuilder: ((child, animation) => child),
-      duration: const Duration(milliseconds: 10),
-      child: Image.asset(
-        key: ValueKey<int>(_index),
-        images[_index],
-      ),
+    return Image.asset(
+      "assets/images/jwik.gif",
     );
   }
 }

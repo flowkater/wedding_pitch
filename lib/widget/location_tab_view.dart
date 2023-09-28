@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:remixicon/remixicon.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:wedding_pitch/style/size.dart';
 
@@ -58,7 +57,7 @@ class _LocationTabViewState extends State<LocationTabView> {
                     InkWell(
                       onTap: () async {
                         await Clipboard.setData(
-                          const ClipboardData(text: "서울 영등포구 은행로 30 중소기업중앙회"),
+                          const ClipboardData(text: "서울 영등포구 은행로 30"),
                         );
 
                         Fluttertoast.showToast(
@@ -178,9 +177,9 @@ class _LocationTabViewState extends State<LocationTabView> {
     return LocationTabBarView(
       topView: Container(
         padding: const EdgeInsets.only(
-          top: 18.0,
-          left: 8.0,
-          right: 8.0,
+          top: 12.0,
+          left: 32.0,
+          right: 32.0,
         ),
         child: Column(
           children: [
@@ -251,31 +250,32 @@ class _LocationTabViewState extends State<LocationTabView> {
       children: [
         Row(
           children: [
-            Flexible(
-              child: Row(
-                children: [
-                  Text(
-                    busStation,
-                    style: const TextStyle(
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.bold,
-                    ),
+            Row(
+              children: [
+                Text(
+                  busStation,
+                  style: const TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold,
                   ),
-                  const SizedBox(
-                    width: 8.0,
+                ),
+                const SizedBox(
+                  width: 8.0,
+                ),
+                const Text(
+                  "하차",
+                  style: TextStyle(
+                    fontSize: 16.0,
                   ),
-                  const Text(
-                    "하차",
-                    style: TextStyle(
-                      fontSize: 16.0,
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
             Flexible(
               child: Row(
                 children: [
+                  const SizedBox(
+                    width: 12.0,
+                  ),
                   Expanded(
                     child: Container(
                       height: 2.0,
@@ -358,10 +358,10 @@ class _LocationTabViewState extends State<LocationTabView> {
     return LocationTabBarView(
       topView: Container(
         padding: const EdgeInsets.only(
-          top: 18.0,
+          top: 12.0,
           bottom: 36.0,
-          left: 8.0,
-          right: 8.0,
+          left: 32.0,
+          right: 32.0,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -371,6 +371,7 @@ class _LocationTabViewState extends State<LocationTabView> {
               numberColor: const Color(0xFF7941D5),
               station: "여의나루역 1번 출구",
               howToCome: "셔틀버스 수시 운행",
+              lineSpace: 20.0,
             ),
             const SizedBox(
               height: 12.0,
@@ -380,6 +381,7 @@ class _LocationTabViewState extends State<LocationTabView> {
               numberColor: const Color(0xFFC3A95E),
               station: "국회의사당역 3번 출구",
               howToCome: "걸어서 5분",
+              lineSpace: 20.0,
             ),
             const SizedBox(
               height: 12.0,
@@ -389,6 +391,7 @@ class _LocationTabViewState extends State<LocationTabView> {
               numberColor: const Color(0xFFC3A95E),
               station: "여의도역 3번 출구",
               howToCome: "걸어서 15분",
+              lineSpace: 20.0,
             ),
           ],
         ),
@@ -422,35 +425,48 @@ class _LocationTabViewState extends State<LocationTabView> {
     return LocationTabBarView(
       topView: Container(
         padding: const EdgeInsets.only(
-          top: 18.0,
+          top: 12.0,
           bottom: 36.0,
+          left: 36.0,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              "• 건물 주변에 주차 안내 직원이 위치해 있습니다",
-              style: TextStyle(
-                fontSize: 16.0,
-              ),
+            const Row(
+              children: [
+                Text(
+                  "• 건물 주변에 주차 안내 직원이 위치해 있습니다",
+                  style: TextStyle(
+                    fontSize: 16.0,
+                  ),
+                ),
+              ],
             ),
             const SizedBox(
               height: 8.0,
             ),
-            const Text(
-              "• 만차 시, 제2주차장을 이용해주세요 (도보 100m)",
-              style: TextStyle(
-                fontSize: 16.0,
-              ),
+            const Row(
+              children: [
+                Text(
+                  "• 만차 시, 제2주차장을 이용해주세요 (도보 100m)",
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontFamily: "Pretendard",
+                  ),
+                ),
+              ],
             ),
             const SizedBox(
               height: 8.0,
             ),
-            RichText(
-              text: const TextSpan(children: [
-                TextSpan(
-                  text: '  한국기계회관',
+            Row(
+              children: [
+                const SizedBox(
+                  width: 4.0,
+                ),
+                const Text(
+                  '  한국기계회관',
                   style: TextStyle(
                     fontSize: 16.0,
                     color: Colors.black,
@@ -458,14 +474,40 @@ class _LocationTabViewState extends State<LocationTabView> {
                     fontFamily: "Pretendard",
                   ),
                 ),
-                TextSpan(
-                  text: ' | 서울 영등포구 은행로 37',
+                const Text(
+                  ' | ',
                   style: TextStyle(
                     fontSize: 16.0,
                     fontFamily: "Pretendard",
                   ),
                 ),
-              ]),
+                InkWell(
+                  onTap: () async {
+                    await Clipboard.setData(
+                      const ClipboardData(text: "서울 영등포구 은행로 37"),
+                    );
+
+                    Fluttertoast.showToast(
+                      msg: "✅ 복사 완료! 안전 운전하세요 🚙",
+                      toastLength: Toast.LENGTH_LONG,
+                      gravity: ToastGravity.BOTTOM,
+                      timeInSecForIosWeb: 2,
+                      backgroundColor: Colors.black.withOpacity(0.7),
+                      textColor: Colors.white,
+                      webPosition: "center",
+                      webBgColor: "#4d4d4d",
+                    );
+                  },
+                  child: const Text(
+                    '서울 영등포구 은행로 37',
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      fontFamily: "Pretendard",
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
@@ -514,47 +556,49 @@ class _LocationTabViewState extends State<LocationTabView> {
     required Color numberColor,
     required String station,
     required String howToCome,
+    required double lineSpace,
   }) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Flexible(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 8.0,
-                  vertical: 4.0,
-                ),
-                decoration: BoxDecoration(
-                  color: numberColor,
-                  borderRadius: BorderRadius.circular(50.0),
-                ),
-                child: Text(
-                  subwayNumber,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 8.0,
+                vertical: 4.0,
               ),
-              const SizedBox(
-                width: 8.0,
+              decoration: BoxDecoration(
+                color: numberColor,
+                borderRadius: BorderRadius.circular(50.0),
               ),
-              Text(
-                station,
+              child: Text(
+                subwayNumber,
                 style: const TextStyle(
-                  fontSize: 16.0,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-            ],
-          ),
+            ),
+            const SizedBox(
+              width: 8.0,
+            ),
+            Text(
+              station,
+              style: const TextStyle(
+                fontSize: 16.0,
+              ),
+            ),
+          ],
         ),
         Flexible(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              SizedBox(
+                width: lineSpace,
+              ),
               Expanded(
                 child: Container(
                   height: 2.0,
@@ -592,7 +636,7 @@ class LocationTabBarView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 12.0),
+      padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -638,7 +682,6 @@ class OpenMapDialog extends StatelessWidget {
       backgroundColor: Colors.transparent,
       child: Container(
         padding: const EdgeInsets.symmetric(
-          horizontal: 32.0,
           vertical: 40.0,
         ),
         decoration: BoxDecoration(
@@ -705,77 +748,117 @@ class OpenMapDialog extends StatelessWidget {
             const SizedBox(
               height: 16.0,
             ),
-            InkWell(
-              onTap: () async {
-                await Clipboard.setData(
-                  const ClipboardData(text: "서울 영등포구 은행로 30"),
-                );
+            Padding(
+              padding: const EdgeInsets.only(left: 36.0),
+              child: InkWell(
+                onTap: () async {
+                  await Clipboard.setData(
+                    const ClipboardData(text: "서울 영등포구 은행로 30"),
+                  );
 
-                Fluttertoast.showToast(
-                  msg: "✅ 복사 완료! 조심히 오셔요 🫶",
-                  toastLength: Toast.LENGTH_LONG,
-                  gravity: ToastGravity.BOTTOM,
-                  timeInSecForIosWeb: 2,
-                  backgroundColor: Colors.black.withOpacity(0.7),
-                  textColor: Colors.white,
-                  webPosition: "center",
-                  webBgColor: "#4d4d4d",
-                );
-              },
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Icon(Remix.file_copy_2_line),
-                  SizedBox(
-                    width: 4.0,
-                  ),
-                  Text(
-                    "서울 영등포구 은행로 30",
-                    style: TextStyle(
-                      decoration: TextDecoration.underline,
-                      color: Color(0xFF3E3E3E),
+                  Fluttertoast.showToast(
+                    msg: "✅ 복사 완료! 조심히 오셔요 🫶",
+                    toastLength: Toast.LENGTH_LONG,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 2,
+                    backgroundColor: Colors.black.withOpacity(0.7),
+                    textColor: Colors.white,
+                    webPosition: "center",
+                    webBgColor: "#4d4d4d",
+                  );
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFF6F6F6),
+                        borderRadius: BorderRadius.circular(50.0),
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10.0,
+                        vertical: 8.0,
+                      ),
+                      child: const Text(
+                        '신주소',
+                        style: TextStyle(
+                          fontSize: 12.0,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
-                  ),
-                ],
+                    const SizedBox(
+                      width: 8.0,
+                    ),
+                    const Text(
+                      "서울 영등포구 은행로 30",
+                      style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Color(0xFF3E3E3E),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             const SizedBox(
               height: 12.0,
             ),
-            InkWell(
-              onTap: () async {
-                await Clipboard.setData(
-                  const ClipboardData(text: "서울 영등포구 여의도동 16-2"),
-                );
+            Padding(
+              padding: const EdgeInsets.only(left: 36.0),
+              child: InkWell(
+                onTap: () async {
+                  await Clipboard.setData(
+                    const ClipboardData(text: "서울 영등포구 여의도동 16-2"),
+                  );
 
-                Fluttertoast.showToast(
-                  msg: "✅ 복사 완료! 안전 운전하세요 🚙",
-                  toastLength: Toast.LENGTH_LONG,
-                  gravity: ToastGravity.BOTTOM,
-                  timeInSecForIosWeb: 2,
-                  backgroundColor: Colors.black.withOpacity(0.7),
-                  textColor: Colors.white,
-                  webPosition: "center",
-                  webBgColor: "#4d4d4d",
-                );
-              },
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Icon(Remix.file_copy_2_line),
-                  SizedBox(
-                    width: 4.0,
-                  ),
-                  Text(
-                    "서울 영등포구 여의도동 16-2",
-                    style: TextStyle(
-                      decoration: TextDecoration.underline,
-                      color: Color(0xFF3E3E3E),
+                  Fluttertoast.showToast(
+                    msg: "✅ 복사 완료! 조심히 오셔요 🫶",
+                    toastLength: Toast.LENGTH_LONG,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 2,
+                    backgroundColor: Colors.black.withOpacity(0.7),
+                    textColor: Colors.white,
+                    webPosition: "center",
+                    webBgColor: "#4d4d4d",
+                  );
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFF6F6F6),
+                        borderRadius: BorderRadius.circular(50.0),
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10.0,
+                        vertical: 8.0,
+                      ),
+                      child: const Text(
+                        '구주소',
+                        style: TextStyle(
+                          fontSize: 12.0,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
-                  ),
-                ],
+                    const SizedBox(
+                      width: 8.0,
+                    ),
+                    const Text(
+                      "서울 영등포구 여의도동 16-2",
+                      style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Color(0xFF3E3E3E),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
@@ -809,7 +892,11 @@ class MapButton extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(mapImage),
+          Image.asset(
+            mapImage,
+            height: 64.0,
+            width: 64.0,
+          ),
           const SizedBox(
             height: 8.0,
           ),
