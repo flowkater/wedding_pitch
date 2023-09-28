@@ -31,7 +31,7 @@ class ScheduleTabView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(
-              height: 48.0,
+              height: 24.0,
             ),
             const Text(
               "💖 2023년 11월 4일 토요일 💖",

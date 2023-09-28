@@ -39,7 +39,7 @@ class _LocationTabViewState extends State<LocationTabView> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(
-                height: 48.0,
+                height: 24.0,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(
