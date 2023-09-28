@@ -122,6 +122,7 @@ flutter:
     - assets/images/cover/main-cover-01.jpg
     - assets/images/cover/main-cover-02.jpg
     - assets/images/cover/main-cover-03.jpg
+    - assets/images/cover/child-bg.png
 
     - assets/images/dancing/dancing01.png
     - assets/images/dancing/dancing02.png

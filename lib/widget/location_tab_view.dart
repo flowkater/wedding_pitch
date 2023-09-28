@@ -33,7 +33,6 @@ class _LocationTabViewState extends State<LocationTabView> {
         length: tabs.length,
         child: Container(
           padding: const EdgeInsets.symmetric(
-            horizontal: 24.0,
             vertical: 60.0,
           ),
           child: Column(
@@ -42,104 +41,119 @@ class _LocationTabViewState extends State<LocationTabView> {
               const SizedBox(
                 height: 48.0,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    "여의도 더파티움, 2층 파티움홀",
-                    style: TextStyle(
-                      fontSize: 19.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () async {
-                      await Clipboard.setData(
-                        const ClipboardData(text: "서울 영등포구 은행로 30 중소기업중앙회"),
-                      );
-
-                      Fluttertoast.showToast(
-                        msg: "✅ 복사 완료! 조심히 오셔요 🫶",
-                        toastLength: Toast.LENGTH_LONG,
-                        gravity: ToastGravity.BOTTOM,
-                        timeInSecForIosWeb: 2,
-                        backgroundColor: Colors.black.withOpacity(0.7),
-                        textColor: Colors.white,
-                        webPosition: "center",
-                        webBgColor: "#4d4d4d",
-                      );
-                    },
-                    child: Text(
-                      "주소 복사",
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24.0,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      "여의도 더파티움, 2층 파티움홀",
                       style: TextStyle(
-                        fontSize: 12.0,
-                        decoration: TextDecoration.underline,
-                        color: Colors.black.withAlpha(125),
+                        fontSize: 19.0,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 24.0,
-              ),
-              InkWell(
-                onTap: () {
-                  showDialog(
-                      context: context,
-                      builder: (context) {
-                        return const OpenMapDialog();
-                      });
-                },
-                child: Image.asset("assets/images/map.png"),
-              ),
-              const SizedBox(
-                height: 24.0,
-              ),
-              Container(
-                height: 52,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(32),
-                  color: const Color(0xFFF6F6F6),
+                    InkWell(
+                      onTap: () async {
+                        await Clipboard.setData(
+                          const ClipboardData(text: "서울 영등포구 은행로 30 중소기업중앙회"),
+                        );
+
+                        Fluttertoast.showToast(
+                          msg: "✅ 복사 완료! 조심히 오셔요 🫶",
+                          toastLength: Toast.LENGTH_LONG,
+                          gravity: ToastGravity.BOTTOM,
+                          timeInSecForIosWeb: 2,
+                          backgroundColor: Colors.black.withOpacity(0.7),
+                          textColor: Colors.white,
+                          webPosition: "center",
+                          webBgColor: "#4d4d4d",
+                        );
+                      },
+                      child: Text(
+                        "주소 복사",
+                        style: TextStyle(
+                          fontSize: 12.0,
+                          decoration: TextDecoration.underline,
+                          color: Colors.black.withAlpha(125),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
-                child: TabBar(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 8.0,
-                    horizontal: 8.0,
+              ),
+              const SizedBox(
+                height: 24.0,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24.0,
+                ),
+                child: InkWell(
+                  onTap: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return const OpenMapDialog();
+                        });
+                  },
+                  child: Image.asset("assets/images/map.png"),
+                ),
+              ),
+              const SizedBox(
+                height: 24.0,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24.0,
+                ),
+                child: Container(
+                  height: 52,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(32),
+                    color: const Color(0xFFF6F6F6),
                   ),
-                  indicator: BoxDecoration(
-                    borderRadius: BorderRadius.circular(23),
-                    color: Colors.white,
-                  ),
-                  indicatorPadding: EdgeInsets.zero,
-                  labelColor: Colors.black,
-                  labelStyle: const TextStyle(
-                    fontSize: 14.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  unselectedLabelColor: Colors.grey.withOpacity(0.4),
-                  unselectedLabelStyle: const TextStyle(
-                    fontSize: 14.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  indicatorSize: TabBarIndicatorSize.label,
-                  labelPadding: const EdgeInsets.symmetric(
-                    horizontal: 4,
-                  ),
-                  tabs: [
-                    for (var i = 0; i < tabs.length; i++)
-                      Tab(
-                        child: SizedBox(
-                          width: MediaQuery.of(context).size.width / 3.5,
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              tabs[i],
+                  child: TabBar(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 8.0,
+                      horizontal: 8.0,
+                    ),
+                    indicator: BoxDecoration(
+                      borderRadius: BorderRadius.circular(23),
+                      color: Colors.white,
+                    ),
+                    indicatorPadding: EdgeInsets.zero,
+                    labelColor: Colors.black,
+                    labelStyle: const TextStyle(
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    unselectedLabelColor: Colors.grey.withOpacity(0.4),
+                    unselectedLabelStyle: const TextStyle(
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    indicatorSize: TabBarIndicatorSize.label,
+                    labelPadding: const EdgeInsets.symmetric(
+                      horizontal: 4,
+                    ),
+                    tabs: [
+                      for (var i = 0; i < tabs.length; i++)
+                        Tab(
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width / 3.5,
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Text(
+                                tabs[i],
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               SizedBox(
@@ -165,6 +179,8 @@ class _LocationTabViewState extends State<LocationTabView> {
       topView: Container(
         padding: const EdgeInsets.only(
           top: 18.0,
+          left: 8.0,
+          right: 8.0,
         ),
         child: Column(
           children: [
@@ -341,7 +357,12 @@ class _LocationTabViewState extends State<LocationTabView> {
   LocationTabBarView _makeSubway() {
     return LocationTabBarView(
       topView: Container(
-        padding: const EdgeInsets.only(top: 18.0, bottom: 36.0),
+        padding: const EdgeInsets.only(
+          top: 18.0,
+          bottom: 36.0,
+          left: 8.0,
+          right: 8.0,
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -400,7 +421,10 @@ class _LocationTabViewState extends State<LocationTabView> {
   LocationTabBarView _makeVehichle() {
     return LocationTabBarView(
       topView: Container(
-        padding: const EdgeInsets.only(top: 18.0, bottom: 36.0),
+        padding: const EdgeInsets.only(
+          top: 18.0,
+          bottom: 36.0,
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -574,20 +598,25 @@ class LocationTabBarView extends StatelessWidget {
         children: [
           topView,
           bottomView != null
-              ? Container(
-                  width: MediaQuery.of(context).size.width,
+              ? Padding(
                   padding: const EdgeInsets.symmetric(
-                    vertical: 18.0,
                     horizontal: 24.0,
                   ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12.0),
-                    border: Border.all(
-                      color: Colors.black.withOpacity(0.1),
-                      width: 1.0,
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 18.0,
+                      horizontal: 24.0,
                     ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12.0),
+                      border: Border.all(
+                        color: Colors.black.withOpacity(0.1),
+                        width: 1.0,
+                      ),
+                    ),
+                    child: bottomView,
                   ),
-                  child: bottomView,
                 )
               : const SizedBox.shrink(),
         ],

@@ -140,7 +140,7 @@ class WeddingMainTitle extends StatelessWidget {
   }
 }
 
-class WeddingSubTitle extends StatelessWidget {
+class WeddingSubTitle extends StatefulWidget {
   final int coverIndex;
 
   const WeddingSubTitle({
@@ -148,69 +148,121 @@ class WeddingSubTitle extends StatelessWidget {
     super.key,
   });
 
-  bool isTop() => coverIndex == 1;
+  @override
+  State<WeddingSubTitle> createState() => _WeddingSubTitleState();
+}
+
+class _WeddingSubTitleState extends State<WeddingSubTitle>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation1;
+  late Animation<double> _animation2;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      duration: const Duration(seconds: 2),
+      vsync: this,
+    );
+
+    _animation1 = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.4, 0.7, curve: Curves.easeOut),
+      ),
+    );
+
+    _animation2 = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.7, 1.0, curve: Curves.easeOut),
+      ),
+    );
+
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  bool isTop() => widget.coverIndex == 1;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 24.0,
-      ),
-      child: Column(
-        mainAxisAlignment:
-            isTop() ? MainAxisAlignment.start : MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 48.0,
-              ),
-              Text(
-                "11월 4일,",
-                style: TextStyle(
-                  fontSize: 32.0,
-                  fontWeight: FontWeight.bold,
-                  color: isTop() ? Colors.black : Colors.white,
+    return AnimatedBuilder(
+        animation: _controller,
+        builder: (context, child) {
+          return Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 24.0,
+            ),
+            child: Column(
+              mainAxisAlignment:
+                  isTop() ? MainAxisAlignment.start : MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const SizedBox(
+                      height: 48.0,
+                    ),
+                    Text(
+                      "11월 4일,",
+                      style: TextStyle(
+                        fontSize: 32.0,
+                        fontWeight: FontWeight.bold,
+                        color: isTop() ? Colors.black : Colors.white,
+                      ),
+                    ),
+                    Text(
+                      "재우와 이경 결혼합니다",
+                      style: TextStyle(
+                        fontSize: 32.0,
+                        fontWeight: FontWeight.bold,
+                        color: isTop() ? Colors.black : Colors.white,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 12.0,
+                    ),
+                    Opacity(
+                      opacity: _animation1.value,
+                      child: Text(
+                        '↘ 2023년 11월 4일, 오후 4시 10분',
+                        style: TextStyle(
+                          fontSize: 15.0,
+                          color: isTop() ? Colors.black : Colors.white,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 4.0,
+                    ),
+                    Opacity(
+                      opacity: _animation2.value,
+                      child: Text(
+                        '↘ 여의도 더파티움 파티움홀 2층',
+                        style: TextStyle(
+                          fontSize: 15.0,
+                          color: isTop() ? Colors.black : Colors.white,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 48.0,
+                    ),
+                  ],
                 ),
-              ),
-              Text(
-                "재우와 이경 결혼합니다",
-                style: TextStyle(
-                  fontSize: 32.0,
-                  fontWeight: FontWeight.bold,
-                  color: isTop() ? Colors.black : Colors.white,
-                ),
-              ),
-              const SizedBox(
-                height: 12.0,
-              ),
-              Text(
-                '↘ 2023년 11월 4일, 오후 4시 10분',
-                style: TextStyle(
-                  fontSize: 15.0,
-                  color: isTop() ? Colors.black : Colors.white,
-                ),
-              ),
-              const SizedBox(
-                height: 4.0,
-              ),
-              Text(
-                '↘ 여의도 더파티움 파티움홀 2층',
-                style: TextStyle(
-                  fontSize: 15.0,
-                  color: isTop() ? Colors.black : Colors.white,
-                ),
-              ),
-              const SizedBox(
-                height: 48.0,
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
+              ],
+            ),
+          );
+        });
   }
 }

@@ -116,7 +116,7 @@ class _CeremonyTabViewState extends State<CeremonyTabView> {
             _makeSection(
               context,
               number: "2",
-              title: "예식 전 입사드려요!",
+              title: "예식 전 인사드려요!",
               description: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

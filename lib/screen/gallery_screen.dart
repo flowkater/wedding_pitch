@@ -62,6 +62,19 @@ class _GalleryScreenState extends State<GalleryScreen> {
           _videoController.setVolume(0);
         },
       );
+    _videoController.addListener(() {
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    _videoController.removeListener(() {
+      setState(() {});
+    });
+
+    _videoController.dispose();
+    super.dispose();
   }
 
   @override
@@ -190,6 +203,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
           ),
         ),
         _soundButton(),
+        _remainigTimeText(),
       ],
     );
   }
@@ -267,6 +281,41 @@ class _GalleryScreenState extends State<GalleryScreen> {
                         color: Colors.white,
                       ),
               ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _remainigTimeText() {
+    final Duration remaining =
+        _videoController.value.duration - _videoController.value.position;
+    final String minutes =
+        (remaining.inMinutes % 60).toString().padLeft(2, '0');
+    final String seconds =
+        (remaining.inSeconds % 60).toString().padLeft(2, '0');
+
+    return Positioned(
+      top: 20.0,
+      right: 20.0,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.black.withOpacity(0.2),
+          borderRadius: BorderRadius.circular(50.0),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: 8.0,
+            horizontal: 12.0,
+          ),
+          child: Center(
+            child: Text(
+              '$minutes:$seconds',
+              style: const TextStyle(
+                fontSize: 14.0,
+                color: Colors.white,
+              ),
             ),
           ),
         ),

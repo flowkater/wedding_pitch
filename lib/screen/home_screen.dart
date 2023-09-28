@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:wedding_pitch/screen/baby_screen.dart';
 import 'package:wedding_pitch/style/size.dart';
 import 'package:wedding_pitch/widget/wedding_title.dart';
 
@@ -30,6 +31,17 @@ class _HomeScreenState extends State<HomeScreen>
   late Animation<double> _scaleAnimation;
   late Animation<double> _opacityAnimation;
 
+  int _currentPageIndex = 0;
+
+  void _onPageChanged() {
+    final int nextPageIndex = _pageController.page!.round();
+    if (_currentPageIndex != nextPageIndex) {
+      setState(() {
+        _currentPageIndex = nextPageIndex;
+      });
+    }
+  }
+
   void _onTap(int index) {
     _pageController.animateToPage(
       index,
@@ -41,6 +53,8 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   void initState() {
     super.initState();
+
+    _pageController.addListener(_onPageChanged);
 
     _scaleAnimation =
         Tween<double>(begin: 2.0, end: 1).animate(widget.animationController);
@@ -54,6 +68,8 @@ class _HomeScreenState extends State<HomeScreen>
 
   @override
   void dispose() {
+    _pageController.removeListener(_onPageChanged);
+
     _pageController.dispose();
     super.dispose();
   }
@@ -84,11 +100,23 @@ class _HomeScreenState extends State<HomeScreen>
                       sigmaX: !isInNavigation ? 30.0 : 0.0,
                       sigmaY: !isInNavigation ? 30.0 : 0.0,
                     ),
-                    child: Image.asset(
-                      widget.coverImage,
-                      height: screenHeight + 30,
-                      width: screenWidth + 30,
-                      fit: BoxFit.cover,
+                    child: AnimatedCrossFade(
+                      duration: const Duration(milliseconds: 500),
+                      firstChild: Image.asset(
+                        widget.coverImage,
+                        height: screenHeight + 30,
+                        width: screenWidth + 30,
+                        fit: BoxFit.cover,
+                      ),
+                      secondChild: Image.asset(
+                        "assets/images/cover/child-bg.png",
+                        height: screenHeight + 30,
+                        width: screenWidth + 30,
+                        fit: BoxFit.cover,
+                      ),
+                      crossFadeState: _currentPageIndex == 0
+                          ? CrossFadeState.showFirst
+                          : CrossFadeState.showSecond,
                     ),
                   ),
                 );
@@ -109,10 +137,10 @@ class _HomeScreenState extends State<HomeScreen>
                             controller: _pageController,
                             scrollDirection: Axis.vertical,
                             children: [
-                              // WeddingMainTitle(widget: widget, onTap: () => _onTap(1)),
                               WeddingSubTitle(
                                 coverIndex: widget.coverIndex,
                               ),
+                              const BabyScreen()
                             ],
                           ),
                         ),
