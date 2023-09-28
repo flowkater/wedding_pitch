@@ -199,7 +199,7 @@ class _CeremonyTabViewState extends State<CeremonyTabView> {
                     children: [
                       Container(
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 23.0,
+                          horizontal: 10.0,
                           vertical: 6.0,
                         ),
                         decoration: BoxDecoration(

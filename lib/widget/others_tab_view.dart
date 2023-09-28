@@ -40,6 +40,7 @@ class _OthersTabViewState extends State<OthersTabView> {
               ),
               backgroundColor: Colors.white,
               iconColor: const Color(0xFFFF3C82),
+              iconBottom: 4.0,
               title: "마음 전하실 곳",
               description: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,7 +63,7 @@ class _OthersTabViewState extends State<OthersTabView> {
                       );
 
                       Fluttertoast.showToast(
-                        msg: "✅ 은행과 계좌번호 복사 완료! 붙여넣을 수 있어요",
+                        msg: "✅ 복사 완료! 계좌 정보를 붙여넣을 수 있습니다",
                         toastLength: Toast.LENGTH_LONG,
                         gravity: ToastGravity.BOTTOM,
                         timeInSecForIosWeb: 2,
@@ -123,7 +124,7 @@ class _OthersTabViewState extends State<OthersTabView> {
                         const ClipboardData(text: "신한은행 110-354-982959"),
                       );
                       Fluttertoast.showToast(
-                        msg: "✅ 은행과 계좌번호 복사 완료! 붙여넣을 수 있어요",
+                        msg: "✅ 복사 완료! 계좌 정보를 붙여넣을 수 있습니다",
                         toastLength: Toast.LENGTH_LONG,
                         gravity: ToastGravity.BOTTOM,
                         timeInSecForIosWeb: 2,
@@ -189,6 +190,7 @@ class _OthersTabViewState extends State<OthersTabView> {
                 size: 20.0,
               ),
               iconColor: const Color(0xFFFF823C),
+              iconBottom: 6.0,
               title: "식사 안내",
               description: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -251,6 +253,7 @@ class _OthersTabViewState extends State<OthersTabView> {
                 size: 20.0,
               ),
               iconColor: const Color(0xFFFF823C),
+              iconBottom: 6.0,
               title: "주차 안내",
               description: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -323,6 +326,7 @@ class _OthersTabViewState extends State<OthersTabView> {
     BuildContext context, {
     required Icon icon,
     required Color iconColor,
+    required double iconBottom,
     required String title,
     required Widget description,
     Color backgroundColor = const Color(0xFFF9F9F9),
@@ -331,7 +335,7 @@ class _OthersTabViewState extends State<OthersTabView> {
       padding: const EdgeInsets.all(16.0),
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(16.0),
         color: backgroundColor,
         border: backgroundColor == Colors.white
             ? Border.all(
@@ -346,6 +350,7 @@ class _OthersTabViewState extends State<OthersTabView> {
           _cirleIcon(
             icon: icon,
             iconColor: iconColor,
+            bottom: iconBottom,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(
@@ -368,7 +373,8 @@ class _OthersTabViewState extends State<OthersTabView> {
     );
   }
 
-  Widget _cirleIcon({required Icon icon, required Color iconColor}) {
+  Widget _cirleIcon(
+      {required Icon icon, required Color iconColor, required double bottom}) {
     return Container(
       width: 32.0,
       height: 32.0,
@@ -381,8 +387,8 @@ class _OthersTabViewState extends State<OthersTabView> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           icon,
-          const SizedBox(
-            height: 2.0,
+          SizedBox(
+            height: bottom,
           )
         ],
       ),

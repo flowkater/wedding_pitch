@@ -66,6 +66,9 @@ class WeddingMainTitle extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
+              const SizedBox(
+                height: 10.0,
+              ),
               const Text(
                 "여의도 더파티움 파티움홀 2층",
                 style: TextStyle(

@@ -255,7 +255,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
           ),
           child: Padding(
             padding: const EdgeInsets.only(
-              top: 8.0,
+              top: 4.0,
               bottom: 10.0,
               left: 12.0,
               right: 12.0,
@@ -301,23 +301,17 @@ class _GalleryScreenState extends State<GalleryScreen> {
     return Positioned(
       top: 20.0,
       right: 20.0,
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.black.withOpacity(0.2),
-          borderRadius: BorderRadius.circular(50.0),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          vertical: 8.0,
+          horizontal: 12.0,
         ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 8.0,
-            horizontal: 12.0,
-          ),
-          child: Center(
-            child: Text(
-              '$minutes:$seconds',
-              style: const TextStyle(
-                fontSize: 14.0,
-                color: Colors.white,
-              ),
+        child: Center(
+          child: Text(
+            '$minutes:$seconds',
+            style: const TextStyle(
+              fontSize: 14.0,
+              color: Colors.white,
             ),
           ),
         ),
