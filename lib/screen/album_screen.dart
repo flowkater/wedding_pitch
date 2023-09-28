@@ -93,7 +93,7 @@ class _AlbumScreenState extends State<AlbumScreen> {
                   );
                 },
                 child: const Text(
-                  "오색 꽃밫",
+                  "오색 꽃밭",
                   style: TextStyle(
                     fontSize: 14.0,
                     color: Colors.white,

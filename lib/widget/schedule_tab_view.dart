@@ -34,7 +34,7 @@ class ScheduleTabView extends StatelessWidget {
               height: 48.0,
             ),
             const Text(
-              "2023년 11월 4일",
+              "💖 2023년 11월 4일 토요일 💖",
               style: TextStyle(
                 fontSize: 18.0,
                 fontWeight: FontWeight.bold,
@@ -82,7 +82,7 @@ class ScheduleTabView extends StatelessWidget {
                   const Text(
                     "이경과 재우의 결혼식까지",
                     style: TextStyle(
-                      fontSize: 14.0,
+                      fontSize: 15.0,
                       color: Colors.black,
                       fontWeight: FontWeight.w500,
                       height: 1.2,
@@ -94,7 +94,7 @@ class ScheduleTabView extends StatelessWidget {
                   Text(
                     "♥ ${_getTimeRemaining()} ♥",
                     style: const TextStyle(
-                      fontSize: 14.0,
+                      fontSize: 15.0,
                       color: Color(0xFFFF483C),
                       fontWeight: FontWeight.w600,
                       height: 1.2,

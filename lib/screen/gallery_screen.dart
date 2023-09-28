@@ -230,7 +230,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
         ),
         child: const Center(
           child: Text(
-            "재우와 이경의 사진 보기 →",
+            "재우와 이경의 사진 보기 ↑",
             style: TextStyle(
               fontSize: 16.0,
               fontWeight: FontWeight.bold,
@@ -254,9 +254,11 @@ class _GalleryScreenState extends State<GalleryScreen> {
             borderRadius: BorderRadius.circular(50.0),
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 8.0,
-              horizontal: 12.0,
+            padding: const EdgeInsets.only(
+              top: 8.0,
+              bottom: 10.0,
+              left: 12.0,
+              right: 12.0,
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,

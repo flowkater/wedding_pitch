@@ -129,7 +129,7 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
                                 tabs[i],
                                 style: const TextStyle(
                                   fontSize: 15,
-                                  fontWeight: FontWeight.w500,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),

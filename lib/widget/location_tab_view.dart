@@ -650,6 +650,14 @@ class OpenMapDialog extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const Text(
+              "⚡ ️네비앱으로 바로 연결할 수 있어요 ⚡️",
+              style: TextStyle(
+                  fontSize: 14.0, fontWeight: FontWeight.bold, height: 1.5),
+            ),
+            const SizedBox(
+              height: 16.0,
+            ),
             const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -680,12 +688,27 @@ class OpenMapDialog extends StatelessWidget {
               ],
             ),
             const SizedBox(
-              height: 32.0,
+              height: 16.0,
+            ),
+            Divider(
+              color: Colors.black.withOpacity(0.1),
+              thickness: 1.0,
+            ),
+            const SizedBox(
+              height: 16.0,
+            ),
+            const Text(
+              "⚡ ️아래 주소를 클릭하면 복사할 수 있어요 ⚡️",
+              style: TextStyle(
+                  fontSize: 14.0, fontWeight: FontWeight.bold, height: 1.5),
+            ),
+            const SizedBox(
+              height: 16.0,
             ),
             InkWell(
               onTap: () async {
                 await Clipboard.setData(
-                  const ClipboardData(text: "서울 영등포구 은행로 30 중소기업중앙회"),
+                  const ClipboardData(text: "서울 영등포구 은행로 30"),
                 );
 
                 Fluttertoast.showToast(
@@ -708,9 +731,10 @@ class OpenMapDialog extends StatelessWidget {
                     width: 4.0,
                   ),
                   Text(
-                    "서울 영등포구 은행로 30 중소기업중앙회",
+                    "서울 영등포구 은행로 30",
                     style: TextStyle(
                       decoration: TextDecoration.underline,
+                      color: Color(0xFF3E3E3E),
                     ),
                   ),
                 ],
@@ -748,6 +772,7 @@ class OpenMapDialog extends StatelessWidget {
                     "서울 영등포구 여의도동 16-2",
                     style: TextStyle(
                       decoration: TextDecoration.underline,
+                      color: Color(0xFF3E3E3E),
                     ),
                   ),
                 ],
@@ -792,7 +817,6 @@ class MapButton extends StatelessWidget {
             mapName,
             style: const TextStyle(
               fontSize: 16.0,
-              fontWeight: FontWeight.bold,
             ),
           )
         ],
