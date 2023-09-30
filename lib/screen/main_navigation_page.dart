@@ -1,10 +1,12 @@
 import 'dart:ui';
 
+import 'package:boxicons/boxicons.dart';
 import 'package:flutter/material.dart';
 import 'package:remixicon/remixicon.dart';
 import 'package:wedding_pitch/screen/gallery_screen.dart';
 import 'package:wedding_pitch/screen/home_screen.dart';
 import 'package:wedding_pitch/screen/info_screen.dart';
+import 'package:wedding_pitch/style/color.dart';
 import 'package:wedding_pitch/utils/get_random_image.dart';
 import 'package:wedding_pitch/widget/nav_tab.dart';
 
@@ -110,18 +112,21 @@ class _MainNavigationPageState extends State<MainNavigationPage>
                     icon: Remix.cake_2_line,
                     selectedIcon: Remix.cake_2_fill,
                     onTap: () => _onTap(0),
+                    tabColor: WeddingColor.mainTabColor,
                   ),
                   NavTab(
                     isSelected: _selectedIndex == 1,
-                    icon: Remix.star_s_line,
-                    selectedIcon: Remix.star_s_fill,
+                    icon: Boxicons.bx_gift,
+                    selectedIcon: Boxicons.bx_gift,
                     onTap: () => _onTap(1),
+                    tabColor: WeddingColor.galleryTabColor,
                   ),
                   NavTab(
                     isSelected: _selectedIndex == 2,
-                    icon: Remix.map_pin_2_line,
-                    selectedIcon: Remix.map_pin_2_fill,
+                    icon: Boxicons.bx_map,
+                    selectedIcon: Boxicons.bx_map,
                     onTap: () => _onTap(2),
+                    tabColor: WeddingColor.infoTabColor,
                   ),
                 ],
               ),
