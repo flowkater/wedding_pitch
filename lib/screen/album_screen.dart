@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:just_audio/just_audio.dart';
+// import 'package:just_audio/just_audio.dart';
 import 'package:remixicon/remixicon.dart';
 import 'package:wedding_pitch/model/photo_model.dart';
 import 'package:wedding_pitch/style/size.dart';
@@ -18,7 +18,7 @@ class AlbumScreen extends StatefulWidget {
 class _AlbumScreenState extends State<AlbumScreen> {
   final AutoScrollController _controller = AutoScrollController();
   final FocusNode _focusNode = FocusNode();
-  final player = AudioPlayer();
+  // final player = AudioPlayer();
   double currentOffset = 0;
   bool currentOffsetIsOver = false;
 
@@ -26,8 +26,8 @@ class _AlbumScreenState extends State<AlbumScreen> {
   void initState() {
     super.initState();
 
-    player.setUrl('assets/images/album-bgm.mp3');
-    player.play();
+    // player.setUrl('assets/images/album-bgm.mp3');
+    // player.play();
 
     _controller.addListener(() {
       if (_controller.offset > 5000 && !currentOffsetIsOver) {
@@ -48,15 +48,15 @@ class _AlbumScreenState extends State<AlbumScreen> {
     super.dispose();
   }
 
-  void _toggleAudio() {
-    if (player.playing) {
-      player.pause();
-      setState(() {});
-    } else {
-      player.play();
-      setState(() {});
-    }
-  }
+  // void _toggleAudio() {
+  //   if (player.playing) {
+  //     player.pause();
+//     setState(() {});
+  //   } else {
+  //     player.play();
+  //     setState(() {});
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -108,19 +108,19 @@ class _AlbumScreenState extends State<AlbumScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              InkWell(
-                onTap: _toggleAudio,
-                child: _bottomIconButton(
-                  iconData:
-                      player.playing ? Remix.music_2_fill : Remix.close_line,
-                  padding: EdgeInsets.only(
-                    top: paddingHorizontal,
-                    bottom: paddingHorizontal + 4,
-                    left: paddingVertical * 3 / 4,
-                    right: paddingVertical * 1 / 4,
-                  ),
-                ),
-              ),
+              // InkWell(
+              //   onTap: _toggleAudio,
+              //   child: _bottomIconButton(
+              //     iconData:
+              //         player.playing ? Remix.music_2_fill : Remix.close_line,
+              //     padding: EdgeInsets.only(
+              //       top: paddingHorizontal,
+              //       bottom: paddingHorizontal + 4,
+              //       left: paddingVertical * 3 / 4,
+              //       right: paddingVertical * 1 / 4,
+              //     ),
+              //   ),
+              // ),
               Container(
                 height: 12,
                 width: 0.2,
@@ -201,7 +201,7 @@ class _AlbumScreenState extends State<AlbumScreen> {
               InkWell(
                 onTap: () {
                   context.pop(true);
-                  player.stop();
+                  // player.stop();
                 },
                 child: _bottomIconButton(
                   iconData: Remix.close_circle_fill,

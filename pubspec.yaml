@@ -33,7 +33,7 @@ dependencies:
   flutter_svg: ^2.0.7
   remixicon: ^1.0.0
   video_player: ^2.7.1
-  just_audio: ^0.9.35
+  # just_audio: ^0.9.35
   url_launcher: ^6.1.14
   boxicons: ^2.1.3
   scroll_to_index: ^3.0.1
