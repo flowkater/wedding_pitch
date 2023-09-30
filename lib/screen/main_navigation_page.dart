@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:boxicons/boxicons.dart';
 import 'package:flutter/material.dart';
-import 'package:remixicon/remixicon.dart';
 import 'package:wedding_pitch/screen/gallery_screen.dart';
 import 'package:wedding_pitch/screen/home_screen.dart';
 import 'package:wedding_pitch/screen/info_screen.dart';
@@ -109,8 +108,8 @@ class _MainNavigationPageState extends State<MainNavigationPage>
                 children: [
                   NavTab(
                     isSelected: _selectedIndex == 0,
-                    icon: Remix.cake_2_line,
-                    selectedIcon: Remix.cake_2_fill,
+                    icon: Boxicons.bx_cool,
+                    selectedIcon: Boxicons.bx_cool,
                     onTap: () => _onTap(0),
                     tabColor: WeddingColor.mainTabColor,
                   ),
