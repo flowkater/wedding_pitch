@@ -91,11 +91,16 @@ class _GalleryScreenState extends State<GalleryScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/images/gallery_bg.png"),
+                fit: BoxFit.cover,
+              ),
+            ),
             padding: const EdgeInsets.only(
               left: 24.0,
               right: 24.0,
             ),
-            color: Colors.white,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -145,15 +150,9 @@ class _GalleryScreenState extends State<GalleryScreen> {
             ),
           ),
           const SizedBox(height: 12.0),
-          Text(
-            "동백과 같은 마음과 태도로\n함께하는 이 길을 사랑하겠습니다",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 16.0,
-              fontWeight: FontWeight.w500,
-              height: 1.4,
-              color: const Color(0xFF3E3E3E).withOpacity(0.8),
-            ),
+          Image.asset(
+            "assets/images/gallery_headline.png",
+            fit: BoxFit.cover,
           ),
         ],
       ),

@@ -173,8 +173,8 @@ class _AlbumScreenState extends State<AlbumScreen> {
                   padding: EdgeInsets.only(
                     top: paddingHorizontal,
                     bottom: paddingHorizontal + 4,
-                    left: paddingVertical * 1 / 4,
-                    right: paddingVertical * 3 / 4,
+                    left: paddingVertical * 1 / 2,
+                    right: paddingVertical * 1 / 2,
                   ),
                 ),
               ),
