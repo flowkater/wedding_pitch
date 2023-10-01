@@ -27,6 +27,21 @@ class _GalleryScreenState extends State<GalleryScreen> {
     });
   }
 
+  String _errorMessage = "";
+
+  String errorMessage(VideoPlayerController controller) {
+    if (controller.value.hasError) {
+      return controller.value.errorDescription ?? 'Error';
+    }
+    if (!controller.value.isInitialized) {
+      return 'Loading...';
+    }
+    // if (controller.value.hasError) {
+    //   return controller.value.errorDescription ?? 'Error';
+    // }
+    return '';
+  }
+
   void _toggleVolume(bool soundOn) {
     if (soundOn) {
       _videoController.setVolume(1);
@@ -55,15 +70,20 @@ class _GalleryScreenState extends State<GalleryScreen> {
   @override
   void initState() {
     super.initState();
+    print("initState gallery Screen");
+
     _videoController = VideoPlayerController.asset("assets/images/hd.mp4")
       ..initialize().then(
         (_) {
           _videoController.setLooping(true);
           _videoController.setVolume(0);
+          setState(() {});
         },
       );
     _videoController.addListener(() {
-      setState(() {});
+      setState(() {
+        _errorMessage = errorMessage(_videoController);
+      });
     });
   }
 
@@ -146,7 +166,9 @@ class _GalleryScreenState extends State<GalleryScreen> {
           ),
           const SizedBox(height: 12.0),
           Text(
-            "동백과 같은 마음과 태도로\n함께하는 이 길을 사랑하겠습니다",
+            _errorMessage == ""
+                ? "동백과 같은 마음과 태도로\n함께하는 이 길을 사랑하겠습니다"
+                : _errorMessage,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 16.0,
