@@ -90,11 +90,11 @@ class _NavTabState extends State<NavTab> with SingleTickerProviderStateMixin {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
-                          padding: EdgeInsets.only(
+                          padding: const EdgeInsets.only(
                             left: 30.0,
                             right: 30.0,
-                            top: 6.0,
-                            bottom: linearFunction(_sizeAnimation.value),
+                            top: 2.0,
+                            bottom: 6.0,
                           ),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(50.0),
@@ -102,14 +102,17 @@ class _NavTabState extends State<NavTab> with SingleTickerProviderStateMixin {
                                 ? widget.tabColor.withOpacity(0.2)
                                 : Colors.black.withOpacity(0.1),
                           ),
-                          child: Icon(
-                            widget.isSelected
-                                ? widget.selectedIcon
-                                : widget.icon,
-                            color: widget.isSelected
-                                ? widget.tabColor
-                                : Colors.black,
-                            size: _sizeAnimation.value,
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 1.0),
+                            child: Icon(
+                              widget.isSelected
+                                  ? widget.selectedIcon
+                                  : widget.icon,
+                              color: widget.isSelected
+                                  ? widget.tabColor
+                                  : Colors.black,
+                              size: _sizeAnimation.value,
+                            ),
                           ),
                         ),
                         const SizedBox(
