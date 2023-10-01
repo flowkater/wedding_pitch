@@ -155,10 +155,11 @@ class _BabyScreenState extends State<BabyScreen>
                   alignment: Alignment.bottomCenter,
                   child: Transform.translate(
                     offset: Offset(0, _bounceAnimation.value),
-                    child: const Text(
+                    child: Text(
                       '화면을 터치하면 사진이 바뀌어요 👀',
                       style: TextStyle(
-                        backgroundColor: Color(0XFFDBFF00),
+                        backgroundColor:
+                            const Color(0XFFDBFF00).withOpacity(0.5),
                       ),
                     ),
                   ),

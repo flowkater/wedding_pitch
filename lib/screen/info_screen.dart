@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:wedding_pitch/style/size.dart';
 import 'package:wedding_pitch/widget/ceremony_tab_view.dart';
 import 'package:wedding_pitch/widget/location_tab_view.dart';
 import 'package:wedding_pitch/widget/others_tab_view.dart';
@@ -64,6 +65,14 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final appSize = AppSize.getMaxSize(
+      MediaQuery.of(context).size.width,
+      MediaQuery.of(context).size.height,
+    );
+
+    final screenWidth = appSize.width;
+    final tabWidth = screenWidth / (tabs.length + 1);
+
     return DefaultTabController(
       length: tabs.length,
       child: Scaffold(
@@ -118,7 +127,7 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
                       animation: tabWidthAnimationControllers[i],
                       builder: (context, child) {
                         double widthFactor =
-                            90 + tabWidthAnimationControllers[i].value;
+                            tabWidth + tabWidthAnimationControllers[i].value;
 
                         return Tab(
                           child: SizedBox(

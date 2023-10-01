@@ -145,7 +145,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
             ),
             width: 60.0,
             child: Image.asset(
-              "assets/images/flower.png",
+              "assets/images/flower.gif",
               fit: BoxFit.cover,
             ),
           ),

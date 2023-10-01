@@ -113,6 +113,7 @@ flutter:
     - assets/images/navermap.png
     - assets/images/tmap.png
     - assets/images/flower.png
+    - assets/images/flower.gif
     - assets/images/gallery_bg.png
     - assets/images/gallery_headline.png
     - assets/images/jwik.gif
