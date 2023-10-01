@@ -7,12 +7,14 @@ class NavTab extends StatelessWidget {
     required this.icon,
     required this.onTap,
     required this.selectedIcon,
+    required this.tabColor,
   });
 
   final bool isSelected;
   final IconData icon;
   final IconData selectedIcon;
   final Function onTap;
+  final Color tabColor;
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +35,21 @@ class NavTab extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 30.0,
-                      vertical: 6.0,
+                    padding: const EdgeInsets.only(
+                      left: 30.0,
+                      right: 30.0,
+                      top: 6.0,
+                      bottom: 8.0,
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50.0),
+                      color: isSelected
+                          ? tabColor.withOpacity(0.2)
+                          : Colors.black.withOpacity(0.1),
                     ),
                     child: Icon(
                       isSelected ? selectedIcon : icon,
-                      color: Colors.black,
+                      color: isSelected ? tabColor : Colors.black,
                       size: 20.0,
                     ),
                   ),

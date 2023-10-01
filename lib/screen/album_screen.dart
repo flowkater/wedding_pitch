@@ -44,7 +44,10 @@ class _AlbumScreenState extends State<AlbumScreen> {
     );
 
     final screenWidth = appSize.width;
-    // final screenHeight = appSize.height;
+    final screenHeight = appSize.height;
+
+    final paddingHorizontal = screenWidth * 0.05 - 2;
+    final paddingVertical = screenHeight * 0.05 - 6;
 
     return Scaffold(
       backgroundColor: currentOffsetIsOver ? Colors.black : Colors.white,
@@ -57,20 +60,30 @@ class _AlbumScreenState extends State<AlbumScreen> {
             left: 12.0,
             right: 12.0,
             bottom: 24.0,
-            child: _bottomButton(context),
+            child: _bottomButton(
+              context,
+              paddingHorizontal: paddingHorizontal,
+              paddingVertical: paddingVertical,
+            ),
           ),
         ],
       ),
     );
   }
 
-  Widget _bottomButton(BuildContext context) {
+  Widget _bottomButton(
+    BuildContext context, {
+    required double paddingHorizontal,
+    required double paddingVertical,
+  }) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(50.0),
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 16.0,
+          ),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(50.0),
             color: Colors.black.withOpacity(0.1),
@@ -92,17 +105,15 @@ class _AlbumScreenState extends State<AlbumScreen> {
                     preferPosition: AutoScrollPosition.begin,
                   );
                 },
-                child: const Text(
-                  "오색 꽃밭",
-                  style: TextStyle(
-                    fontSize: 14.0,
-                    color: Colors.white,
-                  ),
+                child: _scrollButton(
+                  text: "첫번째",
+                  paddingHorizontal: paddingHorizontal,
+                  paddingVertical: paddingVertical,
                 ),
               ),
               Container(
                 height: 12,
-                width: 0.5,
+                width: 0.2,
                 color: Colors.white,
               ),
               InkWell(
@@ -118,17 +129,15 @@ class _AlbumScreenState extends State<AlbumScreen> {
                     preferPosition: AutoScrollPosition.begin,
                   );
                 },
-                child: const Text(
-                  "초록 여름",
-                  style: TextStyle(
-                    fontSize: 14.0,
-                    color: Colors.white,
-                  ),
+                child: _scrollButton(
+                  text: "두번째",
+                  paddingHorizontal: paddingHorizontal,
+                  paddingVertical: paddingVertical,
                 ),
               ),
               Container(
                 height: 12,
-                width: 0.5,
+                width: 0.2,
                 color: Colors.white,
               ),
               InkWell(
@@ -144,31 +153,73 @@ class _AlbumScreenState extends State<AlbumScreen> {
                     preferPosition: AutoScrollPosition.begin,
                   );
                 },
-                child: const Text(
-                  "쪽빛 바다",
-                  style: TextStyle(
-                    fontSize: 14.0,
-                    color: Colors.white,
-                  ),
+                child: _scrollButton(
+                  text: "세번째",
+                  paddingHorizontal: paddingHorizontal,
+                  paddingVertical: paddingVertical,
                 ),
               ),
               Container(
                 height: 12,
-                width: 0.5,
+                width: 0.2,
                 color: Colors.white,
               ),
               InkWell(
                 onTap: () {
                   context.pop(true);
                 },
-                child: const Icon(
-                  Remix.close_circle_fill,
-                  color: Colors.white,
+                child: _bottomIconButton(
+                  iconData: Remix.close_circle_fill,
+                  padding: EdgeInsets.only(
+                    top: paddingHorizontal,
+                    bottom: paddingHorizontal + 4,
+                    left: paddingVertical * 1 / 4,
+                    right: paddingVertical * 3 / 4,
+                  ),
                 ),
               ),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Container _scrollButton({
+    required String text,
+    required paddingVertical,
+    required paddingHorizontal,
+  }) {
+    return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: paddingHorizontal,
+        vertical: paddingVertical * 1 / 2,
+      ),
+      child: Text(
+        text,
+        style: const TextStyle(
+          fontSize: 14.0,
+          color: Colors.white,
+        ),
+      ),
+    );
+  }
+
+  Container _bottomIconButton({
+    required IconData iconData,
+    EdgeInsetsGeometry? padding,
+  }) {
+    return Container(
+      padding: padding ??
+          const EdgeInsets.only(
+            top: 20.0,
+            bottom: 20.0,
+            left: 20.0,
+            right: 20.0,
+          ),
+      child: Icon(
+        iconData,
+        color: Colors.white,
       ),
     );
   }

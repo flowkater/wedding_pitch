@@ -8,4 +8,8 @@ class WeddingColor {
   static const Color albumForestColor = Color(0xFF021107);
   static const Color albumSeaColor = Color(0xFF000000);
   static const Color redColor = Color(0xFFFF483C);
+
+  static const Color mainTabColor = Color(0xFFF34E72);
+  static const Color galleryTabColor = Color(0xFFFFAC2F);
+  static const Color infoTabColor = Color(0xFF17C11D);
 }
