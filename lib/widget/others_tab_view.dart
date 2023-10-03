@@ -444,7 +444,7 @@ class _OthersTabViewState extends State<OthersTabView> {
               ),
             ),
             TextSpan(
-              text: transportation != null ? "($transportation)" : "",
+              text: transportation != null ? "($transportation)" : " ",
               style: const TextStyle(
                 fontSize: 15.0,
                 color: Color(0xFF3E3E3E),
