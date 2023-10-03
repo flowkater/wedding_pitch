@@ -26,7 +26,7 @@ class LinkCopyWidget extends StatelessWidget {
           InkWell(
             onTap: () async {
               await Clipboard.setData(
-                const ClipboardData(text: "https://bitly.com"),
+                const ClipboardData(text: "http://jwik1104.com/welcome"),
               );
 
               Fluttertoast.showToast(
