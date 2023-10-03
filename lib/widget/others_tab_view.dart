@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:remixicon/remixicon.dart';
 import 'package:url_launcher/url_launcher_string.dart';
+import 'package:wedding_pitch/widget/link_copy_text.dart';
 
 class OthersTabView extends StatefulWidget {
   const OthersTabView({super.key});
@@ -356,49 +357,7 @@ class _OthersTabViewState extends State<OthersTabView> {
             const SizedBox(
               height: 24.0,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 21.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const Icon(
-                    Boxicons.bx_link_alt,
-                    color: Color(0xFF6B7280),
-                    size: 18.0,
-                  ),
-                  const SizedBox(width: 10.0),
-                  InkWell(
-                    onTap: () async {
-                      await Clipboard.setData(
-                        const ClipboardData(text: "https://bitly.com"),
-                      );
-
-                      Fluttertoast.showToast(
-                        msg: "✅ 복사 완료!",
-                        toastLength: Toast.LENGTH_LONG,
-                        gravity: ToastGravity.BOTTOM,
-                        timeInSecForIosWeb: 2,
-                        backgroundColor: Colors.black.withOpacity(0.7),
-                        textColor: Colors.white,
-                        webPosition: "center",
-                        webBgColor: "#4d4d4d",
-                      );
-                    },
-                    child: const Text(
-                      "청첩장 링크 복사하기",
-                      style: TextStyle(
-                        fontSize: 14.0,
-                        color: Color(0xFF6B7280),
-                        fontWeight: FontWeight.w500,
-                        decoration: TextDecoration.underline,
-                        height: 1.2,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
+            const LinkCopyWidget(),
             const SizedBox(
               height: 24.0,
             ),

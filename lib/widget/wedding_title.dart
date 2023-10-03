@@ -70,7 +70,7 @@ class WeddingMainTitle extends StatelessWidget {
                 height: 10.0,
               ),
               const Text(
-                "여의도 더파티움 파티움홀 2층",
+                "여의도 더파티움, 파티움홀 2층",
                 style: TextStyle(
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,
@@ -261,7 +261,7 @@ class _WeddingSubTitleState extends State<WeddingSubTitle>
                   Opacity(
                     opacity: _animation2.value,
                     child: Text(
-                      '↘ 여의도 더파티움 파티움홀 2층',
+                      '↘ 여의도 더파티움, 파티움홀 2층',
                       style: TextStyle(
                         fontSize: 15.0,
                         color: isTop() ? Colors.black : Colors.white,

@@ -1,6 +1,7 @@
 import 'package:boxicons/boxicons.dart';
 import 'package:flutter/material.dart';
 import 'package:remixicon/remixicon.dart';
+import 'package:wedding_pitch/widget/link_copy_text.dart';
 
 class CeremonyTabView extends StatefulWidget {
   const CeremonyTabView({super.key});
@@ -384,6 +385,10 @@ class _CeremonyTabViewState extends State<CeremonyTabView> {
                 ],
               ),
             ),
+            const SizedBox(
+              height: 24.0,
+            ),
+            const LinkCopyWidget(),
             const SizedBox(
               height: 24.0,
             ),

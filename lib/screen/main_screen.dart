@@ -53,7 +53,7 @@ class MainScreen extends StatelessWidget {
                       vertical: 8.0,
                     ),
                     child: const Text(
-                      "여의도 더파티움 파티움홀 2층",
+                      "여의도 더파티움, 2층 파티움홀",
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,

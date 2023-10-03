@@ -19,6 +19,10 @@ class _AlbumScreenState extends State<AlbumScreen> {
   double currentOffset = 0;
   bool currentOffsetIsOver = false;
 
+  bool _firstBtnBold = false;
+  bool _secondBtnBold = false;
+  bool _thirdBtnBold = false;
+
   @override
   void initState() {
     super.initState();
@@ -105,10 +109,26 @@ class _AlbumScreenState extends State<AlbumScreen> {
                     preferPosition: AutoScrollPosition.begin,
                   );
                 },
+                onTapDown: (_) {
+                  setState(() {
+                    _firstBtnBold = true;
+                  });
+                },
+                onTapUp: (_) {
+                  setState(() {
+                    _firstBtnBold = false;
+                  });
+                },
+                onTapCancel: () {
+                  setState(() {
+                    _firstBtnBold = false;
+                  });
+                },
                 child: _scrollButton(
                   text: "첫번째",
                   paddingHorizontal: paddingHorizontal,
                   paddingVertical: paddingVertical,
+                  isBold: _firstBtnBold,
                 ),
               ),
               Container(
@@ -128,11 +148,27 @@ class _AlbumScreenState extends State<AlbumScreen> {
                     duration: const Duration(milliseconds: 10),
                     preferPosition: AutoScrollPosition.begin,
                   );
+                },
+                onTapDown: (_) {
+                  setState(() {
+                    _secondBtnBold = true;
+                  });
+                },
+                onTapUp: (_) {
+                  setState(() {
+                    _secondBtnBold = false;
+                  });
+                },
+                onTapCancel: () {
+                  setState(() {
+                    _secondBtnBold = false;
+                  });
                 },
                 child: _scrollButton(
                   text: "두번째",
                   paddingHorizontal: paddingHorizontal,
                   paddingVertical: paddingVertical,
+                  isBold: _secondBtnBold,
                 ),
               ),
               Container(
@@ -153,10 +189,26 @@ class _AlbumScreenState extends State<AlbumScreen> {
                     preferPosition: AutoScrollPosition.begin,
                   );
                 },
+                onTapDown: (_) {
+                  setState(() {
+                    _thirdBtnBold = true;
+                  });
+                },
+                onTapUp: (_) {
+                  setState(() {
+                    _thirdBtnBold = false;
+                  });
+                },
+                onTapCancel: () {
+                  setState(() {
+                    _thirdBtnBold = false;
+                  });
+                },
                 child: _scrollButton(
                   text: "세번째",
                   paddingHorizontal: paddingHorizontal,
                   paddingVertical: paddingVertical,
+                  isBold: _thirdBtnBold,
                 ),
               ),
               Container(
@@ -189,6 +241,7 @@ class _AlbumScreenState extends State<AlbumScreen> {
     required String text,
     required paddingVertical,
     required paddingHorizontal,
+    required bool isBold,
   }) {
     return Container(
       padding: EdgeInsets.symmetric(
@@ -197,9 +250,10 @@ class _AlbumScreenState extends State<AlbumScreen> {
       ),
       child: Text(
         text,
-        style: const TextStyle(
+        style: TextStyle(
           fontSize: 14.0,
           color: Colors.white,
+          fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
         ),
       ),
     );
