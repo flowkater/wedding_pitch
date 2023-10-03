@@ -70,8 +70,8 @@ class ScheduleTabView extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50.0),
                 border: Border.all(
-                  color: Colors.black,
-                  width: 1.0,
+                  color: Colors.black.withOpacity(0.4),
+                  width: 0.4,
                 ),
               ),
               child: Row(
@@ -95,7 +95,7 @@ class ScheduleTabView extends StatelessWidget {
                     style: const TextStyle(
                       fontSize: 15.0,
                       color: Color(0xFFFF483C),
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w700,
                       height: 1.2,
                     ),
                   ),

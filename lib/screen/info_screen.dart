@@ -19,8 +19,8 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
   final tabs = [
     "일정",
     "위치",
-    "예식",
-    "기타",
+    "안내",
+    "정보",
   ];
 
   late final TabController _tabController =

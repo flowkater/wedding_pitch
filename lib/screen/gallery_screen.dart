@@ -147,12 +147,18 @@ class _GalleryScreenState extends State<GalleryScreen> {
             child: Image.asset(
               "assets/images/flower.gif",
               fit: BoxFit.cover,
+              height: 46.0,
             ),
           ),
           const SizedBox(height: 12.0),
-          Image.asset(
-            "assets/images/gallery_headline.png",
-            fit: BoxFit.cover,
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 14.0,
+            ),
+            child: Image.asset(
+              "assets/images/gallery_headline.png",
+              fit: BoxFit.cover,
+            ),
           ),
         ],
       ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:remixicon/remixicon.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class OthersTabView extends StatefulWidget {
   const OthersTabView({super.key});
@@ -180,48 +181,23 @@ class _OthersTabViewState extends State<OthersTabView> {
               ),
             ),
             const SizedBox(
-              height: 12.0,
+              height: 24.0,
             ),
             _makeSection(
               context,
               icon: const Icon(
-                Boxicons.bx_dish,
+                Boxicons.bx_game,
                 color: Colors.white,
                 size: 20.0,
               ),
               iconColor: const Color(0xFFFF823C),
-              iconBottom: 6.0,
-              title: "식사 안내",
+              iconBottom: 4.0,
+              title: "주변엔 이런 곳이!",
               description: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  RichText(
-                    text: const TextSpan(
-                      children: [
-                        TextSpan(
-                          text: "연회장은 지하 1층",
-                          style: TextStyle(
-                            fontSize: 15.0,
-                            color: Color(0xFF3E3E3E),
-                            fontWeight: FontWeight.bold,
-                            fontFamily: "Pretendard",
-                            height: 1.8,
-                          ),
-                        ),
-                        TextSpan(
-                          text: "에 위치해 있습니다.",
-                          style: TextStyle(
-                            fontSize: 15.0,
-                            color: Color(0xFF3E3E3E),
-                            fontFamily: "Pretendard",
-                            height: 1.8,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
                   const Text(
-                    "또한 예식 30분 전부터 식사하실 수 있습니다.",
+                    "걸음하신 시간이 조금 더 알찰 수 있도록, 주변에 가볼 만한 곳을 추천해 드려요!",
                     style: TextStyle(
                       fontSize: 15.0,
                       color: Color(0xFF3E3E3E),
@@ -232,59 +208,111 @@ class _OthersTabViewState extends State<OthersTabView> {
                     height: 12.0,
                   ),
                   const Text(
-                    "↘ 연회장 이용시간 : 3:40 - 5:40 (총 2시간)",
+                    "👟 걸어서 10분 거리",
                     style: TextStyle(
                       fontSize: 15.0,
                       color: Color(0xFF3E3E3E),
                       height: 1.8,
+                      fontWeight: FontWeight.bold,
                     ),
+                  ),
+                  const SizedBox(
+                    height: 8.0,
+                  ),
+                  _addressLocationText(
+                    context,
+                    location: "여의도 공원 가을 단풍길",
+                    urlAddress:
+                        "https://map.naver.com/p/search/여의도%20공원%20가을%20단풍길?c=14.00,0,0,0,dh",
+                  ),
+                  _addressLocationText(
+                    context,
+                    location: "여의도 한강공원",
+                    urlAddress: "https://naver.me/I5FcmljL",
+                  ),
+                  _addressLocationText(
+                    context,
+                    location: "더 현대 서울",
+                    urlAddress: "https://naver.me/5PS2Ritm",
+                  ),
+                  _addressLocationText(
+                    context,
+                    location: "IFC몰",
+                    urlAddress: "https://naver.me/GDcNdhHm",
+                  ),
+                  _addressLocationText(
+                    context,
+                    location: "국회 어린이 박물관",
+                    urlAddress: "https://naver.me/5nbrAToG",
+                  ),
+                  const SizedBox(
+                    height: 12.0,
+                  ),
+                  const Text(
+                    "🚗  차량으로 10분 거리",
+                    style: TextStyle(
+                      fontSize: 15.0,
+                      color: Color(0xFF3E3E3E),
+                      height: 1.8,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 8.0,
+                  ),
+                  _addressLocationText(
+                    context,
+                    location: "영등포 타임스퀘어 및 신세계백화점",
+                    urlAddress: "https://naver.me/IDB1n6Md",
+                  ),
+                  _addressLocationText(
+                    context,
+                    location: "채그로",
+                    transportation: "차량 10분 · 버스 160,260",
+                    urlAddress: "https://naver.me/IDB1Bvug",
+                  ),
+                  _addressLocationText(
+                    context,
+                    location: "노들섬 잔디마당",
+                    transportation: "차량 7분 · 버스 360번",
+                    urlAddress: "https://naver.me/xaPgJl4X",
+                  ),
+                  _addressLocationText(
+                    context,
+                    location: "양화 한강공원",
+                    transportation: "차량 8분 · 버스 70-2번",
+                    urlAddress: "https://naver.me/GhENX2nP",
+                  ),
+                  _addressLocationText(
+                    context,
+                    location: "선유도 공원",
+                    transportation: "차량 8분",
+                    urlAddress: "https://naver.me/5kLX5Fnx",
+                  ),
+                  const SizedBox(
+                    height: 16.0,
                   ),
                 ],
               ),
             ),
             const SizedBox(
-              height: 12.0,
+              height: 24.0,
             ),
             _makeSection(
               context,
               icon: const Icon(
-                Remix.car_line,
+                Boxicons.bx_history,
                 color: Colors.white,
                 size: 20.0,
               ),
               iconColor: const Color(0xFFFF823C),
-              iconBottom: 6.0,
-              title: "주차 안내",
+              iconBottom: 4.0,
+              title: "재우와 이경이 만든 청첩장",
               description: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  RichText(
-                    text: const TextSpan(
-                      children: [
-                        TextSpan(
-                          text: "무료 주차권",
-                          style: TextStyle(
-                            fontSize: 15.0,
-                            color: Color(0xFF3E3E3E),
-                            fontWeight: FontWeight.bold,
-                            height: 1.8,
-                            fontFamily: "Pretendard",
-                          ),
-                        ),
-                        TextSpan(
-                          text: "을 제공해드리고 있습니다. (90분)",
-                          style: TextStyle(
-                            fontSize: 15.0,
-                            color: Color(0xFF3E3E3E),
-                            height: 1.8,
-                            fontFamily: "Pretendard",
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
                   const Text(
-                    "필요하신 분은 꼭 말씀 부탁드립니다 :)",
+                    "극악의 효율, 완벽함을 기하고 싶었으나,\n즐겁고 뜻깊은 낭만적인 과정의 산물을 보일 수 있어서 오히려 좋아. ",
                     style: TextStyle(
                       fontSize: 15.0,
                       color: Color(0xFF3E3E3E),
@@ -294,27 +322,135 @@ class _OthersTabViewState extends State<OthersTabView> {
                   const SizedBox(
                     height: 12.0,
                   ),
-                  const Text(
-                    "↘ 더파티움 건물 내 주차 가능 (중소기업중앙회)",
-                    style: TextStyle(
-                      fontSize: 15.0,
-                      color: Color(0xFF3E3E3E),
-                      height: 1.8,
+                  InkWell(
+                    onTap: () {
+                      print("👀");
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 12.0,
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8.0),
+                        color: const Color(0xFF386FFC),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          "우리가 함께 만든 청첩장 : 작업일지 읽기 👀",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 14.0,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                  const Text(
-                    "↘ 제2주차장 이용 가능 (한국기계회관)",
-                    style: TextStyle(
-                      fontSize: 15.0,
-                      color: Color(0xFF3E3E3E),
-                      height: 1.8,
-                    ),
+                  const SizedBox(
+                    height: 12.0,
                   ),
                 ],
               ),
             ),
             const SizedBox(
-              height: 12.0,
+              height: 24.0,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 21.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Icon(
+                    Boxicons.bx_link_alt,
+                    color: Color(0xFF6B7280),
+                    size: 18.0,
+                  ),
+                  const SizedBox(width: 10.0),
+                  InkWell(
+                    onTap: () async {
+                      await Clipboard.setData(
+                        const ClipboardData(text: "https://bitly.com"),
+                      );
+
+                      Fluttertoast.showToast(
+                        msg: "✅ 복사 완료!",
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.BOTTOM,
+                        timeInSecForIosWeb: 2,
+                        backgroundColor: Colors.black.withOpacity(0.7),
+                        textColor: Colors.white,
+                        webPosition: "center",
+                        webBgColor: "#4d4d4d",
+                      );
+                    },
+                    child: const Text(
+                      "청첩장 링크 복사하기",
+                      style: TextStyle(
+                        fontSize: 14.0,
+                        color: Color(0xFF6B7280),
+                        fontWeight: FontWeight.w500,
+                        decoration: TextDecoration.underline,
+                        height: 1.2,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 24.0,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _addressLocationText(
+    BuildContext context, {
+    required String location,
+    required String urlAddress,
+    String? transportation,
+  }) {
+    return InkWell(
+      onTap: () async {
+        await launchUrlString(
+          urlAddress,
+        );
+      },
+      child: RichText(
+        text: TextSpan(
+          children: [
+            const TextSpan(
+              text: "↘ ",
+              style: TextStyle(
+                fontSize: 15.0,
+                color: Color(0xFF3E3E3E),
+                fontWeight: FontWeight.bold,
+                height: 1.8,
+                fontFamily: "Pretendard",
+              ),
+            ),
+            TextSpan(
+              text: location,
+              style: const TextStyle(
+                fontSize: 15.0,
+                color: Color(0xFF3E3E3E),
+                height: 1.8,
+                fontFamily: "Pretendard",
+                decoration: TextDecoration.underline,
+              ),
+            ),
+            TextSpan(
+              text: transportation != null ? "($transportation)" : "",
+              style: const TextStyle(
+                fontSize: 15.0,
+                color: Color(0xFF3E3E3E),
+                height: 1.8,
+                fontFamily: "Pretendard",
+              ),
             ),
           ],
         ),

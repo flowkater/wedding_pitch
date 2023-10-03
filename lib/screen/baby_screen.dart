@@ -15,10 +15,12 @@ class _BabyScreenState extends State<BabyScreen>
   late Animation<double> _bounceAnimation;
 
   int _currentPhotoIndex = 0;
+  int _tapCount = 0;
 
   void _onTapNextPage() {
     if (_currentPhotoIndex < _photoIndex.length - 1) {
       setState(() {
+        _tapCount++;
         _currentPhotoIndex++;
       });
     } else {
@@ -146,25 +148,27 @@ class _BabyScreenState extends State<BabyScreen>
                   )
                 ],
               ),
-              Positioned(
-                left: 0,
-                right: 0,
-                top: 0,
-                bottom: 20,
-                child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Transform.translate(
-                    offset: Offset(0, _bounceAnimation.value),
-                    child: Text(
-                      '화면을 터치하면 사진이 바뀌어요 👀',
-                      style: TextStyle(
-                        backgroundColor:
-                            const Color(0XFFDBFF00).withOpacity(0.5),
+              _tapCount < 2
+                  ? Positioned(
+                      left: 0,
+                      right: 0,
+                      top: 0,
+                      bottom: 20,
+                      child: Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Transform.translate(
+                          offset: Offset(0, _bounceAnimation.value),
+                          child: Text(
+                            '화면을 터치하면 사진이 바뀌어요 👀',
+                            style: TextStyle(
+                              backgroundColor:
+                                  const Color(0XFFDBFF00).withOpacity(0.5),
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                ),
-              ),
+                    )
+                  : const SizedBox.shrink(),
             ],
           );
         });

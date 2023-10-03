@@ -1,4 +1,6 @@
+import 'package:boxicons/boxicons.dart';
 import 'package:flutter/material.dart';
+import 'package:remixicon/remixicon.dart';
 
 class CeremonyTabView extends StatefulWidget {
   const CeremonyTabView({super.key});
@@ -55,7 +57,7 @@ class _CeremonyTabViewState extends State<CeremonyTabView> {
                     ),
                   ),
                   const Text(
-                    "함께 재밌고 즐거운 시간을 꼭꼭 즐겨주세요🫶",
+                    "함께 재밌고 즐거운 시간을 꼭꼭 즐겨주세요🥰",
                     style: TextStyle(
                       fontSize: 15.0,
                       color: Color(0xFF3E3E3E),
@@ -190,39 +192,34 @@ class _CeremonyTabViewState extends State<CeremonyTabView> {
             _makeSection(
               context,
               number: "3",
+              numberRight: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10.0,
+                  vertical: 6.0,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(4.0),
+                  color: Colors.white,
+                ),
+                child: Center(
+                  child: Text(
+                    _getTimeRemaining(),
+                    style: const TextStyle(
+                      fontSize: 13.0,
+                      color: Color(0xFFFF483C),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
               title: "저희의 결혼 예식을 시작합니다",
-              description: Column(
+              description: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 10.0,
-                          vertical: 6.0,
-                        ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4.0),
-                          color: const Color(0xFFFFF7AB),
-                        ),
-                        child: Center(
-                          child: Text(
-                            _getTimeRemaining(),
-                            style: const TextStyle(
-                              fontSize: 13.0,
-                              color: Color(0xFFFF9900),
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
+                  SizedBox(
                     height: 12.0,
                   ),
-                  const Text(
+                  Text(
                     "즐겁고 행복하게, 예쁘게 살아가는 모습으로",
                     style: TextStyle(
                       fontSize: 15.0,
@@ -230,8 +227,72 @@ class _CeremonyTabViewState extends State<CeremonyTabView> {
                       height: 1.8,
                     ),
                   ),
-                  const Text(
+                  Text(
                     "여러분의 축하에 보답하겠습니다❤️",
+                    style: TextStyle(
+                      fontSize: 15.0,
+                      color: Color(0xFF3E3E3E),
+                      height: 1.8,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 12.0,
+                  ),
+                  Text(
+                    "↘ 4시 10분, 결혼 예식을 시작합니다!",
+                    style: TextStyle(
+                      fontSize: 15.0,
+                      color: Color(0xFF3E3E3E),
+                      fontWeight: FontWeight.bold,
+                      height: 1.8,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 24.0,
+            ),
+            _makeSectionIcon(
+              context,
+              icon: const Icon(
+                Boxicons.bx_dish,
+                color: Colors.white,
+                size: 20.0,
+              ),
+              iconColor: const Color(0xFFFF823C),
+              iconBottom: 6.0,
+              title: "식사 안내",
+              description: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  RichText(
+                    text: const TextSpan(
+                      children: [
+                        TextSpan(
+                          text: "연회장은 지하 1층에 위치",
+                          style: TextStyle(
+                            fontSize: 15.0,
+                            color: Color(0xFF3E3E3E),
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Pretendard",
+                            height: 1.8,
+                          ),
+                        ),
+                        TextSpan(
+                          text: "해 있습니다.",
+                          style: TextStyle(
+                            fontSize: 15.0,
+                            color: Color(0xFF3E3E3E),
+                            fontFamily: "Pretendard",
+                            height: 1.8,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  const Text(
+                    "또한 예식 30분 전부터 식사하실 수 있습니다.",
                     style: TextStyle(
                       fontSize: 15.0,
                       color: Color(0xFF3E3E3E),
@@ -242,7 +303,7 @@ class _CeremonyTabViewState extends State<CeremonyTabView> {
                     height: 12.0,
                   ),
                   const Text(
-                    "↘ 4시 10분, 결혼 예식을 시작합니다!",
+                    "↘ 연회장 이용시간 : 3:40 - 5:40 (총 2시간)",
                     style: TextStyle(
                       fontSize: 15.0,
                       color: Color(0xFF3E3E3E),
@@ -251,6 +312,80 @@ class _CeremonyTabViewState extends State<CeremonyTabView> {
                   ),
                 ],
               ),
+            ),
+            const SizedBox(
+              height: 24.0,
+            ),
+            _makeSectionIcon(
+              context,
+              icon: const Icon(
+                Remix.car_line,
+                color: Colors.white,
+                size: 20.0,
+              ),
+              iconColor: const Color(0xFFFF823C),
+              iconBottom: 6.0,
+              title: "주차 안내",
+              description: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  RichText(
+                    text: const TextSpan(
+                      children: [
+                        TextSpan(
+                          text: "무료 주차권",
+                          style: TextStyle(
+                            fontSize: 15.0,
+                            color: Color(0xFF3E3E3E),
+                            fontWeight: FontWeight.bold,
+                            height: 1.8,
+                            fontFamily: "Pretendard",
+                          ),
+                        ),
+                        TextSpan(
+                          text: "을 제공해드리고 있습니다. (90분)",
+                          style: TextStyle(
+                            fontSize: 15.0,
+                            color: Color(0xFF3E3E3E),
+                            height: 1.8,
+                            fontFamily: "Pretendard",
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Text(
+                    "필요하신 분은 꼭 말씀 부탁드립니다 :)",
+                    style: TextStyle(
+                      fontSize: 15.0,
+                      color: Color(0xFF3E3E3E),
+                      height: 1.8,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 12.0,
+                  ),
+                  const Text(
+                    "↘ 더파티움 건물 내 주차 가능 (중소기업중앙회)",
+                    style: TextStyle(
+                      fontSize: 15.0,
+                      color: Color(0xFF3E3E3E),
+                      height: 1.8,
+                    ),
+                  ),
+                  const Text(
+                    "↘ 제2주차장 이용 가능 (한국기계회관)",
+                    style: TextStyle(
+                      fontSize: 15.0,
+                      color: Color(0xFF3E3E3E),
+                      height: 1.8,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 24.0,
             ),
           ],
         ),
@@ -263,6 +398,7 @@ class _CeremonyTabViewState extends State<CeremonyTabView> {
     required String number,
     required String title,
     required Widget description,
+    Widget? numberRight,
   }) {
     return Container(
       padding: const EdgeInsets.all(16.0),
@@ -274,7 +410,15 @@ class _CeremonyTabViewState extends State<CeremonyTabView> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _cirleNumber(number: number),
+          numberRight != null
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    _cirleNumber(number: number),
+                    numberRight,
+                  ],
+                )
+              : _cirleNumber(number: number),
           Padding(
             padding: const EdgeInsets.symmetric(
               vertical: 12.0,
@@ -311,6 +455,79 @@ class _CeremonyTabViewState extends State<CeremonyTabView> {
           style: const TextStyle(
               color: Colors.white, fontSize: 14, fontWeight: FontWeight.bold),
         ),
+      ),
+    );
+  }
+
+  Widget _makeSectionIcon(
+    BuildContext context, {
+    required Icon icon,
+    required Color iconColor,
+    required double iconBottom,
+    required String title,
+    required Widget description,
+    Color backgroundColor = const Color(0xFFF9F9F9),
+  }) {
+    return Container(
+      padding: const EdgeInsets.all(16.0),
+      width: MediaQuery.of(context).size.width,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16.0),
+        color: backgroundColor,
+        border: backgroundColor == Colors.white
+            ? Border.all(
+                color: Colors.black.withOpacity(0.4),
+                width: 0.5,
+              )
+            : null,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _cirleIcon(
+            icon: icon,
+            iconColor: iconColor,
+            bottom: iconBottom,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 12.0,
+            ),
+            child: Text(
+              title,
+              style: const TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          description,
+          const SizedBox(
+            height: 12.0,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _cirleIcon(
+      {required Icon icon, required Color iconColor, required double bottom}) {
+    return Container(
+      width: 32.0,
+      height: 32.0,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(50),
+        color: iconColor,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          icon,
+          SizedBox(
+            height: bottom,
+          )
+        ],
       ),
     );
   }
