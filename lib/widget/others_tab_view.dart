@@ -309,20 +309,84 @@ class _OthersTabViewState extends State<OthersTabView> {
               description: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  const Text(
-                    "알고 뛰어든 극악의 효율, 최고보단 최선..을 기하고 싶었으나,\n즐겁고 뜻깊은 낭만적인 과정의 산물을 보일 수 있어서 오히려 좋아",
+                  Text(
+                    "다 알고 시작했지만 역시 극악의 효율임을..ㅎㅎ",
                     style: TextStyle(
                       fontSize: 15.0,
-                      color: Color(0xFF3E3E3E),
-                      height: 1.8,
+                      color: const Color(0xFF222222).withOpacity(0.8),
+                      height: 1.6,
+                      fontFamily: "Pretendard",
                     ),
                   ),
                   const SizedBox(
-                    height: 12.0,
+                    height: 10.0,
+                  ),
+                  Text(
+                    "한정된 시간과 쫓기는 기한, 버그와의 싸움. 그리고 틈틈이 욕심내는 OO의 요구사항까지..",
+                    style: TextStyle(
+                      fontSize: 15.0,
+                      color: const Color(0xFF222222).withOpacity(0.8),
+                      height: 1.6,
+                      fontFamily: "Pretendard",
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  Text(
+                    "힘겨운 사투가 분명했지만, 이상하게도 즐거웠던 시간이었어요! 그 과정 속에서 우리는 무언가 더 중요한 것을 찾았기 때문일까요?\n(어랏..? 그건 아마도.. 사랑🫶?)",
+                    style: TextStyle(
+                      fontSize: 15.0,
+                      color: const Color(0xFF222222).withOpacity(0.8),
+                      height: 1.6,
+                      fontFamily: "Pretendard",
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: "아쉽긴 해도, 낭만을 추구하는 우리의 과정이 궁금한 분들은 ",
+                          style: TextStyle(
+                            fontSize: 15.0,
+                            color: const Color(0xFF222222).withOpacity(0.8),
+                            height: 1.6,
+                            fontFamily: "Pretendard",
+                          ),
+                        ),
+                        TextSpan(
+                          text: "요기↓",
+                          style: TextStyle(
+                            fontSize: 15.0,
+                            color: const Color(0xFF222222).withOpacity(0.8),
+                            height: 1.6,
+                            fontFamily: "Pretendard",
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        TextSpan(
+                          text: "에서 확인할 수 있습니다!",
+                          style: TextStyle(
+                            fontSize: 15.0,
+                            color: const Color(0xFF222222).withOpacity(0.8),
+                            height: 1.6,
+                            fontFamily: "Pretendard",
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 24.0,
                   ),
                   InkWell(
-                    onTap: () {
-                      print("👀");
+                    onTap: () async {
+                      await launchUrlString(
+                        "https://rainbow-spring-2bc.notion.site/f3446102673c4a8b9cfdc047451ac66b?pvs=4",
+                      );
                     },
                     child: Container(
                       padding: const EdgeInsets.symmetric(
