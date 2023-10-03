@@ -24,7 +24,7 @@
   <meta property="og:title" content="❤️이경 & 재우 결혼합니다❤️">
   <meta property="og:description" content="11월 4일 오후 4시, 여의도 더파티움">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="icons/wedding_pitch_thumbnail.png">
+  <meta property="og:image" content="https://pitch-test-wedding.s3.ap-northeast-2.amazonaws.com/wedding_pitch_thumbnail.png">
   
 
   <!-- iOS meta tags & icons -->
@@ -47,10 +47,40 @@
     // The value below is injected by flutter build, do not touch.
     var serviceWorkerVersion = null;
   </script>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #fafafa;
+    }
+
+    .loader {
+      border: 16px solid #f3f3f3;
+      border-top: 16px solid #3498db;
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
 </head>
 <body>
+  <div id="loader" class="loader"></div>
   <script>
     window.addEventListener('load', function(ev) {
       // Download main.dart.js

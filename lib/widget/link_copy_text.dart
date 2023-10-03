@@ -14,10 +14,13 @@ class LinkCopyWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Icon(
-            Boxicons.bx_link_alt,
-            color: Color(0xFF6B7280),
-            size: 18.0,
+          const Padding(
+            padding: EdgeInsets.only(bottom: 4.0),
+            child: Icon(
+              Boxicons.bx_link_alt,
+              color: Color(0xFF6B7280),
+              size: 18.0,
+            ),
           ),
           const SizedBox(width: 10.0),
           InkWell(
