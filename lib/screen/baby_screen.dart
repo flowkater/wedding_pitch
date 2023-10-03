@@ -148,7 +148,7 @@ class _BabyScreenState extends State<BabyScreen>
                   )
                 ],
               ),
-              _tapCount < 2
+              _tapCount < 3
                   ? Positioned(
                       left: 0,
                       right: 0,
