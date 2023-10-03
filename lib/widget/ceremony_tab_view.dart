@@ -406,7 +406,7 @@ class _CeremonyTabViewState extends State<CeremonyTabView> {
     Widget? numberRight,
   }) {
     return Container(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(20.0),
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
@@ -437,9 +437,6 @@ class _CeremonyTabViewState extends State<CeremonyTabView> {
             ),
           ),
           description,
-          const SizedBox(
-            height: 12.0,
-          ),
         ],
       ),
     );
@@ -474,7 +471,7 @@ class _CeremonyTabViewState extends State<CeremonyTabView> {
     Color backgroundColor = const Color(0xFFF9F9F9),
   }) {
     return Container(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(20.0),
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.0),
@@ -507,9 +504,6 @@ class _CeremonyTabViewState extends State<CeremonyTabView> {
             ),
           ),
           description,
-          const SizedBox(
-            height: 12.0,
-          ),
         ],
       ),
     );

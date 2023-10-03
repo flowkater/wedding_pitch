@@ -290,9 +290,6 @@ class _OthersTabViewState extends State<OthersTabView> {
                     transportation: "차량 8분",
                     urlAddress: "https://naver.me/5kLX5Fnx",
                   ),
-                  const SizedBox(
-                    height: 16.0,
-                  ),
                 ],
               ),
             ),
@@ -306,14 +303,14 @@ class _OthersTabViewState extends State<OthersTabView> {
                 color: Colors.white,
                 size: 20.0,
               ),
-              iconColor: const Color(0xFFFF823C),
+              iconColor: const Color(0xFFB9B9B9),
               iconBottom: 4.0,
               title: "재우와 이경이 만든 청첩장",
               description: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   const Text(
-                    "극악의 효율, 완벽함을 기하고 싶었으나,\n즐겁고 뜻깊은 낭만적인 과정의 산물을 보일 수 있어서 오히려 좋아. ",
+                    "알고 뛰어든 극악의 효율, 최고보단 최선..을 기하고 싶었으나,\n즐겁고 뜻깊은 낭만적인 과정의 산물을 보일 수 있어서 오히려 좋아",
                     style: TextStyle(
                       fontSize: 15.0,
                       color: Color(0xFF3E3E3E),
@@ -347,9 +344,6 @@ class _OthersTabViewState extends State<OthersTabView> {
                         ),
                       ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 12.0,
                   ),
                 ],
               ),
@@ -427,7 +421,7 @@ class _OthersTabViewState extends State<OthersTabView> {
     Color backgroundColor = const Color(0xFFF9F9F9),
   }) {
     return Container(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(20.0),
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.0),
@@ -460,9 +454,6 @@ class _OthersTabViewState extends State<OthersTabView> {
             ),
           ),
           description,
-          const SizedBox(
-            height: 12.0,
-          ),
         ],
       ),
     );
