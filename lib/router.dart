@@ -26,17 +26,25 @@ final GoRouter router = GoRouter(
         child: const SeniorMainScreen(),
         fullscreenDialog: true,
       ),
-    )
+    ),
+    GoRoute(
+      path: '/main2',
+      builder: (context, state) => const SeniorMainScreen(),
+    ),
+    GoRoute(
+      path: '/simple-main',
+      builder: (context, state) => const SeniorMainScreen(),
+    ),
   ],
-  // errorPageBuilder: (context, state) {
-  //   WidgetsBinding.instance.addPostFrameCallback((_) {
-  //     router.go('/main');
-  //   });
-  //   return const MaterialPage(
-  //     key: ValueKey('error-page'),
-  //     child: Scaffold(
-  //       body: Center(child: Text('An error occurred, redirecting...')),
-  //     ),
-  //   );
-  // },
+  errorPageBuilder: (context, state) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      router.go('/main');
+    });
+    return const MaterialPage(
+      key: ValueKey('error-page'),
+      child: Scaffold(
+        body: Center(child: Text('An error occurred, redirecting...')),
+      ),
+    );
+  },
 );
