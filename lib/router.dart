@@ -5,7 +5,7 @@ import 'package:wedding_pitch/screen/main_navigation_page.dart';
 import 'package:wedding_pitch/screen/senior_main_screen.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: '/senior',
+  initialLocation: '/main',
   routes: [
     GoRoute(
       path: '/main',
@@ -20,7 +20,7 @@ final GoRouter router = GoRouter(
       ),
     ),
     GoRoute(
-      path: '/senior',
+      path: '/simple',
       builder: (context, state) => const SeniorMainScreen(),
     )
   ],
