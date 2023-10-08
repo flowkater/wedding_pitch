@@ -21,13 +21,17 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: '/simple',
-      builder: (context, state) => const SeniorMainScreen(),
+      pageBuilder: (context, state) => MaterialPage(
+        key: state.pageKey,
+        child: const SeniorMainScreen(),
+        fullscreenDialog: true,
+      ),
     )
   ],
   // errorPageBuilder: (context, state) {
-  //   // WidgetsBinding.instance.addPostFrameCallback((_) {
-  //   //   router.go('/main');
-  //   // });
+  //   WidgetsBinding.instance.addPostFrameCallback((_) {
+  //     router.go('/main');
+  //   });
   //   return const MaterialPage(
   //     key: ValueKey('error-page'),
   //     child: Scaffold(
