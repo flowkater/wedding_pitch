@@ -23,12 +23,12 @@ class SeniorMainScreen extends StatelessWidget {
                 height: 24.0,
               ),
               _topCover(),
-              _invitationSection(),
-              _gallerySection(context),
-              _locationSection(context),
-              _paybackSection(),
-              _scheduleSection(),
-              _bottomSection(context),
+              // _invitationSection(),
+              // _gallerySection(context),
+              // _locationSection(context),
+              // _paybackSection(),
+              // _scheduleSection(),
+              // _bottomSection(context),
             ],
           ),
         ),
@@ -788,9 +788,7 @@ class SeniorMainScreen extends StatelessWidget {
           ),
           InkWell(
             onTap: () async {
-              await launchUrlString(
-                "http://jwik1104.com/welcome",
-              );
+              context.go('/main');
             },
             child: const Text(
               "+ 다른 버전의 청첩장 보기",
