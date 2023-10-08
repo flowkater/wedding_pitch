@@ -123,7 +123,7 @@ class _OthersTabViewState extends State<OthersTabView> {
                   InkWell(
                     onTap: () async {
                       await Clipboard.setData(
-                        const ClipboardData(text: "신한은행 110-354-982959"),
+                        const ClipboardData(text: "토스뱅크 1000-1387-2797"),
                       );
                       Fluttertoast.showToast(
                         msg: "✅ 복사 완료! 계좌 정보를 붙여넣을 수 있습니다",
@@ -159,7 +159,7 @@ class _OthersTabViewState extends State<OthersTabView> {
                             ),
                           ),
                           Text(
-                            "신한은행",
+                            "토스뱅크",
                             style: TextStyle(
                               fontSize: 14.0,
                               fontWeight: FontWeight.w500,
@@ -167,7 +167,7 @@ class _OthersTabViewState extends State<OthersTabView> {
                             ),
                           ),
                           Text(
-                            "110-354-982959",
+                            "1000-1387-2797",
                             style: TextStyle(
                               fontSize: 14.0,
                               fontWeight: FontWeight.w500,
@@ -461,7 +461,7 @@ class _OthersTabViewState extends State<OthersTabView> {
               ),
             ),
             TextSpan(
-              text: transportation != null ? "($transportation)" : " ",
+              text: transportation != null ? " ($transportation)" : " ",
               style: const TextStyle(
                 fontSize: 15.0,
                 color: Color(0xFF3E3E3E),

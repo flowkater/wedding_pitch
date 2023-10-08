@@ -23,9 +23,9 @@ class SeniorMainScreen extends StatelessWidget {
                 height: 24.0,
               ),
               _topCover(),
-              // _invitationSection(),
-              // _gallerySection(context),
-              // _locationSection(context),
+              _invitationSection(),
+              _gallerySection(context),
+              _locationSection(context),
               _paybackSection(),
               _scheduleSection(),
               _bottomSection(context),
@@ -434,7 +434,7 @@ class SeniorMainScreen extends StatelessWidget {
                     height: 28.0,
                   ),
                   Text(
-                    "참석이 어려우신 분들을 위해 기재하였습니다.\n너그라운 마음으로 양해부탁드립니다.",
+                    "참석이 어려우신 분들을 위해 기재하였습니다.\n너그러운 마음으로 양해부탁드립니다.",
                     style: TextStyle(
                       fontSize: 15.0,
                       color: textColor,
