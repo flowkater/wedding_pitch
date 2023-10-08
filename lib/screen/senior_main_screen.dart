@@ -739,7 +739,7 @@ class SeniorMainScreen extends StatelessWidget {
             child: InkWell(
               onTap: () async {
                 await Clipboard.setData(
-                  const ClipboardData(text: "http://jwik1104.com/senior"),
+                  const ClipboardData(text: "http://jwik1104.com/simple"),
                 );
                 Fluttertoast.showToast(
                   msg: "✅ 복사 완료!",
@@ -787,8 +787,10 @@ class SeniorMainScreen extends StatelessWidget {
             ),
           ),
           InkWell(
-            onTap: () {
-              context.go('/main');
+            onTap: () async {
+              await launchUrlString(
+                "http://jwik1104.com/welcome",
+              );
             },
             child: const Text(
               "+ 다른 버전의 청첩장 보기",
