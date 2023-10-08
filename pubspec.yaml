@@ -90,15 +90,7 @@ flutter:
           weight: 800
         - asset: fonts/Pretendard-Black.ttf
           weight: 900
-    # - family: HappinessSansBold
-    #   fonts:
-    #     - asset: fonts/Happiness-Sans-Bold.ttf
-    # - family: HappinessSansRegular
-    #   fonts:
-    #     - asset: fonts/Happiness-Sans-Regular.ttf
-    # - family: HappinessSansTitle
-    #   fonts:
-    #     - asset: fonts/Happiness-Sans-Title.ttf
+
 
   # To add assets to your application, add an assets section, like this:
   assets:
@@ -178,6 +170,17 @@ flutter:
     - assets/images/albums/sea15.jpg
     - assets/images/albums/sea16.jpg
     - assets/images/albums/sea17.jpg
+
+    - assets/images/senior/image-gallery.png
+    - assets/images/senior/image-top.png
+    - assets/images/senior/maincover.png
+    - assets/images/senior/label01.png
+    - assets/images/senior/label02.png
+    - assets/images/senior/label03.png
+    - assets/images/senior/top-bgimage.png
+    - assets/images/senior/deco.png
+    - assets/images/senior/map.png
+    - assets/images/senior/calendar-senior.png
 
     
 

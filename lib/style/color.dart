@@ -12,4 +12,8 @@ class WeddingColor {
   static const Color mainTabColor = Color(0xFFF34E72);
   static const Color galleryTabColor = Color(0xFFFFAC2F);
   static const Color infoTabColor = Color(0xFF17C11D);
+
+  static const Color seniorMainTitleColor = Color(0xFF003E82);
+  static const Color seniorMainSubTitleColor = Color(0xFF37433A);
+  static const Color seniorSubBgColor = Color(0xFFFAFAFA);
 }

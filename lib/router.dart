@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wedding_pitch/screen/album_screen.dart';
 import 'package:wedding_pitch/screen/main_navigation_page.dart';
+import 'package:wedding_pitch/screen/senior_main_screen.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: '/main',
+  initialLocation: '/senior',
   routes: [
     GoRoute(
       path: '/main',
@@ -18,6 +19,10 @@ final GoRouter router = GoRouter(
         fullscreenDialog: true,
       ),
     ),
+    GoRoute(
+      path: '/senior',
+      builder: (context, state) => const SeniorMainScreen(),
+    )
   ],
   errorPageBuilder: (context, state) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
