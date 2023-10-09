@@ -422,7 +422,7 @@ class SeniorMainScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    "마음 정하실 곳",
+                    "마음 전하실 곳",
                     style: TextStyle(
                       fontSize: 16.0,
                       fontWeight: FontWeight.bold,
