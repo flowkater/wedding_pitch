@@ -1,46 +1,35 @@
 import 'package:boxicons/boxicons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:wedding_pitch/utils/clip_borad_js.dart';
 
 class LinkCopyWidget extends StatelessWidget {
   const LinkCopyWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 21.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const Padding(
-            padding: EdgeInsets.only(bottom: 4.0),
-            child: Icon(
-              Boxicons.bx_link_alt,
-              color: Color(0xFF6B7280),
-              size: 18.0,
+    return InkWell(
+      onTap: () async {
+        clipboardAndAlert(
+          text: "http://jwik1104.com/welcome",
+          alertText: "✅ 복사 완료!",
+        );
+      },
+      child: const Padding(
+        padding: EdgeInsets.symmetric(vertical: 21.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 4.0),
+              child: Icon(
+                Boxicons.bx_link_alt,
+                color: Color(0xFF6B7280),
+                size: 18.0,
+              ),
             ),
-          ),
-          const SizedBox(width: 10.0),
-          InkWell(
-            onTap: () async {
-              await Clipboard.setData(
-                const ClipboardData(text: "http://jwik1104.com/welcome"),
-              );
-
-              Fluttertoast.showToast(
-                msg: "✅ 복사 완료!",
-                toastLength: Toast.LENGTH_LONG,
-                gravity: ToastGravity.BOTTOM,
-                timeInSecForIosWeb: 2,
-                backgroundColor: Colors.black.withOpacity(0.7),
-                textColor: Colors.white,
-                webPosition: "center",
-                webBgColor: "#4d4d4d",
-              );
-            },
-            child: const Text(
+            SizedBox(width: 10.0),
+            Text(
               "청첩장 링크 복사하기",
               style: TextStyle(
                 fontSize: 14.0,
@@ -49,9 +38,9 @@ class LinkCopyWidget extends StatelessWidget {
                 decoration: TextDecoration.underline,
                 height: 1.2,
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

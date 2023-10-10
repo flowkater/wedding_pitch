@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:wedding_pitch/style/size.dart';
+import 'package:wedding_pitch/utils/clip_borad_js.dart';
 
 class LocationTabView extends StatefulWidget {
   const LocationTabView({super.key});
@@ -56,19 +55,9 @@ class _LocationTabViewState extends State<LocationTabView> {
                     ),
                     InkWell(
                       onTap: () async {
-                        await Clipboard.setData(
-                          const ClipboardData(text: "서울 영등포구 은행로 30"),
-                        );
-
-                        Fluttertoast.showToast(
-                          msg: "✅ 복사 완료! 조심히 오셔요 🫶",
-                          toastLength: Toast.LENGTH_LONG,
-                          gravity: ToastGravity.BOTTOM,
-                          timeInSecForIosWeb: 2,
-                          backgroundColor: Colors.black.withOpacity(0.7),
-                          textColor: Colors.white,
-                          webPosition: "center",
-                          webBgColor: "#4d4d4d",
+                        clipboardAndAlert(
+                          text: "서울 영등포구 은행로 30",
+                          alertText: "✅ 복사 완료! 조심히 오셔요 🫶",
                         );
                       },
                       child: Text(
@@ -483,19 +472,9 @@ class _LocationTabViewState extends State<LocationTabView> {
                 ),
                 InkWell(
                   onTap: () async {
-                    await Clipboard.setData(
-                      const ClipboardData(text: "서울 영등포구 은행로 37"),
-                    );
-
-                    Fluttertoast.showToast(
-                      msg: "✅ 복사 완료! 안전 운전하세요 🚙",
-                      toastLength: Toast.LENGTH_LONG,
-                      gravity: ToastGravity.BOTTOM,
-                      timeInSecForIosWeb: 2,
-                      backgroundColor: Colors.black.withOpacity(0.7),
-                      textColor: Colors.white,
-                      webPosition: "center",
-                      webBgColor: "#4d4d4d",
+                    clipboardAndAlert(
+                      text: "서울 영등포구 은행로 37",
+                      alertText: "✅ 복사 완료! 안전 운전하세요 🚙",
                     );
                   },
                   child: const Text(
@@ -752,19 +731,9 @@ class OpenMapDialog extends StatelessWidget {
               padding: const EdgeInsets.only(left: 36.0),
               child: InkWell(
                 onTap: () async {
-                  await Clipboard.setData(
-                    const ClipboardData(text: "서울 영등포구 은행로 30"),
-                  );
-
-                  Fluttertoast.showToast(
-                    msg: "✅ 복사 완료! 조심히 오셔요 🫶",
-                    toastLength: Toast.LENGTH_LONG,
-                    gravity: ToastGravity.BOTTOM,
-                    timeInSecForIosWeb: 2,
-                    backgroundColor: Colors.black.withOpacity(0.7),
-                    textColor: Colors.white,
-                    webPosition: "center",
-                    webBgColor: "#4d4d4d",
+                  clipboardAndAlert(
+                    text: "서울 영등포구 은행로 30",
+                    alertText: "✅ 복사 완료! 조심히 오셔요 🫶",
                   );
                 },
                 child: Row(
@@ -810,19 +779,9 @@ class OpenMapDialog extends StatelessWidget {
               padding: const EdgeInsets.only(left: 36.0),
               child: InkWell(
                 onTap: () async {
-                  await Clipboard.setData(
-                    const ClipboardData(text: "서울 영등포구 여의도동 16-2"),
-                  );
-
-                  Fluttertoast.showToast(
-                    msg: "✅ 복사 완료! 조심히 오셔요 🫶",
-                    toastLength: Toast.LENGTH_LONG,
-                    gravity: ToastGravity.BOTTOM,
-                    timeInSecForIosWeb: 2,
-                    backgroundColor: Colors.black.withOpacity(0.7),
-                    textColor: Colors.white,
-                    webPosition: "center",
-                    webBgColor: "#4d4d4d",
+                  clipboardAndAlert(
+                    text: "서울 영등포구 여의도동 16-2",
+                    alertText: "✅ 복사 완료! 조심히 오셔요 🫶",
                   );
                 },
                 child: Row(

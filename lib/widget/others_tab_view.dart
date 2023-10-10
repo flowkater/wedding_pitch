@@ -1,9 +1,8 @@
 import 'package:boxicons/boxicons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:remixicon/remixicon.dart';
 import 'package:url_launcher/url_launcher_string.dart';
+import 'package:wedding_pitch/utils/clip_borad_js.dart';
 import 'package:wedding_pitch/widget/link_copy_text.dart';
 
 class OthersTabView extends StatefulWidget {
@@ -60,24 +59,14 @@ class _OthersTabViewState extends State<OthersTabView> {
                   ),
                   InkWell(
                     onTap: () async {
-                      await Clipboard.setData(
-                        const ClipboardData(text: "토스뱅크 1000-0004-7369"),
-                      );
-
-                      Fluttertoast.showToast(
-                        msg: "✅ 복사 완료! 계좌 정보를 붙여넣을 수 있습니다",
-                        toastLength: Toast.LENGTH_LONG,
-                        gravity: ToastGravity.BOTTOM,
-                        timeInSecForIosWeb: 2,
-                        backgroundColor: Colors.black.withOpacity(0.7),
-                        textColor: Colors.white,
-                        webPosition: "center",
-                        webBgColor: "#4d4d4d",
+                      clipboardAndAlert(
+                        text: "토스뱅크 1000-0004-7369",
+                        alertText: "✅ 복사 완료! 계좌 정보를 붙여넣을 수 있습니다",
                       );
                     },
                     child: Container(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 24.0,
+                        horizontal: 12.0,
                         vertical: 18.0,
                       ),
                       decoration: BoxDecoration(
@@ -122,23 +111,14 @@ class _OthersTabViewState extends State<OthersTabView> {
                   ),
                   InkWell(
                     onTap: () async {
-                      await Clipboard.setData(
-                        const ClipboardData(text: "토스뱅크 1000-1387-2797"),
-                      );
-                      Fluttertoast.showToast(
-                        msg: "✅ 복사 완료! 계좌 정보를 붙여넣을 수 있습니다",
-                        toastLength: Toast.LENGTH_LONG,
-                        gravity: ToastGravity.BOTTOM,
-                        timeInSecForIosWeb: 2,
-                        backgroundColor: Colors.black.withOpacity(0.7),
-                        textColor: Colors.white,
-                        webPosition: "center",
-                        webBgColor: "#4d4d4d",
+                      clipboardAndAlert(
+                        text: "토스뱅크 1000-1387-2797",
+                        alertText: "✅ 복사 완료! 계좌 정보를 붙여넣을 수 있습니다",
                       );
                     },
                     child: Container(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 24.0,
+                        horizontal: 12.0,
                         vertical: 18.0,
                       ),
                       decoration: BoxDecoration(

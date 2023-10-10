@@ -1,7 +1,5 @@
 import 'package:boxicons/boxicons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:wedding_pitch/style/color.dart';
@@ -111,37 +109,10 @@ class SeniorMainScreen extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () async {
-                    try {
-                      await Clipboard.setData(
-                        const ClipboardData(
-                          text: "서울 영등포구 은행로 30 (중소기업중앙회 건물)",
-                        ),
-                      );
-
-                      Fluttertoast.showToast(
-                        msg: "✅ 복사 완료!",
-                        toastLength: Toast.LENGTH_LONG,
-                        gravity: ToastGravity.BOTTOM,
-                        timeInSecForIosWeb: 2,
-                        backgroundColor: Colors.black.withOpacity(0.7),
-                        textColor: Colors.white,
-                        webPosition: "center",
-                        webBgColor: "#4d4d4d",
-                      );
-                    } catch (e) {
-                      Fluttertoast.showToast(
-                        msg: e.toString(),
-                        toastLength: Toast.LENGTH_LONG,
-                        gravity: ToastGravity.BOTTOM,
-                        timeInSecForIosWeb: 2,
-                        backgroundColor: Colors.black.withOpacity(0.7),
-                        textColor: Colors.white,
-                        webPosition: "center",
-                        webBgColor: "#4d4d4d",
-                      );
-
-                      copyToClipboard("서울 영등포구 은행로 30 (중소기업중앙회 건물)");
-                    }
+                    clipboardAndAlert(
+                      text: "서울 영등포구 은행로 30 (중소기업중앙회 건물)",
+                      alertText: "✅ 복사 완료!",
+                    );
                   },
                   child: const Text(
                     "서울 영등포구 은행로 30 (중소기업중앙회 건물)",
@@ -289,22 +260,9 @@ class SeniorMainScreen extends StatelessWidget {
                             padding: const EdgeInsets.only(left: 12.0),
                             child: InkWell(
                               onTap: () async {
-                                await Clipboard.setData(
-                                  const ClipboardData(
-                                    text: "서울 영등포구 은행로 30 (여의도동 16-2)",
-                                  ),
-                                );
-
-                                Fluttertoast.showToast(
-                                  msg: "✅ 복사 완료!",
-                                  toastLength: Toast.LENGTH_LONG,
-                                  gravity: ToastGravity.BOTTOM,
-                                  timeInSecForIosWeb: 2,
-                                  backgroundColor:
-                                      Colors.black.withOpacity(0.7),
-                                  textColor: Colors.white,
-                                  webPosition: "center",
-                                  webBgColor: "#4d4d4d",
+                                clipboardAndAlert(
+                                  text: "서울 영등포구 은행로 30 (여의도동 16-2)",
+                                  alertText: "✅ 복사 완료!",
                                 );
                               },
                               child: const Text(
@@ -594,18 +552,9 @@ class SeniorMainScreen extends StatelessWidget {
   }) {
     return InkWell(
       onTap: () async {
-        await Clipboard.setData(
-          ClipboardData(text: "$bankName $accountNumber"),
-        );
-        Fluttertoast.showToast(
-          msg: "✅ 복사 완료! 계좌 정보를 붙여넣을 수 있습니다.",
-          toastLength: Toast.LENGTH_LONG,
-          gravity: ToastGravity.BOTTOM,
-          timeInSecForIosWeb: 2,
-          backgroundColor: Colors.black.withOpacity(0.7),
-          textColor: Colors.white,
-          webPosition: "center",
-          webBgColor: "#4d4d4d",
+        clipboardAndAlert(
+          text: "$bankName $accountNumber",
+          alertText: "✅ 복사 완료! 계좌 정보를 붙여넣을 수 있습니다.",
         );
       },
       child: Padding(
@@ -669,18 +618,9 @@ class SeniorMainScreen extends StatelessWidget {
             const Spacer(),
             InkWell(
               onTap: () async {
-                await Clipboard.setData(
-                  ClipboardData(text: "$bankName $accountNumber"),
-                );
-                Fluttertoast.showToast(
-                  msg: "✅ 복사 완료! 계좌 정보를 붙여넣을 수 있습니다.",
-                  toastLength: Toast.LENGTH_LONG,
-                  gravity: ToastGravity.BOTTOM,
-                  timeInSecForIosWeb: 2,
-                  backgroundColor: Colors.black.withOpacity(0.7),
-                  textColor: Colors.white,
-                  webPosition: "center",
-                  webBgColor: "#4d4d4d",
+                clipboardAndAlert(
+                  text: "$bankName $accountNumber",
+                  alertText: "✅ 복사 완료! 계좌 정보를 붙여넣을 수 있습니다.",
                 );
               },
               child: Container(
@@ -771,18 +711,9 @@ class SeniorMainScreen extends StatelessWidget {
             padding: const EdgeInsets.all(32.0),
             child: InkWell(
               onTap: () async {
-                await Clipboard.setData(
-                  const ClipboardData(text: "http://jwik1104.com/simple"),
-                );
-                Fluttertoast.showToast(
-                  msg: "✅ 복사 완료!",
-                  toastLength: Toast.LENGTH_LONG,
-                  gravity: ToastGravity.BOTTOM,
-                  timeInSecForIosWeb: 2,
-                  backgroundColor: Colors.black.withOpacity(0.7),
-                  textColor: Colors.white,
-                  webPosition: "center",
-                  webBgColor: "#4d4d4d",
+                clipboardAndAlert(
+                  text: "http://jwik1104.com/simple",
+                  alertText: "✅ 복사 완료!",
                 );
               },
               child: Container(
