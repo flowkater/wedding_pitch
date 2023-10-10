@@ -807,31 +807,49 @@ class SeniorMainScreen extends StatelessWidget {
             onTap: () async {
               context.go('/main');
             },
-            child: const Text(
-              "+ 다른 버전의 청첩장 보기",
-              style: TextStyle(
-                fontSize: 14.0,
-                color: Color(0xFF6B7280),
-                height: 1.2,
-              ),
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 4.0),
+                  child: Text(
+                    "+ 다른 버전의 청첩장 보기",
+                    style: TextStyle(
+                      fontSize: 14.0,
+                      color: Color(0xFF6B7280),
+                      height: 1.2,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
           const SizedBox(
-            height: 16.0,
+            height: 12.0,
           ),
           InkWell(
             onTap: () async {
               await launchUrlString(
-                "https://rainbow-spring-2bc.notion.site/f3446102673c4a8b9cfdc047451ac66b?pvs=4",
+                "https://jwik1104.com/tmi_review",
               );
             },
-            child: const Text(
-              "+ 청첩장 제작후기 보러가기",
-              style: TextStyle(
-                fontSize: 14.0,
-                color: Color(0xFF6B7280),
-                height: 1.2,
-              ),
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 4.0),
+                  child: Text(
+                    "+ 청첩장 제작후기 보러가기",
+                    style: TextStyle(
+                      fontSize: 14.0,
+                      color: Color(0xFF6B7280),
+                      height: 1.2,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
           const SizedBox(

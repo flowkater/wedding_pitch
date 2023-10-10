@@ -385,7 +385,7 @@ class _OthersTabViewState extends State<OthersTabView> {
                   InkWell(
                     onTap: () async {
                       await launchUrlString(
-                        "https://rainbow-spring-2bc.notion.site/f3446102673c4a8b9cfdc047451ac66b?pvs=4",
+                        "https://jwik1104.com/tmi_review",
                       );
                     },
                     child: Container(
