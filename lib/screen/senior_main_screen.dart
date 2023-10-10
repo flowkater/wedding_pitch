@@ -576,107 +576,124 @@ class SeniorMainScreen extends StatelessWidget {
     required String accountHolder,
     String relation = "♥",
   }) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                width: 28.0,
-                height: 28.0,
-                decoration: BoxDecoration(
-                  color: circleBgColor,
-                  borderRadius: BorderRadius.circular(50.0),
+    return InkWell(
+      onTap: () async {
+        await Clipboard.setData(
+          ClipboardData(text: "$bankName $accountNumber"),
+        );
+        Fluttertoast.showToast(
+          msg: "✅ 복사 완료! 계좌 정보를 붙여넣을 수 있습니다.",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 2,
+          backgroundColor: Colors.black.withOpacity(0.7),
+          textColor: Colors.white,
+          webPosition: "center",
+          webBgColor: "#4d4d4d",
+        );
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  width: 28.0,
+                  height: 28.0,
+                  decoration: BoxDecoration(
+                    color: circleBgColor,
+                    borderRadius: BorderRadius.circular(50.0),
+                  ),
+                  child: Center(
+                    child: Text(
+                      relation,
+                      style: TextStyle(
+                        fontSize: 11.0,
+                        color: textColor,
+                        fontWeight: FontWeight.bold,
+                        height: 1.5,
+                      ),
+                    ),
+                  ),
                 ),
-                child: Center(
+                const SizedBox(width: 16.0),
+                Text(
+                  accountHolder,
+                  style: TextStyle(
+                    fontSize: 13.0,
+                    color: textColor,
+                    fontWeight: FontWeight.bold,
+                    height: 1.5,
+                  ),
+                ),
+                const SizedBox(width: 16.0),
+                Text(
+                  bankName,
+                  style: TextStyle(
+                    fontSize: 13.0,
+                    color: textColor,
+                    height: 1.5,
+                  ),
+                ),
+                const SizedBox(width: 16.0),
+                Text(
+                  accountNumber,
+                  style: TextStyle(
+                    fontSize: 13.0,
+                    color: textColor,
+                    height: 1.5,
+                  ),
+                ),
+              ],
+            ),
+            const Spacer(),
+            InkWell(
+              onTap: () async {
+                await Clipboard.setData(
+                  ClipboardData(text: "$bankName $accountNumber"),
+                );
+                Fluttertoast.showToast(
+                  msg: "✅ 복사 완료! 계좌 정보를 붙여넣을 수 있습니다.",
+                  toastLength: Toast.LENGTH_LONG,
+                  gravity: ToastGravity.BOTTOM,
+                  timeInSecForIosWeb: 2,
+                  backgroundColor: Colors.black.withOpacity(0.7),
+                  textColor: Colors.white,
+                  webPosition: "center",
+                  webBgColor: "#4d4d4d",
+                );
+              },
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 8.0,
+                  horizontal: 12.0,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(4.0),
+                  border: Border.all(
+                    color: const Color(0xFF666666).withOpacity(0.5),
+                    width: 0.6,
+                  ),
+                ),
+                child: const Center(
                   child: Text(
-                    relation,
+                    "복사",
                     style: TextStyle(
                       fontSize: 11.0,
-                      color: textColor,
-                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF666666),
+                      fontWeight: FontWeight.w500,
                       height: 1.5,
                     ),
                   ),
                 ),
               ),
-              const SizedBox(width: 16.0),
-              Text(
-                accountHolder,
-                style: TextStyle(
-                  fontSize: 13.0,
-                  color: textColor,
-                  fontWeight: FontWeight.bold,
-                  height: 1.5,
-                ),
-              ),
-              const SizedBox(width: 16.0),
-              Text(
-                bankName,
-                style: TextStyle(
-                  fontSize: 13.0,
-                  color: textColor,
-                  height: 1.5,
-                ),
-              ),
-              const SizedBox(width: 16.0),
-              Text(
-                accountNumber,
-                style: TextStyle(
-                  fontSize: 13.0,
-                  color: textColor,
-                  height: 1.5,
-                ),
-              ),
-            ],
-          ),
-          const Spacer(),
-          InkWell(
-            onTap: () async {
-              await Clipboard.setData(
-                ClipboardData(text: "$bankName $accountNumber"),
-              );
-              Fluttertoast.showToast(
-                msg: "✅ 복사 완료! 계좌 정보를 붙여넣을 수 있습니다.",
-                toastLength: Toast.LENGTH_LONG,
-                gravity: ToastGravity.BOTTOM,
-                timeInSecForIosWeb: 2,
-                backgroundColor: Colors.black.withOpacity(0.7),
-                textColor: Colors.white,
-                webPosition: "center",
-                webBgColor: "#4d4d4d",
-              );
-            },
-            child: Container(
-              padding: const EdgeInsets.symmetric(
-                vertical: 8.0,
-                horizontal: 12.0,
-              ),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(4.0),
-                border: Border.all(
-                  color: const Color(0xFF666666).withOpacity(0.5),
-                  width: 0.6,
-                ),
-              ),
-              child: const Center(
-                child: Text(
-                  "복사",
-                  style: TextStyle(
-                    fontSize: 11.0,
-                    color: Color(0xFF666666),
-                    fontWeight: FontWeight.w500,
-                    height: 1.5,
-                  ),
-                ),
-              ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
