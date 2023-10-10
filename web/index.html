@@ -78,6 +78,13 @@
   </style>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
+  <script>
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).catch(function(error) {
+        console.error('Could not copy text: ', error);
+      });
+    }
+    </script>
 </head>
 <body>
   <div id="loader" class="loader"></div>

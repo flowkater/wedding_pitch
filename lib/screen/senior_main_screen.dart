@@ -5,6 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:wedding_pitch/style/color.dart';
+import 'package:wedding_pitch/utils/clip_borad_js.dart';
 import 'package:wedding_pitch/widget/location_tab_view.dart';
 
 class SeniorMainScreen extends StatelessWidget {
@@ -110,22 +111,37 @@ class SeniorMainScreen extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () async {
-                    await Clipboard.setData(
-                      const ClipboardData(
-                        text: "서울 영등포구 은행로 30 (중소기업중앙회 건물)",
-                      ),
-                    );
+                    try {
+                      await Clipboard.setData(
+                        const ClipboardData(
+                          text: "서울 영등포구 은행로 30 (중소기업중앙회 건물)",
+                        ),
+                      );
 
-                    Fluttertoast.showToast(
-                      msg: "✅ 복사 완료!",
-                      toastLength: Toast.LENGTH_LONG,
-                      gravity: ToastGravity.BOTTOM,
-                      timeInSecForIosWeb: 2,
-                      backgroundColor: Colors.black.withOpacity(0.7),
-                      textColor: Colors.white,
-                      webPosition: "center",
-                      webBgColor: "#4d4d4d",
-                    );
+                      Fluttertoast.showToast(
+                        msg: "✅ 복사 완료!",
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.BOTTOM,
+                        timeInSecForIosWeb: 2,
+                        backgroundColor: Colors.black.withOpacity(0.7),
+                        textColor: Colors.white,
+                        webPosition: "center",
+                        webBgColor: "#4d4d4d",
+                      );
+                    } catch (e) {
+                      Fluttertoast.showToast(
+                        msg: e.toString(),
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.BOTTOM,
+                        timeInSecForIosWeb: 2,
+                        backgroundColor: Colors.black.withOpacity(0.7),
+                        textColor: Colors.white,
+                        webPosition: "center",
+                        webBgColor: "#4d4d4d",
+                      );
+
+                      copyToClipboard("서울 영등포구 은행로 30 (중소기업중앙회 건물)");
+                    }
                   },
                   child: const Text(
                     "서울 영등포구 은행로 30 (중소기업중앙회 건물)",
